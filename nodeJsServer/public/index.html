@@ -31,7 +31,13 @@
 			
 			// Server message:
 			socket.on('addNewMarker', function (data) {
+				// Add to leafletJS:
 				L.circleMarker([data.lat, data.lng]).addTo(mymap);
+				// Add to Google Maps:
+				var marker = new google.maps.Marker({
+				  position: data,
+				  map: map
+				});
 			});
 	
 		</script>
@@ -39,10 +45,11 @@
 	</head>
 	<body>
 		
-	<h1>GPIG map example using WebSockets and leafletJs maps</h1>
-	<p>Click anywhere on the map and it'll add a map marker at the same location on all connected clients</p>
-	<div id="mapid" style="max-width: 600px; height: 400px;"></div>
+	<h1>GPIG map example using WebSockets</h1>
+	<p>Click anywhere on leaflets map and it'll add a map markers at the same location on all connected clients (on both maps).</p>
 	
+	<h2>LeafletJs map</h2>
+	<div id="mapid" style="max-width: 600px; height: 400px;"></div>
 	<script>
 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
@@ -74,19 +81,37 @@
 
 	function onMapClick(e)
 	{
-		/*
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
-		*/
-		
+		// Add to Leaflet map:
 		coords = e.latlng;
-		L.circleMarker([coords.lat, coords.lng]).addTo(mymap);
+		L.circleMarker([coords.lat, coords.lng]).addTo(mymap);	
+		// Send to server to broadcast:
 		socket.emit("newMarker", coords);
+		
+		// Add to Google Maps:
+		var marker = new google.maps.Marker({
+		  position: coords,
+		  map: map
+		});
 	}
 
 	mymap.on('click', onMapClick);
 	</script>
+	
+	<h2>Google Maps API</h2>
+	<div id="googleMap" style="width:600px;height:400px;"></div>
+	<script>
+	var map;
+	function myMap()
+	{
+		var mapProp= {
+			center:new google.maps.LatLng(51.505, -0.09),
+			zoom:13
+		};
+		
+		map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05wstmVCb0P9I-G_SUAjsHkLkvjBnfBQ&callback=myMap"></script>
+
 	</body>
 </html>
