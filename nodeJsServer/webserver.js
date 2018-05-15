@@ -1,8 +1,7 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var io = require('socket.io')(http) // require socket.io module and pass the http object (server)
-
-var nStatic = require('node-static'); // Allows access to static resources such as images and CSS
-var fileServer = new nStatic.Server('./public');
+var fs = require('fs'); //require filesystem module
+var path = require('path'); // Get file extensions
 
 http.listen(5000); //listen to port 5000
 
@@ -11,7 +10,37 @@ function handler (request, response)
 { 
 	if(request.method === "GET")
 	{
-		fileServer.serve(request, response);
+		var filePath = request.url;
+		if (filePath == '/')
+			filePath = '/index.html';
+
+		var extname = path.extname(filePath);
+		var contentType = 'text/html';
+		switch (extname) {
+			case '.js':
+				contentType = 'text/javascript';
+				break;
+			case '.css':
+				contentType = 'text/css';
+				break;
+			case '.json':
+				contentType = 'application/json';
+				break;
+			case '.png':
+				contentType = 'image/png';
+				break;      
+			case '.jpg':
+				contentType = 'image/jpg';
+				break;
+			case '.wav':
+				contentType = 'audio/wav';
+				break;
+		}
+
+		fs.readFile(__dirname + '/public' + filePath, function(error, content) {
+			response.writeHead(200, { 'Content-Type': contentType });
+			return response.end(content, 'utf-8');
+		});
 	}
 	else if(request.method === "POST")
 	{
@@ -29,15 +58,11 @@ function handler (request, response)
 	}
 }
 
-// WebSocket Connection
+// WebSocket broadcast data to all clients:
 io.sockets.on('connection', function (socket) {
-	var coords;
-	socket.on('newMarker', function(data) {
-		coords = data;
-		if (coords != null)
-		{
-			console.log(coords);
-			socket.broadcast.emit('addNewMarker', coords);    
-		}
+	socket.on('broadcastData', function(data) {
+		console.log('Broadcasting...');
+		console.log(data);
+		socket.broadcast.emit('notification', data);    
     });
 });

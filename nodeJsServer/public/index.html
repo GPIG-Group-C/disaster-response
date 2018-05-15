@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta charset="utf-8"/>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
 		<title>GPIG Group C Server</title>
-		
-		<!-- CSS Stylesheets -->
-		<!--
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:100,300|Open+Sans:300,400,600|Lato:300,400">
-		<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="/css/main.css" type="text/css"  media="screen">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.css">-->
-		
-		<script src="mapFunctions.js"></script>
-
-		<!-- jQuery stuff if needed -->
-		<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-		<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		
 		<!-- Socket.io required for websockets -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 		
 		<!-- include socket.io client side script -->
-		<script src="serverLogic.js"></script>		
+		<script src="clientLogic.js"></script>		
+		
+		<!-- Map logic -->
+		<script src="mapFunctions.js"></script>
 	</head>
 	<body>
+		<h1>Google Maps API</h1>
+		<div id="googleMap" style="width:600px;height:400px;"></div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05wstmVCb0P9I-G_SUAjsHkLkvjBnfBQ&callback=myMap"></script>
 		
-	<h1>GPIG map example using WebSockets</h1>
-	<p>Click anywhere on leaflets map and it'll add a map markers at the same location on all connected clients (on both maps).</p>
-	
-	<h2>Google Maps API</h2>
-	<div id="googleMap" style="width:600px;height:400px;"></div>
-	
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05wstmVCb0P9I-G_SUAjsHkLkvjBnfBQ&callback=myMap"></script>
-
+		<br>
+		<script>
+		function sendMarker()
+		{
+			socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 1, "latitude" : 37.75536, "longitude" : -122.40516, "desc" : "hello", "datetime" : new Date().getTime()}});
+		}
+		</script>
+		<button id="demo" onclick="sendMarker()">Add marker to OTHER clients</button>
+		
 	</body>
 </html>
