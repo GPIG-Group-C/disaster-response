@@ -1,6 +1,11 @@
 var mMap;
 var markerDict = {};
 
+var layerVisibility = {
+	4:true,
+	"circle":true
+};
+
 function myMap()
 {
 	var mapProp= {
@@ -94,11 +99,21 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 function hideLayer(type){
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(false);
+		layerVisibility[type] = false;
 	}
 }
 
 function showLayer(type){
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(true);
+		layerVisibility[type] = true;
+	}
+}
+
+function toggleLayer(type){
+	if(layerVisibility[type] == true){
+		hideLayer(type);
+	} else {
+		showLayer(type);
 	}
 }
