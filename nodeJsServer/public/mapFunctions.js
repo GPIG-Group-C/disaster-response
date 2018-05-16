@@ -1,5 +1,6 @@
 var mMap;
 var markerList = [];
+var markerDict = {};
 
 function myMap()
 {
@@ -10,6 +11,9 @@ function myMap()
 	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", new Date().getTime());
+    
 	addCircle("circle", 37.7749, -122.4194, 2, new Date().getTime());
 }
 function addCircle(ID, latitude, longitude, radius, timeAdded) {
@@ -22,6 +26,14 @@ function addCircle(ID, latitude, longitude, radius, timeAdded) {
 		center: {lat: latitude, lng: longitude},
 		radius: radius * 10000
 	});
+    
+    if(!('circle' in markerDict)){
+        markerDict['circle'] = [];
+        markerDict['circle'].push(circle);
+    } else {
+        markerDict['circle'].push(circle);
+    }
+    
 	return circle;
 }
 
@@ -41,10 +53,9 @@ var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 function addInfoMarker(ID, type, latitude, longitude, descr, timeAdded){
 	
 	//Check to see if the ID has been used before, remove previous item if it has
-	for( var index in markerList){
-		currMarker = markerList[index];
+	for( var index in markerDict[type]){
+		currMarker = markerDict[type][index];
 		
-		console.log(currMarker);
 		
 		if (currMarker.id == ID){
 			
@@ -52,7 +63,9 @@ function addInfoMarker(ID, type, latitude, longitude, descr, timeAdded){
 			currMarker.setMap(null);
 			
 			//removes marker from markerList
-			markerList.splice(index, 1)
+			markerList.splice(index, 1);
+            
+            markerDict[type].splice(index, 1);
 		}
 	}
 	
@@ -71,7 +84,12 @@ function addInfoMarker(ID, type, latitude, longitude, descr, timeAdded){
 		infoWindow.open(mMap, marker);
 	});
 	
-	markerList.push(marker);
+    if(!(type in markerDict)){
+        markerDict[type] = [];
+        markerDict[type].push(marker);
+    } else {
+        markerDict[type].push(marker);
+    }
 		
 	return marker;
 }
