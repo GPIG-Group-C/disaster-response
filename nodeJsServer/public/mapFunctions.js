@@ -90,3 +90,15 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 		
 	return marker;
 }
+
+function hideLayer(type){
+    for( var index in markerDict[type]){
+		markerDict[type][index].setVisible(false);
+	}
+}
+
+function showLayer(type){
+    for( var index in markerDict[type]){
+		markerDict[type][index].setVisible(true);
+	}
+}
