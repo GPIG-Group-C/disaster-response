@@ -1,4 +1,6 @@
 var mMap;
+var markerList = [];
+
 function myMap()
 {
 	var mapProp= {
@@ -37,6 +39,23 @@ var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
         };
 
 function addInfoMarker(ID, type, latitude, longitude, descr, timeAdded){
+	
+	//Check to see if the ID has been used before, remove previous item if it has
+	for( var index in markerList){
+		currMarker = markerList[index];
+		
+		console.log(currMarker);
+		
+		if (currMarker.id == ID){
+			
+			//Removes marker from map
+			currMarker.setMap(null);
+			
+			//removes marker from markerList
+			markerList.splice(index, 1)
+		}
+	}
+	
 	if (descr !=  null) {
 		var infoWindow = new google.maps.InfoWindow({
 			content: descr
@@ -44,11 +63,15 @@ function addInfoMarker(ID, type, latitude, longitude, descr, timeAdded){
 	}
 	
 	var marker = new google.maps.Marker({
-	  position: {lat: latitude, lng: longitude}, map: mMap
+		id: ID,
+		position: {lat: latitude, lng: longitude}, 
+		map: mMap
 	});
 	marker.addListener('click', function() {
 		infoWindow.open(mMap, marker);
 	});
 	
+	markerList.push(marker);
+		
 	return marker;
 }
