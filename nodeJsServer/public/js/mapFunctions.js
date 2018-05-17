@@ -117,3 +117,17 @@ function toggleLayer(type){
 		showLayer(type);
 	}
 }
+
+function addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded) {
+    var div = document.createElement('div');
+
+    div.id = ID;
+    div.innerHTML = descr;
+
+    document.getElementById('home').appendChild(div);
+}
+
+function deleteActivityItem(ID) {
+	var elem = document.getElementById(ID);
+	elem.parentNode.removeChild(elem);
+}
