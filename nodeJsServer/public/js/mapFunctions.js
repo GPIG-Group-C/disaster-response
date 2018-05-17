@@ -61,7 +61,11 @@ function addCircle(ID, latitude, longitude, radius, timeAdded) {
         markerDict['circle'].push(circle);
     } else {
         markerDict['circle'].push(circle);
-    }
+    };
+
+    circleJson = {method: "addCircle", params: {id: ID, type: type, latitude: latitude, longitude: longitude, radius: radius, timeAdded: timeAdded}};
+
+    socket.emit("broadcastData", circleJson);
     
 	return circle;
 }
@@ -122,6 +126,10 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
     } else {
         markerDict[type].push(marker);
     }
+
+    markerJson = {method: "addInfoMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr, timeAdded: timeAdded}};
+
+    socket.emit("broadcastData", markerJson);
 		
 	return marker;
 }
@@ -183,3 +191,4 @@ function deleteActivityItem(ID) {
 	var elem = document.getElementById(ID);
 	elem.parentNode.removeChild(elem);
 }
+
