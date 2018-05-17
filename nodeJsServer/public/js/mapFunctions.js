@@ -65,8 +65,11 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 			//Removes marker from map
 			currMarker.setMap(null);
 			
-			//removes marker from markerDict    
+			//Removes marker from markerDict    
             markerDict[type].splice(index, 1);
+			
+			//Removes activity item
+			deleteActivityItem(ID);
 		}
 	}
 	
@@ -75,6 +78,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 			content: descr
 		});
 	}
+	
+	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
 	
 	var marker = new google.maps.Marker({
 		id: ID,
@@ -97,16 +102,37 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 }
 
 function hideLayer(type){
+	
+	//Hides markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(false);
 		layerVisibility[type] = false;
 	}
+	
+	var activityItems = $("#home").children("."+ (type.toString()) );
+	
+	//Hides activity items
+	//Uses Array.from(), not sure if that's an issue.
+	for( var index in Array.from(activityItems)){
+		item = activityItems[index];
+		item.style.display = "none";
+	}
 }
 
 function showLayer(type){
+	//Shows markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(true);
 		layerVisibility[type] = true;
+	}
+	
+	var activityItems = $("#home").children("."+ (type.toString()) );
+	
+	//Shows activity items
+	//Uses Array.from(), not sure if that's an issue.
+	for( var index in Array.from(activityItems)){
+		item = activityItems[index];
+		item.style.display = "";
 	}
 }
 
@@ -122,6 +148,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded)
     var div = document.createElement('div');
 
     div.id = ID;
+	div.className = type;
     div.innerHTML = descr;
 
     document.getElementById('home').appendChild(div);
