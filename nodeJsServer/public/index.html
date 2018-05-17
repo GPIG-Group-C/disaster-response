@@ -55,7 +55,7 @@
 				</div>
 
 				<div class="sidebar-pane" id="settings">
-					<h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+					<h1 class="sidebar-header">Layers<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 					<script>
 					function sendMarker()
 					{
@@ -63,14 +63,22 @@
 					}
 					</script>
 					<button id="demo" onclick="sendMarker()">Add marker to OTHER clients</button>
-					
+					<button id="hideFire" onclick="toggleLayer(1)">Toggle Fire markers</button>
+					<button id="hideBlocked" onclick="toggleLayer(2)">Toggle Blocked Road markers</button>
+					<button id="hideMedic" onclick="toggleLayer(3)">Toggle Medic markers</button>
 					<button id="hideEarthquake" onclick="toggleLayer(4)">Toggle Earthquake markers</button>
+					<button id="hideCollapsedBuilding" onclick="toggleLayer(5)">Toggle Collapsed Building markers</button>
+					<button id="hideResponderBase" onclick="toggleLayer(6)">Toggle First Responder Base markers</button>
+					<button id="hideFireStation" onclick="toggleLayer(7)">Toggle Fire Station markers</button>
+					<button id="hideWaterLeak" onclick="toggleLayer(8)">Toggle Water Leak markers</button>
+					<button id="hideElectricityFault" onclick="toggleLayer(9)">Toggle Electricity Fault markers</button>
 				</div>
 			</div>
 		</div>		
 		
 		<div id="googleMap" class="sidebar-map" style="width:100%; height:100%; position:absolute"></div>
 		
+	    
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05wstmVCb0P9I-G_SUAjsHkLkvjBnfBQ&callback=myMap"></script>
 		<script src="js/jquery-sidebar.js"></script>
