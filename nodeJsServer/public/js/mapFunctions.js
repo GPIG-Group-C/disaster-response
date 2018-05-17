@@ -40,15 +40,16 @@ function myMap()
 	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake1", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake2", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
-	addCircle("circle", 37.7749, -122.4194, 2, new Date().getTime());
+
+	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
 	
 	var markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
     
 }
-function addCircle(ID, latitude, longitude, radius, timeAdded) {
+function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
 	var circle = new google.maps.Circle({
 		strokeColor: 'white',
 		strokeWeight: .5,
@@ -90,14 +91,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 		
 		if (currMarker.id == ID){
 			
-			//Removes marker from map
-			currMarker.setMap(null);
-			
-			//Removes marker from markerDict    
-            markerDict[type].splice(index, 1);
-			
-			//Removes activity item
-			deleteActivityItem(ID);
+			removeMarker(ID, type);
 		}
 	}
 	
@@ -127,6 +121,20 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
     }
 		
 	return marker;
+}
+
+function removeMarker(ID, type){
+	
+	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+	
+	//Removes marker from map
+	markerDict[type][index].setMap(null);
+	
+	//Removes marker from markerDict    
+	markerDict[type].splice(index, 1);
+	
+	//Removes activity item
+	deleteActivityItem(ID);
 }
 
 function hideLayer(type){
