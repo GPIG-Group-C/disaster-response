@@ -44,6 +44,10 @@ function myMap()
     addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
 	addCircle("circle", 37.7749, -122.4194, 2, new Date().getTime());
+	
+	var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    
 }
 function addCircle(ID, latitude, longitude, radius, timeAdded) {
 	var circle = new google.maps.Circle({
