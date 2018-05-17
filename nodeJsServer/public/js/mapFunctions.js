@@ -10,7 +10,32 @@ function myMap()
 {
 	var mapProp= {
 		center:new google.maps.LatLng(37.7749, -122.4194),
-		zoom:13
+		zoom:13,
+		styles:[{
+			"featureType": "poi",
+			"elementType": "labels",
+			"stylers": [{"visibility": "off"}]
+
+		},
+		{
+			"featureType": "transit",
+			"elementType": "labels",
+			"stylers": [{"visibility": "off"}]
+
+		},
+		{
+			"featureType": "road",
+			"elementType": "labels",
+			"stylers": [{"visibility": "simplified"}]
+
+		},
+		{
+			"featureType": "administrative.neighborhood",
+			"elementType": "labels",
+			"stylers": [{"visibility": "off"}]
+
+		}
+		]
 	};
 	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
