@@ -1,10 +1,11 @@
 class Sensor{
-	constructor(id, latitude, longitude, ok_value=5, error_change=2){
+	/* A Class representing a single sensor that can generate random values*/
+	constructor(id, latitude, longitude, okRange=[1,10], faultRange=[11,20]){
 		this.id = id;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.ok_value = ok_value;
-		this.error_change = error_change;
+		this.okRange = okRange;
+		this.faultRange = faultRange;
 		this.fault = false;
 		this.on = true;
 		this.data = this.valueGenerator();
@@ -19,29 +20,33 @@ class Sensor{
 	}
 	
 	setOnOff(active){
+		/**
+		* Turn the sensor on or off, if off the sensor outputs 0.
+		* @param {boolean} active If True sensor is set on, if False off.
+		*/
 		this.on = active;
 	}
 	
 	setFault(faulty){
+		/**
+		* Set the sensor to return a value outside the normal range.
+		* @params {boolean} faulty 	If True return a unexpected value.
+		*/
 		this.fault = faulty;
 	}
 
 	* valueGenerator(){
-		/* A generator that outputs a random sensor value.
-		Params
-			None
-		Returns
-			output		a float value
+		/**
+		* A generator that outputs a random sensor value.
+		* @return {number} output a random number.
 		*/		
-		var upper = (this.ok_value + this.error_change);
-		var lower = (this.ok_value - this.error_change);
 		var output = this.ok_value;
 		while (true){			
 			if( this.on == true){
 				if (this.fault == false){
-					output = Math.floor(Math.random() * upper) + lower;
+					output = Math.floor(Math.random() * this.okRange[1]) + this.okRange[0];
 				}else{
-					output = Math.floor(Math.random()* 20) + 10;
+					output = Math.floor(Math.random()* this.faultRange[1]) + this.faultRange[0];
 				}
 			}else{
 				output = 0;
@@ -53,31 +58,47 @@ class Sensor{
 }
 
 class SensorNet{
+	/* A Class for representing a network of Sensors*/
 	constructor(){
-		this.sensors = {}; //dictionary of sensors
-		this.generators = {};
+		this.sensors = {}; //dictionary of sensors {key: id, value: sensor}
+		this.generators = {}; // dictionary of the sensors generators {key: id, value: generator}
 	}
 	
 	addSensor(sensor){
-		/* Add a sensor to the sensor network
-		Params
-			sensor		a sensor
+		/** 
+		* Add a sensor to the sensor network
+		* @param {Sensor} sensor 	a Sensor object
 		*/
 		this.sensors[sensor.getID()] = sensor;
 		this.generators[sensor.getID()] = this.sensors[sensor.getID()].valueGenerator();
 	}
 	
 	getValues(){
-		/* Get the values of all the sensors */
+		/** 
+		* Get the next values of all the sensors
+		* @return sensorData 	Array of [[lat, lng, reading], ...] 
+		*/
 		var sensorData = [];
 		var reading = 0;
 		for (var key in this.generators){
 			reading = this.generators[key].next().value;
-			sensorData.push([this.sensors[key].getLocation(), reading]);
-			console.log(reading);
+			loc = this.sensors[key].getLocation();
+			lat = loc[0];
+			lng = loc[1];
+			sensorData.push([lat, lng, reading]);
 		}
 		console.log(sensorData);
 		return sensorData;
+	}
+	
+	toggleFault(id){
+		/** 
+		* Toggle if a sensor detects a fault
+		* @param {number} id		The id of a sensor
+		*/
+		if (this.sensors[id] !== undefined){
+			this.sensors[id].setFault(true);
+		}
 	}
 }
 
