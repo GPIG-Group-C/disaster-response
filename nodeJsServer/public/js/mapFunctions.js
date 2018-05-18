@@ -1,5 +1,6 @@
 var mMap;
 var markerDict = {};
+var markerCluster;
 
 var layerVisibility = {
 	4:true,
@@ -38,16 +39,19 @@ function myMap()
 		]
 	};
 	
+	
+	
+	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
+	
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     addInfoMarker("earthquake1", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     addInfoMarker("earthquake2", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
-	
-	var markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
-    
+	console.log(markerCluster);
 }
 function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
 	var circle = new google.maps.Circle({
@@ -105,8 +109,6 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 		});
 	}
 	
-	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
-	
 	var marker = new google.maps.Marker({
 		id: ID,
 		title: title,
@@ -123,6 +125,10 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
     } else {
         markerDict[type].push(marker);
     }
+	
+	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
+	
+	markerCluster.addMarker(marker);
 
     markerJson = {method: "addInfoMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr, timeAdded: timeAdded}};
 
@@ -137,6 +143,9 @@ function removeMarker(ID, type){
 	
 	//Removes marker from map
 	markerDict[type][index].setMap(null);
+	
+	//Removes marker from markerCluster
+	markerCluster.removeMarker(markerDict[type][index]);
 	
 	//Removes marker from markerDict    
 	markerDict[type].splice(index, 1);
