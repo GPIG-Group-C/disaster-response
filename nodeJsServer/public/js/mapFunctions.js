@@ -45,7 +45,7 @@ function myMap()
 		{
 			"featureType": "poi.school ",
 			"elementType": "labels",
-			"stylers": [{"visibility": "off"}]
+			"stylers": [{"visibility": "on"}]
 
 		},
 		{
@@ -89,8 +89,8 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
 	
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake1", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake2", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
