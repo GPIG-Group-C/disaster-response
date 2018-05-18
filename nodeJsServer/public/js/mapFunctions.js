@@ -1,5 +1,6 @@
 var mMap;
 var markerDict = {};
+var markerCluster;
 
 var layerVisibility = {
 	4:true,
@@ -81,17 +82,21 @@ function myMap()
 		]
 	};
 	
-	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    
-	addCircle("circle", 37.7749, -122.4194, 2, new Date().getTime());
 	
-	var markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
+	
+	
+	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
+	
+	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake1", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake2", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
+
+	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
+	console.log(markerCluster);
 }
-function addCircle(ID, latitude, longitude, radius, timeAdded) {
+function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
 	var circle = new google.maps.Circle({
 		strokeColor: 'white',
 		strokeWeight: .5,
@@ -107,7 +112,11 @@ function addCircle(ID, latitude, longitude, radius, timeAdded) {
         markerDict['circle'].push(circle);
     } else {
         markerDict['circle'].push(circle);
-    }
+    };
+
+    circleJson = {method: "addCircle", params: {id: ID, type: type, latitude: latitude, longitude: longitude, radius: radius, timeAdded: timeAdded}};
+
+    socket.emit("broadcastData", circleJson);
     
 	return circle;
 }
@@ -133,14 +142,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 		
 		if (currMarker.id == ID){
 			
-			//Removes marker from map
-			currMarker.setMap(null);
-			
-			//Removes marker from markerDict    
-            markerDict[type].splice(index, 1);
-			
-			//Removes activity item
-			deleteActivityItem(ID);
+			removeMarker(ID, type);
 		}
 	}
 	
@@ -149,8 +151,6 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
 			content: descr
 		});
 	}
-	
-	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
 	
 	var marker = new google.maps.Marker({
 		id: ID,
@@ -168,8 +168,33 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
     } else {
         markerDict[type].push(marker);
     }
+	
+	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
+	
+	markerCluster.addMarker(marker);
+
+    markerJson = {method: "addInfoMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr, timeAdded: timeAdded}};
+
+    socket.emit("broadcastData", markerJson);
 		
 	return marker;
+}
+
+function removeMarker(ID, type){
+	
+	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+	
+	//Removes marker from map
+	markerDict[type][index].setMap(null);
+	
+	//Removes marker from markerCluster
+	markerCluster.removeMarker(markerDict[type][index]);
+	
+	//Removes marker from markerDict    
+	markerDict[type].splice(index, 1);
+	
+	//Removes activity item
+	deleteActivityItem(ID);
 }
 
 function hideLayer(type){
@@ -233,8 +258,6 @@ function deleteActivityItem(ID) {
 function loadStyles() {
 	return JSON.parse(styles);
 }
-
-
 
 
 
@@ -1548,4 +1571,3 @@ Object.keys = Object.keys || function(o) {
     }
     return result;
 };
-
