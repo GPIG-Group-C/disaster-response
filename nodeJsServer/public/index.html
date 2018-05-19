@@ -22,7 +22,24 @@
 		<!-- Map logic -->
 		<script src="js/mapFunctions.js"></script>
 	</head>
+	  
+	  
 	<body onload="sidebar.open('home');">
+	  <header class="header">
+  <div class="logo">
+    <a title="Head logo" >
+      <p style="text-align:center;"><b>GROUP C DISASTER RESPONSE</b> 
+      <span style="float:right;">
+        <button type="button">Log in</button>
+        <button type="button">Log out</button></span>  </p>
+   
+    </a>
+    </div>
+    
+  
+  
+	  </header>
+	  
 		<div id="sidebar" class="sidebar collapsed">
 			<div class="sidebar-tabs">
 				<ul role="tablist">
@@ -36,7 +53,7 @@
 				</ul>
 			</div>		
 			<!-- Tab panes -->
-			<div class="sidebar-content">
+			<div class="sidebar-content"> 
 				<div class="sidebar-pane" id="home">
 					<h1 class="sidebar-header">
 						Disaster Response System
@@ -61,16 +78,27 @@
 						socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 1, "latitude" : 37.75536, "longitude" : -122.40516, "desc" : "hello", "datetime" : new Date().getTime()}});
 					}
 					</script>
+					<br><br>
 					<button id="demo" onclick="sendMarker()">Add marker to OTHER clients</button>
+					<br><br>
 					<button id="hideFire" onclick="toggleLayer(1)">Toggle Fire markers</button>
+					<br><br>
 					<button id="hideBlocked" onclick="toggleLayer(2)">Toggle Blocked Road markers</button>
+					<br><br>
 					<button id="hideMedic" onclick="toggleLayer(3)">Toggle Medic markers</button>
+					<br><br>
 					<button id="hideEarthquake" onclick="toggleLayer(4)">Toggle Earthquake markers</button>
+					<br><br>
 					<button id="hideCollapsedBuilding" onclick="toggleLayer(5)">Toggle Collapsed Building markers</button>
+					<br><br>
 					<button id="hideResponderBase" onclick="toggleLayer(6)">Toggle First Responder Base markers</button>
+					<br><br>
 					<button id="hideFireStation" onclick="toggleLayer(7)">Toggle Fire Station markers</button>
+					<br><br>
 					<button id="hideWaterLeak" onclick="toggleLayer(8)">Toggle Water Leak markers</button>
+					<br><br>
 					<button id="hideElectricityFault" onclick="toggleLayer(9)">Toggle Electricity Fault markers</button>
+					<br><br>
 				</div>
 			</div>
 		</div>		

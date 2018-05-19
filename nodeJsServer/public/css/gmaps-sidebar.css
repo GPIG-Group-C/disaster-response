@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   width: 100%;
@@ -9,7 +9,7 @@
     width: 40px; }
   @media (min-width: 768px) {
     .sidebar {
-      top: 10px;
+      top: 50px;
       bottom: 10px;
       transition: width 500ms; } }
   @media (min-width: 768px) and (max-width: 991px) {
