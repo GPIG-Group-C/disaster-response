@@ -1,9 +1,15 @@
-/* Functions for creating gas lines using polylines*/
+/**
+* Functions for creating gas lines using polylines
+* @example
+* var gasLine = createGasLine(GAS1, 10);
+* var gasSensors = gasLine.sensors;
+* var polyline = gasLine.line;
+*/
 
 function createLine(lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, lineWeight=2){
 	/**
 	* Create a polyline and return it.
-	* @param {Array<number>} lineCoordinates 	Array of {lat, long} points that define the line
+	* @param {Array<Object>} lineCoordinates 	Array of {lat : <number>, lng : <number>} points that define the line
 	* @param {string} lineColour				Colour as a hexadecimal HTML colour e.g. '#FF0000'
 	* @param {number} lineOpacity				Opacity of line in range [0.0, 1.0]
 	* @param {number} lineWeight				Line width in pixels
@@ -44,4 +50,17 @@ function changeLineColour(line, colour){
 	* @param {string} 	colour	Colour as a hexadecimal HTML colour e.g. '#FF0000'
 	*/
 	line.setOptions({strokeColor: colour});
+}
+
+function createGasLine(coords, interval){
+	/**
+	* Create a gas line consisting of a SensorNet and Polyline.
+	* @param {Array<Object>} coords The coordinates of the line [{lat:<number>,lng:<number>},...]
+	* @param {number} interval The distance between sensors in meters.
+	* @return {Object} {sensors : <SensorNet>, line : <Polyline>}
+	*/
+	var gasSensors = new SensorNet(coords, interval);
+	var gasLine = createLine(coords);
+	
+	return {sensors : gasSensors, line : gasLine};
 }

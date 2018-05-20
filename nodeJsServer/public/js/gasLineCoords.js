@@ -1,3 +1,8 @@
+/**
+* Constansts defining coordinates  of gas lines.
+* Each variable defines a new polyline.
+*/ 
+
 var GAS1 = [
           {lat: 37.765728, lng: -122.407575},
           {lat: 37.753018, lng: -122.406427},
