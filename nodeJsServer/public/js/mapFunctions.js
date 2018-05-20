@@ -199,6 +199,20 @@ function removeMarker(ID, type){
 
 function addPolygon(ID, type, severity, coords, descr){
 	
+	//Check to see if the ID has been used before, remove previous item if it has
+	for( var index in markerDict[type]){
+		currPoly = markerDict[type][index];
+		
+		
+		if (currPoly.id == ID){
+			
+			currPoly.setMap(null);
+			var polyIndex = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+			markerDict[type].splice(polyIndex, 1);
+		}
+	}
+	
+	
 	if (descr !=  null) {
 		var infoWindow = new google.maps.InfoWindow({
 			content: descr
@@ -206,6 +220,7 @@ function addPolygon(ID, type, severity, coords, descr){
 	}
 	
 	var polygon = new google.maps.Polygon({
+		id: ID,
 		paths: coords,
 		strokeColor: '#FF0000',
         strokeOpacity: 0.8,
