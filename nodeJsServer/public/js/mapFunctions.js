@@ -92,9 +92,9 @@ function myMap()
     addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
+	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
-	console.log(markerCluster);
 }
 function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
 	var circle = new google.maps.Circle({
@@ -195,6 +195,38 @@ function removeMarker(ID, type){
 	
 	//Removes activity item
 	deleteActivityItem(ID);
+}
+
+function addPolygon(ID, type, severity, coords, descr){
+	
+	if (descr !=  null) {
+		var infoWindow = new google.maps.InfoWindow({
+			content: descr
+		});
+	}
+	
+	var polygon = new google.maps.Polygon({
+		paths: coords,
+		strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+	});
+	polygon.addListener('click', function(event) {
+		infoWindow.setPosition(event.latLng);
+		infoWindow.open(mMap);
+		console.log("aaaahhhh");
+	});
+	
+	polygon.setMap(mMap);
+	
+	if(!(type in markerDict)){
+        markerDict[type] = [];
+        markerDict[type].push(polygon);
+    } else {
+        markerDict[type].push(polygon);
+    }
 }
 
 function hideLayer(type){
