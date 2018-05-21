@@ -272,6 +272,11 @@ function addGasLine(ID, coords, interval){
     } else {
         markerDict[type].push(gas.line);
     }
+	
+	for( var index in gas.sensors.sensors){
+		var sensor = gas.sensors.sensors[index];
+		addInfoMarker(ID.concat(sensor.id), "gasSensor", sensor.latitude, sensor.longitude, "Gas Sensor", "descr", new Date().getTime());
+	}
 }
 
 function colourGasLine(ID, colour){
