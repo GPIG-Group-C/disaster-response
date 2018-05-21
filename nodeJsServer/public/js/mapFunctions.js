@@ -273,14 +273,20 @@ function addGasLine(ID, coords, interval){
         markerDict[type].push(gas.line);
     }
 	
-	console.log(gas.sensors.sensors)
-	
 	for( var index in gas.sensors.sensors){
 		var sensor = gas.sensors.sensors[index];
 		
-		console.log(sensor.latitude)
-		console.log(sensor.longitude)
-		addInfoMarker(ID.concat(sensor.id), "gas", sensor.latitude, sensor.longitude, "Gas Sensor", "descr", new Date().getTime());
+		console.log(sensor);
+		
+		var status;
+		if(sensor.on){
+			status = "Status: On";
+		} else {
+			status = "Status: Off";
+		}
+		
+		var sensorID = ID.concat(sensor.id);
+		addInfoMarker(sensorID, "gas", sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
 	}
 }
 
