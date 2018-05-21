@@ -62,16 +62,16 @@
 						socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 1, "latitude" : 37.75536, "longitude" : -122.40516, "desc" : "hello", "datetime" : new Date().getTime()}});
 					}
 					</script>
-					<button id="demo" onclick="sendMarker()">Add marker to OTHER clients</button>
-					<button id="hideFire" onclick="toggleLayer(1)">Toggle Fire markers</button>
-					<button id="hideBlocked" onclick="toggleLayer(2)">Toggle Blocked Road markers</button>
-					<button id="hideMedic" onclick="toggleLayer(3)">Toggle Medic markers</button>
-					<button id="hideEarthquake" onclick="toggleLayer(4)">Toggle Earthquake markers</button>
-					<button id="hideCollapsedBuilding" onclick="toggleLayer(5)">Toggle Collapsed Building markers</button>
-					<button id="hideResponderBase" onclick="toggleLayer(6)">Toggle First Responder Base markers</button>
-					<button id="hideFireStation" onclick="toggleLayer(7)">Toggle Fire Station markers</button>
-					<button id="hideWaterLeak" onclick="toggleLayer(8)">Toggle Water Leak markers</button>
-					<button id="hideElectricityFault" onclick="toggleLayer(9)">Toggle Electricity Fault markers</button>
+					<input id="demo" type="checkbox" onclick="sendMarker()">Add marker to Other cities</input><br />
+					<input id="hideFire" type="checkbox" onclick="toggleLayer(1)">Toggle Fire markers</input><br />
+					<input id="hideBlocked" type="checkbox" onclick="toggleLayer(2)">Toggle Blocked Road markers</input><br />
+					<input id="hideMedic" type="checkbox" onclick="toggleLayer(3)">Toggle Medic markers</input><br />
+					<input id="hideEarthquake" type="checkbox" onclick="toggleLayer(4)">Toggle Earthquake markers</input><br />
+					<input id="hideCollapsedBuilding" type="checkbox" onclick="toggleLayer(5)">Toggle Collapsed Building markers</input><br />
+					<input id="hideResponderBase" type="checkbox" onclick="toggleLayer(6)">Toggle First Responder Base markers</input><br />
+					<input id="hideFireStation" type="checkbox" onclick="toggleLayer(7)">Toggle Fire Station markers</input><br />
+					<input id="hideWaterLeak" type="checkbox" onclick="toggleLayer(8)">Toggle Water Leak markers</input><br />
+					<input id="hideElectricityFault" type="checkbox" onclick="toggleLayer(9)">Toggle Electricity Fault markers</input><br />
 				</div>
 			</div>
 		</div>		
