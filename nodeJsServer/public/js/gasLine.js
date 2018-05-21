@@ -6,7 +6,7 @@
 * var polyline = gasLine.line;
 */
 
-function createLine(lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, lineWeight=2){
+function createLine(ID, lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, lineWeight=2){
 	/**
 	* Create a polyline and return it.
 	* @param {Array<Object>} lineCoordinates 	Array of {lat : <number>, lng : <number>} points that define the line
@@ -16,6 +16,7 @@ function createLine(lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, line
 	* @return {PolyLine} line					A google.maps.Polyline object
 	*/
 	var line = new google.maps.Polyline({
+		id : ID,
 		path: lineCoordinates,
 		geodesic: true,
 		strokeColor: lineColour,
@@ -52,7 +53,7 @@ function changeLineColour(line, colour){
 	line.setOptions({strokeColor: colour});
 }
 
-function createGasLine(coords, interval){
+function createGasLine(ID, coords, interval){
 	/**
 	* Create a gas line consisting of a SensorNet and Polyline.
 	* @param {Array<Object>} coords The coordinates of the line [{lat:<number>,lng:<number>},...]
@@ -60,7 +61,7 @@ function createGasLine(coords, interval){
 	* @return {Object} {sensors : <SensorNet>, line : <Polyline>}
 	*/
 	var gasSensors = new SensorNet(coords, interval);
-	var gasLine = createLine(coords);
+	var gasLine = createLine(ID, coords);
 	
 	return {sensors : gasSensors, line : gasLine};
 }
