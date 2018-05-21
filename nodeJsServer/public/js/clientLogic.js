@@ -9,12 +9,12 @@ socket.on('notification', function (data) {
 	{
 		case "addMarker":
 			console.log("addMarker");
-			addInfoMarker(data.params.ID, data.params.type, data.params.latitude, data.params.longitude, data.params.title, data.params.desc);
+			addInfoMarker(data.params.ID, data.params.type, data.params.lat, data.params.lng, data.params.title, data.params.desc);
 			break;
 
 		case "addCircle":
 			console.log("addCircle");
-			addCircle(data.params.ID, data.params.type, data.params.latitude, data.params.longitude, data.params.radius);
+			addCircle(data.params.ID, data.params.type, data.params.lat, data.params.lng, data.params.radius);
 			break;
 			
 		case "addPolygon":
