@@ -88,9 +88,9 @@ function myMap()
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
 	
-	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake1", 0, 37.7549, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake2", 2, 37.7649, -122.4194, "Earthquake!", "Earthquake!");
+	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake1", 'fire', 37.7549, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake2", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
     
 	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
@@ -154,29 +154,32 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
   
     var icon_url;
     switch(type) {
-      case 0:
+      case 'gas':
           icon_url = 'media/gas.svg'
           break;
-      case 1:
+      case 'fire':
           icon_url = 'media/flame.svg'
           break;
-      case 2:
+      case 'blocked':
           icon_url = 'media/blocked.svg'
           break;
-      case 3:
+      case 'medic':
           icon_url = 'media/medic.svg'
           break;
-      case 4:
+      case 'earthquake':
           icon_url = 'media/earthquake.svg'
           break;
-      case 5:
+      case 'collapse':
           icon_url = 'media/settings.svg'
           break;
-      case 6:
+      case 'water':
           icon_url = 'media/drop.svg'
           break;
-      case 7:
+      case 'electricity':
           icon_url = 'media/electricity.svg'
+          break;
+      case 'sensor':
+          icon_url = 'media/sensor.svg'
           break;
     }
 
@@ -342,7 +345,7 @@ function loadStyles() {
 
 function addGasLine(ID, coords, interval){
 	
-	var type = "gas";
+	var type = "sensor";
 	
 	var gas = createGasLine(ID, coords, interval);
 	showLine(gas.line, mMap);
