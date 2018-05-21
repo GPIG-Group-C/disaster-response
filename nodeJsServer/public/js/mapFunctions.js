@@ -3,8 +3,9 @@ var markerDict = {};
 var markerCluster;
 
 var layerVisibility = {
-	4:true,
-	"circle":true
+	'gas': true, 'fire': true, 'blocked': true, 'medic': true, 
+    'earthquake': true, 'collapse': true, 'water': true, 
+    'electricity': true, 'sensor': true, "circle": true
 };
 
 function myMap()
