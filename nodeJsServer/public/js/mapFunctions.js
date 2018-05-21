@@ -89,8 +89,8 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
 	
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake1", 0, 37.7549, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake2", 2, 37.7649, -122.4194, "Earthquake!", "Earthquake!");
     
 	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
@@ -150,12 +150,47 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 			content: descr
 		});
 	}
-	
+  
+  
+    var icon_url;
+    switch(type) {
+      case 0:
+          icon_url = 'media/gas.svg'
+          break;
+      case 1:
+          icon_url = 'media/flame.svg'
+          break;
+      case 2:
+          icon_url = 'media/blocked.svg'
+          break;
+      case 3:
+          icon_url = 'media/medic.svg'
+          break;
+      case 4:
+          icon_url = 'media/earthquake.svg'
+          break;
+      case 5:
+          icon_url = 'media/settings.svg'
+          break;
+      case 6:
+          icon_url = 'media/drop.svg'
+          break;
+      case 7:
+          icon_url = 'media/electricity.svg'
+          break;
+    }
+
+  
 	var marker = new google.maps.Marker({
 		id: ID,
 		title: title,
 		position: {lat: latitude, lng: longitude}, 
-		map: mMap
+		icon: {
+            scaledSize: new google.maps.Size(24, 24),
+            origin: new google.maps.Point(0,0),
+            url: icon_url
+        },
+        map: mMap
 	});
 	marker.addListener('click', function() {
 		infoWindow.open(mMap, marker);
