@@ -88,15 +88,15 @@ function myMap()
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
 	
-	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!");
     
 	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
-	addCircle("circle", 10, 37.7749, -122.4194, 2, new Date().getTime());
+	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
-function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
+function addCircle(ID, type, latitude, longitude, radius) {
 	var circle = new google.maps.Circle({
 		strokeColor: 'white',
 		strokeWeight: .5,
@@ -114,9 +114,8 @@ function addCircle(ID, type, latitude, longitude, radius, timeAdded) {
         markerDict['circle'].push(circle);
     };
 
-    circleJson = {method: "addCircle", params: {id: ID, type: type, latitude: latitude, longitude: longitude, radius: radius, timeAdded: timeAdded}};
-
-    socket.emit("broadcastData", circleJson);
+    circleJson = {method: "addCircle", params: {id: ID, type: type, latitude: latitude, longitude: longitude, radius: radius}};
+    //socket.emit("broadcastData", circleJson);
     
 	return circle;
 }
@@ -134,7 +133,7 @@ var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
           }
         };
 
-function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
+function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	
 	//Check to see if the ID has been used before, remove previous item if it has
 	for( var index in markerDict[type]){
@@ -169,14 +168,13 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr, timeAdded){
         markerDict[type].push(marker);
     }
 	
-	addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded);
+	addActivityItem(ID, type, latitude, longitude, title, descr);
 	
 	markerCluster.addMarker(marker);
 
-    markerJson = {method: "addInfoMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr, timeAdded: timeAdded}};
-
-    socket.emit("broadcastData", markerJson);
-		
+    markerJson = {method: "addMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr}};
+	// Do not emit from here
+    //socket.emit("broadcastData", markerJson);
 	return marker;
 }
 
@@ -211,14 +209,14 @@ function addPolygon(ID, type, severity, coords, descr){
 			markerDict[type].splice(polyIndex, 1);
 		}
 	}
-	
-	
+
+	// Needs updating
 	if (descr !=  null) {
 		var infoWindow = new google.maps.InfoWindow({
-			content: descr
+			content: descr.reportBy
 		});
 	}
-	
+		
 	var polygon = new google.maps.Polygon({
 		id: ID,
 		paths: coords,
@@ -228,6 +226,7 @@ function addPolygon(ID, type, severity, coords, descr){
         fillColor: '#FF0000',
         fillOpacity: 0.35
 	});
+	
 	polygon.addListener('click', function(event) {
 		infoWindow.setPosition(event.latLng);
 		infoWindow.open(mMap);
@@ -235,7 +234,7 @@ function addPolygon(ID, type, severity, coords, descr){
 	});
 	
 	polygon.setMap(mMap);
-	
+
 	if(!(type in markerDict)){
         markerDict[type] = [];
         markerDict[type].push(polygon);
@@ -287,7 +286,7 @@ function toggleLayer(type){
 	}
 }
 
-function addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded) {
+function addActivityItem(ID, type, latitude, longitude, title, descr) {
     var div = document.createElement('div');
 
     div.id = ID;

@@ -63,6 +63,6 @@ io.sockets.on('connection', function (socket) {
 	socket.on('broadcastData', function(data) {
 		console.log('Broadcasting...');
 		console.log(data);
-		socket.broadcast.emit('notification', data);    
+		socket.broadcast.emit('notification', data); 
     });
 });
