@@ -59,7 +59,7 @@
 					<script>
 					function sendMarker()
 					{
-						socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 1, "latitude" : 37.75536, "longitude" : -122.40516, "desc" : "hello", "datetime" : new Date().getTime()}});
+						socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 1, "lat" : 37.75536, "lng" : -122.40516, "title": "hello", "desc" : null}});
 					}
 					</script>
 					<input id="demo" type="checkbox" onclick="sendMarker()">Add marker to Other cities</input><br />
