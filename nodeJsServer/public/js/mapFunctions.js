@@ -93,7 +93,7 @@ function myMap()
     addInfoMarker("earthquake1", 'fire', 37.7549, -122.4194, "Earthquake!", "Earthquake!");
     addInfoMarker("earthquake2", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
     
-	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
+	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
@@ -105,7 +105,7 @@ function addCircle(ID, type, latitude, longitude, radius) {
 		fillOpacity: .2,
 		map: mMap,
 		center: {lat: latitude, lng: longitude},
-		radius: radius * 10000
+		radius: radius * 1000
 	});
     
     if(!('circle' in markerDict)){
