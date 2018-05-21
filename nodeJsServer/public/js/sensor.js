@@ -106,7 +106,7 @@ class SensorNet{
 		// Create a sensor for each location, populate this.sensors and this.generators
 		var counter = 0;
 		for (var j = 0; j < this.sensorCoords.length; j++){
-			this.addSensor(new Sensor(counter, this.sensorCoords[j].lat, this.sensorCoords[j].lat));
+			this.addSensor(new Sensor(counter, this.sensorCoords[j].lat, this.sensorCoords[j].lng));
 			counter += 1;
 		}
 		
