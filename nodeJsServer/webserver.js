@@ -32,6 +32,9 @@ function handler (request, response)
 			case '.jpg':
 				contentType = 'image/jpg';
 				break;
+			case '.svg':
+				contentType = 'image/svg+xml';
+				break;
 			case '.wav':
 				contentType = 'audio/wav';
 				break;
