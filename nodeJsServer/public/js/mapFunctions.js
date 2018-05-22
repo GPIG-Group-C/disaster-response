@@ -5,7 +5,8 @@ var markerCluster;
 var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true, 
     'earthquake': true, 'collapse': true, 'water': true, 
-    'electricity': true, 'sensor': true, "circle": true
+    'electricity': true, 'sensor': true, "circle": true,
+	'pipe': true
 };
 
 function myMap()
