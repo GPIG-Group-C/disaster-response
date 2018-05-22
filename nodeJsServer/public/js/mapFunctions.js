@@ -371,7 +371,7 @@ function addGasLine(ID, coords, interval){
 		}
 		
 		var sensorID = ID.concat(sensor.id);
-		addInfoMarker(sensorID, "gas", sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
+		addInfoMarker(sensorID, "sensor", sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
 	}
 }
 
