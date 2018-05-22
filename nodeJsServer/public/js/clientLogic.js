@@ -19,7 +19,7 @@ socket.on('notification', function (data) {
 			
 		case "addPolygon":
 			console.log("addPolygon");
-			addPolygon(data.params.ID, data.params.type, data.params.severity, data.params.coords, data.params.desc);
+			addPolygon(data.params.ID, data.params.coords, data.params.desc);
 			break;
 
 	} 

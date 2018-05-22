@@ -5,9 +5,12 @@ var markerCluster;
 var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true, 
     'earthquake': true, 'collapse': true, 'water': true, 
-    'electricity': true, 'sensor': true, "circle": true,
-	'pipe': true
+    'electricity': true, 'sensor': true, 'circle': true,
+	'pipe': true, 'polygon':true
 };
+
+var clusterItems = ['gas', 'fire', 'blocked', 'medic', 'earthquake', 
+                    'collapse', 'water', 'electricity', 'sensor'];
 
 function myMap()
 {
@@ -96,7 +99,7 @@ function myMap()
     addInfoMarker("earthquake2", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
 
     
-	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
+	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
@@ -214,7 +217,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 		addActivityItem(ID, type, latitude, longitude, title, descr);
 	}
 	
-	markerCluster.addMarker(marker);
+    if(clusterItems.includes(type)){
+      markerCluster.addMarker(marker);  
+    }
 
     markerJson = {method: "addMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr}};
 	// Do not emit from here
@@ -241,8 +246,9 @@ function removeMarker(ID, type){
 	}
 }
 
-function addPolygon(ID, type, severity, coords, descr){
-	
+function addPolygon(ID, coords, descr){
+    var type = 'polygon';
+    
 	//Check to see if the ID has been used before, remove previous item if it has
 	for( var index in markerDict[type]){
 		currPoly = markerDict[type][index];
@@ -293,7 +299,9 @@ function hideLayer(type){
 	//Hides markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(false);
-        markerCluster.removeMarker(markerDict[type][index]);
+        if(clusterItems.includes(type)){
+          markerCluster.removeMarker(markerDict[type][index]);
+        }
 		layerVisibility[type] = false;
 	}
 	
@@ -311,7 +319,9 @@ function showLayer(type){
 	//Shows markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(true);
-        markerCluster.addMarker(markerDict[type][index]);
+        if(clusterItems.includes(type)){
+           markerCluster.addMarker(markerDict[type][index]);
+        }
 		layerVisibility[type] = true;
 	}
 	
