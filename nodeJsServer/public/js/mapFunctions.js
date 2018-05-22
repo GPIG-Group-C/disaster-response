@@ -89,8 +89,8 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
 	
 	addInfoMarker("earthquake", 4, 37.7749, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
-    addInfoMarker("earthquake", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake2", 4, 37.7549, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
+    addInfoMarker("earthquake3", 4, 37.7649, -122.4194, "Earthquake!", "Earthquake!", new Date().getTime());
     
 	addPolygon("polygon", 100, 2, [{lat: 37.747363, lng:-122.459314}, {lat: 0.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
 
@@ -289,12 +289,42 @@ function toggleLayer(type){
 
 function addActivityItem(ID, type, latitude, longitude, title, descr, timeAdded) {
     var div = document.createElement('div');
-
     div.id = ID;
 	div.className = type;
+	div.style = "padding: 5px 1px;";
     div.innerHTML = descr;
-
     document.getElementById('home').appendChild(div);
+	
+	var revertDiv = document.createElement('button');
+	revertDiv.id = ID + "_btn";
+	revertDiv.type = "button"
+	revertDiv.onclick = revertActivityItem;
+	revertDiv.innerHTML = "Revert";
+	revertDiv.style = "float: right; padding: 0px 3px;";
+	document.getElementById(ID).appendChild(revertDiv);
+	
+}
+
+function revertActivityItem() {
+	var parent = this.parentNode
+	var elem = document.getElementById(parent.id);
+	elem.innerHTML = "Reverted-" + elem.innerHTML;
+	elem.style.color = "#A9A9A9";
+	revertMarker(parent.id, parent.className);
+}
+
+function revertMarker(ID, type) {
+	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+	
+	//Removes marker from map
+	markerDict[type][index].setMap(null);
+	
+	//Removes marker from markerCluster
+	markerCluster.removeMarker(markerDict[type][index]);
+	
+	//Removes marker from markerDict    
+	markerDict[type].splice(index, 1);
+	
 }
 
 function deleteActivityItem(ID) {
@@ -305,9 +335,6 @@ function deleteActivityItem(ID) {
 function loadStyles() {
 	return JSON.parse(styles);
 }
-
-
-
 
 
 
