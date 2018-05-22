@@ -291,6 +291,7 @@ function hideLayer(type){
 	//Hides markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(false);
+        markerCluster.removeMarker(markerDict[type][index]);
 		layerVisibility[type] = false;
 	}
 	
@@ -308,6 +309,7 @@ function showLayer(type){
 	//Shows markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(true);
+        markerCluster.addMarker(markerDict[type][index]);
 		layerVisibility[type] = true;
 	}
 	
