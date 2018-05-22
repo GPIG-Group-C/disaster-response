@@ -32,6 +32,9 @@ function handler (request, response)
 			case '.jpg':
 				contentType = 'image/jpg';
 				break;
+			case '.svg':
+				contentType = 'image/svg+xml';
+				break;
 			case '.wav':
 				contentType = 'audio/wav';
 				break;
@@ -63,6 +66,6 @@ io.sockets.on('connection', function (socket) {
 	socket.on('broadcastData', function(data) {
 		console.log('Broadcasting...');
 		console.log(data);
-		socket.broadcast.emit('notification', data);    
+		socket.broadcast.emit('notification', data); 
     });
 });
