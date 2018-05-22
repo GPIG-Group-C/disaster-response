@@ -87,7 +87,7 @@ function myMap()
 	
 	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: '../public/media/m'});
+	markerCluster = new MarkerClusterer(mMap, markerDict[4], {imagePath: 'media/m'});
 	
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
     addInfoMarker("earthquake1", 'fire', 37.7549, -122.4194, "Earthquake!", "Earthquake!");
