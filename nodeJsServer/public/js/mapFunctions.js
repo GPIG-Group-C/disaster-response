@@ -207,7 +207,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
         markerDict[type].push(marker);
     }
 	
-	addActivityItem(ID, type, latitude, longitude, title, descr);
+	if(type != "sensor"){
+		addActivityItem(ID, type, latitude, longitude, title, descr);
+	}
 	
 	markerCluster.addMarker(marker);
 
@@ -227,11 +229,13 @@ function removeMarker(ID, type){
 	//Removes marker from markerCluster
 	markerCluster.removeMarker(markerDict[type][index]);
 	
-	//Removes marker from markerDict    
+	//Removes marker from markerDict 
 	markerDict[type].splice(index, 1);
 	
 	//Removes activity item
-	deleteActivityItem(ID);
+	if(type != "sensor"){
+		deleteActivityItem(ID);
+	}
 }
 
 function addPolygon(ID, type, severity, coords, descr){
@@ -269,7 +273,6 @@ function addPolygon(ID, type, severity, coords, descr){
 	polygon.addListener('click', function(event) {
 		infoWindow.setPosition(event.latLng);
 		infoWindow.open(mMap);
-		console.log("aaaahhhh");
 	});
 	
 	polygon.setMap(mMap);
@@ -346,7 +349,7 @@ function loadStyles() {
 
 function addGasLine(ID, coords, interval){
 	
-	var type = "sensor";
+	var type = "pipe"
 	
 	var gas = createGasLine(ID, coords, interval);
 	showLine(gas.line, mMap);
@@ -358,11 +361,11 @@ function addGasLine(ID, coords, interval){
         markerDict[type].push(gas.line);
     }
 	
+	type = "sensor";
+	
 	for( var index in gas.sensors.sensors){
 		var sensor = gas.sensors.sensors[index];
-		
-		console.log(sensor);
-		
+				
 		var status;
 		if(sensor.on){
 			status = "Status: On";
@@ -371,7 +374,7 @@ function addGasLine(ID, coords, interval){
 		}
 		
 		var sensorID = ID.concat(sensor.id);
-		addInfoMarker(sensorID, "sensor", sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
+		addInfoMarker(sensorID, type, sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
 	}
 }
 
