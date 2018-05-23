@@ -237,7 +237,7 @@ function removeMarker(ID, type){
 	markerDict[type][index].setMap(null);
 	
 	//Removes marker from markerCluster
-	markerCluster.removeMarkerFromCluster(markerDict[type][index]);
+	removeMarkerFromCluster(markerDict[type][index]);
 	
 	//Removes marker from markerDict 
 	markerDict[type].splice(index, 1);
@@ -300,6 +300,29 @@ function addPolygon(ID, coords, descr){
 	polygon.addListener('click', function(event) {
 		infoWindow.setPosition(event.latLng);
 		infoWindow.open(mMap);
+	});
+	
+	polygon.setMap(mMap);
+
+	if(!(type in markerDict)){
+        markerDict[type] = [];
+        markerDict[type].push(polygon);
+    } else {
+        markerDict[type].push(polygon);
+    }
+}
+
+function addTransparentPolygon(ID, coords){
+	var type = 'transparentPolygon';
+	
+	var polygon = new google.maps.Polygon({
+		id: ID,
+		paths: coords,
+		strokeColor: '#000000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#000000',
+        fillOpacity: 0.0
 	});
 	
 	polygon.setMap(mMap);
