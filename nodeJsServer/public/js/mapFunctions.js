@@ -97,8 +97,8 @@ function myMap()
 	
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake1", 'fire', 37.7549, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("earthquake2", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
+    addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", "Fire");
+    addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
 
     
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
@@ -385,13 +385,25 @@ function toggleLayer(type){
 }
 
 function addActivityItem(ID, type, latitude, longitude, title, descr) {
+	//Create the main div and Text for item in activity log
     var div = document.createElement('div');
     div.id = ID;
 	div.className = type;
-	div.style = "padding: 5px 1px; width: 240px";
+	div.style = "padding: 5px 1px; width: 240px;";
     div.innerHTML = descr;
-    document.getElementById('home').appendChild(div);
+
+	//Reverse and replace the list so that new items appear at the top of the log
+    var par_div = document.getElementById('home');
+	var childArray = Array.from(par_div.children);
+	document.getElementById('home').appendChild(childArray.splice(0,1)[0]);
+	childArray.reverse();
+	childArray.push(div);
+	childArray.reverse();
+	for (var i =0;i<childArray.length;i++) {
+		document.getElementById('home').appendChild(childArray[i]);
+	}
 	
+	//Create the revert button for each activity item
 	var revertDiv = document.createElement('button');
 	revertDiv.id = ID + "_btn";
 	revertDiv.type = "button"
