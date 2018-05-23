@@ -388,7 +388,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
     var div = document.createElement('div');
     div.id = ID;
 	div.className = type;
-	div.style = "padding: 5px 1px;";
+	div.style = "padding: 5px 1px; width: 240px";
     div.innerHTML = descr;
     document.getElementById('home').appendChild(div);
 	
