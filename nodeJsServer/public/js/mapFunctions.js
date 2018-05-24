@@ -313,12 +313,13 @@ function addPolygon(ID, coords, descr){
 }
 
 function addTransparentPolygon(ID, coords){
+function addTransparentPolygon(ID, lineColour, coords){
 	var type = 'transparentPolygon';
 	
 	var polygon = new google.maps.Polygon({
 		id: ID,
 		paths: coords,
-		strokeColor: '#000000',
+		strokeColor: lineColour,
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#000000',
