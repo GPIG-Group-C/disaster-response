@@ -312,7 +312,6 @@ function addPolygon(ID, coords, descr){
     }
 }
 
-function addTransparentPolygon(ID, coords){
 function addTransparentPolygon(ID, lineColour, coords){
 	var type = 'transparentPolygon';
 	
