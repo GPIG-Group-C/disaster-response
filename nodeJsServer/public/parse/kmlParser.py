@@ -6,6 +6,19 @@ placeMark = re.compile("<Placemark>(.*?)</Placemark>", re.DOTALL)
 coordinatesTags = re.compile("<coordinates>(.*?)</coordinates>",re.DOTALL)
 latlong = re.compile("(-?[0-9]*(.?)[0-9]*,){2}(-?[0-9]*(.?)[0-9]*)\n")
 nameTags = re.compile("<name>(.*?)</name>")
+typeTags = re.compile("<styleUrl>#icon-(.*?)-nodesc</styleUrl>")
+
+# Icon types, the keys are from the extracted kml file
+TYPES = {"1571-E65100" : "fire", 
+		"XXXX" : "water",
+		"1653-0F9D58" : "gas",
+		"1499-000000" : "gas valve",
+		"XXXX" : "electricity",
+		"1884-FF5252" : "blocked",
+		"1598-000000" : "collapse",
+		"1558-E65100" : "medic",
+		"1563-A52714" : "earthqauake",
+		"1790-A52714" : "fire station"}
 
 def parseKml(kmlFilePath):
 	""" Parse a kml file into json
@@ -82,7 +95,7 @@ def parseIcon(kmlString):
 	coords = getCoords(kmlString)	
 	lat = coords[0][0]
 	lng = coords[0][1]
-	type = "null"
+	type = getType(kmlString)
 	title = nameTags.findall(kmlString)[0]
 	desc = "null"		
 	jsonString = IconTemplate.format(uuid.uuid4(),type, lat, lng, title, desc)
@@ -154,6 +167,22 @@ def getJsonCoordsArray(kmlString):
 			
 	jsonCoords += "]"
 	return jsonCoords
+	
+def getType(kmlString):
+	"""
+	Get the type of an icon
+	Parameters
+	----------
+	kmlString : string
+		A string in kml format
+	Returns
+	-------
+	type : string
+		A string representing the type of the icon
+	"""
+	style = typeTags.findall(kmlString)[0]	
+	type = TYPES.get(style, 'undefined')
+	return type	
 
 if __name__ == "__main__":
 	if len(sys.argv) != 2:
