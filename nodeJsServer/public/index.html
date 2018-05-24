@@ -45,6 +45,7 @@
               <div class="sidebar-tabs">
                   <ul role="tablist">
                       <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+					  <li><a href="#icons" role="tab"><i class="fa fa-info-circle"></i></a></li>
                   </ul>
                   
                   <ul role="tablist">
@@ -61,6 +62,52 @@
                   </h1>
                 </div>
                 
+				<div class="sidebar-pane" id="icons">
+					<h1 class="sidebar-header">
+						Icon Legend
+						<span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+					</h1>
+					<table style="border-collapse: separate; border-spacing: 10px;" >
+						<tr>
+							<th>Icon</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td><img src="media/earthquake.svg" height="25" width="25" alt="Earthquake"></td>
+							<td>Earthquake Epicentre</td>
+						</tr>
+						<tr>
+							<td><img src="media/drop.svg" height="25" width="25" alt="Damaged Water Pipe"></td>
+							<td>Damaged Water Pipe</td>
+						</tr>
+						
+						<tr>
+							<td><img src="media/electricity.svg" height="25" width="25" alt="Damaged Electricity Line"></td>
+							<td>Damaged Electricity Line</td>
+						</tr>
+						<tr>
+							<td><img src="media/gas.svg" height="25" width="25" alt="Damaged Gas Line"></td>
+							<td>Damaged Gas Line</td>
+						</tr>
+						<tr>
+							<td><img src="media/blocked.svg" height="25" width="25" alt="Blocked Road"></td>
+							<td>Blocked Road</td>
+						</tr>
+						<tr>
+							<td><img src="media/flame.svg" height="25" width="25" alt="Fire"></td>
+							<td>Fire</td>
+						</tr>
+						<tr>
+							<td><img src="media/medic.svg" height="25" width="25" alt="Medic"></td>
+							<td>Medic Camp</td>
+						</tr>
+						<tr>
+							<td><img src="media/sensor.svg" height="25" width="25" alt="Sensor"></td>
+							<td>Sensor</td>
+						</tr>
+					</table>
+				</div>
+				
 				<div class="sidebar-pane" id="settings">
 					<h1 class="sidebar-header">Layers<br /><span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 					<script>
@@ -81,6 +128,7 @@
                     <input id="hideSeverity" type="checkbox" onclick="toggleLayer('polygon')">Hide Severity layer</input><br />
                     <input id="hideEarthquakeRadius" type="checkbox" onclick="toggleLayer('circle')">Hide Earthquake radius</input><br />
 				</div>
+				
 			</div>
 		</div>		
 		
