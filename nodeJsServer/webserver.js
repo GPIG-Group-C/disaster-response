@@ -2,6 +2,7 @@ var http = require('http').createServer(handler); //require http server, and cre
 var io = require('socket.io')(http) // require socket.io module and pass the http object (server)
 var fs = require('fs'); //require filesystem module
 var path = require('path'); // Get file extensions
+var json_data = JSON.parse(fs.readFileSync(__dirname + '/mapData.json', 'utf8'));
 
 http.listen(5000); //listen to port 5000
 
@@ -63,6 +64,19 @@ function handler (request, response)
 
 // WebSocket broadcast data to all clients:
 io.sockets.on('connection', function (socket) {
+	
+	socket.on('event', function(data) {
+		console.log('recieved event');
+		console.log(data);
+		switch(data.method)
+		{
+			case "sendAll":
+				console.log("sendAll");
+				socket.broadcast.emit('notification', json_data);
+				break;
+		}
+	});
+	
 	socket.on('broadcastData', function(data) {
 		console.log('Broadcasting...');
 		console.log(data);

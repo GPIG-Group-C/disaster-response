@@ -4,7 +4,24 @@ var socket = io(); //load client & connect to the host
 socket.on('notification', function (data) {
 
 	console.log('Received notification');
+	console.log(data);
+	console.log(data.length);
 	
+	if(data.length == undefined)
+	{
+		parseJsonRpc(data);
+	}
+	else
+	{
+		for(var i = 0; i < data.length; i++)
+		{
+			parseJsonRpc(data[i]);
+		}
+	}
+});
+
+function parseJsonRpc(data)
+{
 	switch(data.method)
 	{
 		case "addMarker":
@@ -19,9 +36,14 @@ socket.on('notification', function (data) {
 			
 		case "addPolygon":
 			console.log("addPolygon");
+			
+			// Remove after setting desc properly:
+			if(data.params.desc == undefined)
+			{
+				data.params.desc = {areaInfo:{severity : 10}};
+			}
 			addPolygon(data.params.ID, data.params.coords, data.params.desc);
 			break;
 
 	} 
-
-});
+}

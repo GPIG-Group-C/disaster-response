@@ -7,17 +7,19 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
 		
+		<!-- Socket.io required for websockets -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+		
 	</head>
 	
 	<body>
 		<script>
-			function sendMarker()
+			var socket = io();
+			function sendAllData()
 			{
-				socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 'gas', "lat" : 37.75536, "lng" : -122.40516, "title": "hello", "desc" : null}});
+				socket.emit("event", {"method":"sendAll"});
 			}
 		</script>
-	
-	
-		<button type="button" onclick="sendMarker">Send a marker</button>
+		<button type="button" onclick="sendAllData()">Send all data</button>
 	</body>
 </html>
