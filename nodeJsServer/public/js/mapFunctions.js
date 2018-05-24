@@ -101,7 +101,9 @@ function myMap()
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
 
     
-	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], "hey scott")
+	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
+                                                                                                                                      severity:5
+                                                                                                                                     }})
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
@@ -324,10 +326,10 @@ function addPolygon(ID, coords, descr){
 	var polygon = new google.maps.Polygon({
 		id: ID,
 		paths: coords,
-		strokeColor: '#FF0000',
+		strokeColor: '#000000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: '#FF0000',
+        fillColor: calcPolygonColour(descr.areaInfo.severity),
         fillOpacity: 0.35
 	});
 	
