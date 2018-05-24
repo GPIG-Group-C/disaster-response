@@ -264,6 +264,40 @@ function removeMarkerFromCluster(marker, type){
 	}
 }
 
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function interpolateColours(firstCol, secondCol, p){
+  var colour = {R: (firstCol.R * (1 - p) + secondCol.R * p),
+               G: (firstCol.G * (1 - p) + secondCol.G * p),
+               B: (firstCol.B * (1 - p) + secondCol.B * p)};
+  return colour;
+  
+}
+
+function calcPolygonColour(severity){
+  var firstCol, secondCol, p;
+  if(severity < 5){
+    firstCol = {R:0, G:255, B:0};
+    secondCol = {R:255, G:255, B:0};
+    p = severity/5;
+  } else {
+    firstCol = {R:255, G:255, B:0};
+    secondCol = {R:255, G:0, B:0};
+    p = (severity - 5)/5;
+  }
+  
+  var colour = interpolateColours(firstCol, secondCol, p);
+  return rgbToHex(Math.round(colour.R), Math.round(colour.G),
+                  Math.round(colour.B));
+}
+
 function addPolygon(ID, coords, descr){
     var type = 'polygon';
     
