@@ -392,13 +392,9 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	div.style = "padding: 5px 1px; width: 240px;";
     div.innerHTML = descr;
 
-	//Reverse and replace the list so that new items appear at the top of the log
-    var par_div = document.getElementById('home');
-	var childArray = Array.from(par_div.children);
-	document.getElementById('home').appendChild(childArray.splice(0,1)[0]);
-	childArray.reverse();
-	childArray.push(div);
-	childArray.reverse();
+	//insert new item into array of children and re-append
+	var childArray = Array.from(document.getElementById('home').children);
+	childArray.splice(1,0,div);
 	for (var i =0;i<childArray.length;i++) {
 		document.getElementById('home').appendChild(childArray[i]);
 	}
