@@ -411,11 +411,12 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 }
 
 function revertActivityItem() {
-	var parent = this.parentNode
+	var parent = this.parentNode;
 	var elem = document.getElementById(parent.id);
 	elem.innerHTML = "Reverted-" + elem.innerHTML;
 	elem.style.color = "#A9A9A9";
 	revertMarker(parent.id, parent.className);
+	document.getElementById(this.id).remove();
 }
 
 function revertMarker(ID, type) {
