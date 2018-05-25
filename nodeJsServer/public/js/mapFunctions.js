@@ -143,8 +143,8 @@ function formatAreaDescr(type, descr){
 }
 
 function formatIncidentDescr(type, descr){
-
-  var contentString = '<b>INCIDENT INFO</b> <br/>'+
+  
+  var contentString = '<b>INCIDENT INFO</b> <br/>'+ 
   	"<strong> Type: </strong>" + type + '<br/>' +
     "<b> Status: </b> " + descr.incident.status + "<br/>" +
     "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
@@ -172,12 +172,59 @@ function formatIncidentDescr(type, descr){
       '<td>Electricity: <img src=' +  + '></td>' +
     '</tr>' +
     '</table>';
+      
+    
 
     contentString = contentString + utilString;
 	}
 
   return contentString;
 }
+
+
+function formatIncidentDescrSide(type, descr){
+
+  var h = '<div class="inner__title">';
+  
+  var contentString = '<b>INCIDENT INFO</b> <br/>'+ '</div> <div class="inner__content">' +
+  	"<strong> Type: </strong>" + type + '<br/>' +
+    "<b> Status: </b> " + descr.incident.status + "<br/>" +
+    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+    "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+    "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+    //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
+    //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
+    "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+
+    if (descr.utilities != null) {
+   // gasImg = descr.utilities.gas == 0 ?  : ;
+    //sewImg = descr.utilities.sewage == 0 ?  : ;
+    //watImg = descr.utilities.water == 0 ?  : ;
+    //elecImg = descr.utilities.electricity == 0 ?  : ;
+    var utilString = '<table style="width:100%">' +
+    '<tr>' +
+      '<th colspan="2">Utility Status:</th>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Gas: <img src="' +  + '"></td>' +
+      '<td>Sewage: <img src=' +  + '></td>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Water: <img src=' +  + '></td>' +
+      '<td>Electricity: <img src=' +  + '></td>' +
+    '</tr>' +
+    '</table>';
+      
+    var f = '</div>';
+
+    contentString = h + contentString + utilString + f;
+	} else {
+      contentString = h + contentString + f;
+    }
+
+  return contentString;
+}
+
 
 
 function addCircle(ID, type, latitude, longitude, radius) {
@@ -491,15 +538,15 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	//Create the main div and Text for item in activity log
     var div = document.createElement('div');
     div.id = ID;
-	div.className = type;
-	div.style = "padding: 5px 1px; width: 240px;";
-    div.innerHTML = formatIncidentDescr(type, descr);
+	div.className = 'inner__item';
+	//div.style = "padding: 5px 1px; width: 240px;";
+    div.innerHTML = formatIncidentDescrSide(type, descr);
 
 	//insert new item into array of children and re-append
-	var childArray = Array.from(document.getElementById('home').children);
+	var childArray = Array.from(document.getElementById('js-sidebar-2').children);
 	childArray.splice(1,0,div);
 	for (var i =0;i<childArray.length;i++) {
-		document.getElementById('home').appendChild(childArray[i]);
+		document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 	}
 
 	//Create the revert button for each activity item
@@ -509,7 +556,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	revertDiv.onclick = revertActivityItem;
 	revertDiv.innerHTML = "Revert";
 	revertDiv.style = "float: right; padding: 0px 3px;";
-	document.getElementById(ID).appendChild(revertDiv);
+	document.getElementById(ID).childNodes[2].appendChild(revertDiv);
 
 }
 
