@@ -44,6 +44,11 @@ function parseJsonRpc(data)
 			}
 			addPolygon(data.params.ID, data.params.coords, data.params.desc);
 			break;
+		
+		case "addGasLine":
+			console.log("addGasLine");
+			addGasLine(data.params.ID, data.params.coords, data.params.interval);
+			break;
 
 	} 
 }
