@@ -7,7 +7,7 @@ var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true,
     'earthquake': true, 'collapse': true, 'water': true,
     'electricity': true, 'sensor': true, 'circle': true,
-	'pipe': true, 'polygon':true
+	'pipe': true, 'polygon':true, 'fire_station': true
 };
 
 var clusterItems = ['gas', 'fire', 'blocked', 'medic', 'earthquake',
@@ -70,12 +70,25 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
+	//Adds the firestation markers
+	for( var index in fireStations){
+		var station = fireStations[index];
+		var type = 'fire_station';
+		
+		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, "Description needs changing");
+		
+		if(!(type in markerDict)){
+			markerDict[type] = [];
+			markerDict[type].push(marker);
+		} else {
+			markerDict[type].push(marker);
+		}
+	}
 
+	//Need deleting
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
     addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", "Fire");
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
-
-
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
                                                                                                                                       severity:5
                                                                                                                                      }})
@@ -147,9 +160,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
       case 'earthquake':
           icon_url = 'media/earthquake.svg'
           break;
-			case 'fire_station':
-		      icon_url = 'media/fs.svg'
-		      break;
+	  case 'fire_station':
+		  icon_url = 'media/fs.svg'
+		  break;
       case 'water':
           icon_url = 'media/drop.svg'
           break;
