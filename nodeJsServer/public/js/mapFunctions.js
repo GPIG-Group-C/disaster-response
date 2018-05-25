@@ -182,11 +182,11 @@ function formatIncidentDescr(type, descr){
 }
 
 
-function formatIncidentDescrSide(type, descr){
+function formatIncidentDescrSide(type, title, descr){
 
-  var h = '<div class="inner__title">';
+  var h = '<div class="inner__title">'+title+'</div>';
   
-  var contentString = '<b>INCIDENT INFO</b> <br/>'+ '</div> <div class="inner__content">' +
+  var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
   	"<strong> Type: </strong>" + type + '<br/>' +
     "<b> Status: </b> " + descr.incident.status + "<br/>" +
     "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
@@ -540,7 +540,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
     div.id = ID;
 	div.className = 'inner__item';
 	//div.style = "padding: 5px 1px; width: 240px;";
-    div.innerHTML = formatIncidentDescrSide(type, descr);
+    div.innerHTML = formatIncidentDescrSide(type, title, descr);
 
 	//insert new item into array of children and re-append
 	var childArray = Array.from(document.getElementById('js-sidebar-2').children);
@@ -556,7 +556,8 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	revertDiv.onclick = revertActivityItem;
 	revertDiv.innerHTML = "Revert";
 	revertDiv.style = "float: right; padding: 0px 3px;";
-	document.getElementById(ID).childNodes[2].appendChild(revertDiv);
+	console.log(document.getElementById(ID).childNodes)
+	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
 
 }
 
