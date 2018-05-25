@@ -75,14 +75,15 @@ function myMap()
 		var station = fireStations[index];
 		var type = 'fire_station';
 		
-		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, "Description needs changing");
+
+		//var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, null);
 		
-		if(!(type in markerDict)){
-			markerDict[type] = [];
-			markerDict[type].push(marker);
-		} else {
-			markerDict[type].push(marker);
-		}
+		//if(!(type in markerDict)){
+			//markerDict[type] = [];
+			//markerDict[type].push(marker);
+		//} else {
+			//markerDict[type].push(marker);
+		//}
 	}
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
@@ -109,6 +110,7 @@ function myMap()
 																							peopleDanger: 0, 
 																							medicNeeded:1
 																							}});
+
 
 
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
