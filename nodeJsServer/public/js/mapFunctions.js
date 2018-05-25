@@ -4,13 +4,13 @@ var markerCluster;
 var sensorCluster;
 
 var layerVisibility = {
-	'gas': true, 'fire': true, 'blocked': true, 'medic': true, 
-    'earthquake': true, 'collapse': true, 'water': true, 
+	'gas': true, 'fire': true, 'blocked': true, 'medic': true,
+    'earthquake': true, 'collapse': true, 'water': true,
     'electricity': true, 'sensor': true, 'circle': true,
 	'pipe': true, 'polygon':true
 };
 
-var clusterItems = ['gas', 'fire', 'blocked', 'medic', 'earthquake', 
+var clusterItems = ['gas', 'fire', 'blocked', 'medic', 'earthquake',
                     'collapse', 'water', 'electricity', 'sensor'];
 
 function myMap()
@@ -65,17 +65,17 @@ function myMap()
 			"stylers": [{"visibility": "off"}]
 		}]
 	};
-	
+
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
-	
+
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
     addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", "Fire");
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
 
-    
+
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
                                                                                                                                       severity:5
                                                                                                                                      }})
@@ -92,7 +92,7 @@ function addCircle(ID, type, latitude, longitude, radius) {
 		center: {lat: latitude, lng: longitude},
 		radius: radius * 1000
 	});
-    
+
     if(!('circle' in markerDict)){
         markerDict['circle'] = [];
         markerDict['circle'].push(circle);
@@ -102,31 +102,31 @@ function addCircle(ID, type, latitude, longitude, radius) {
 
     circleJson = {method: "addCircle", params: {id: ID, type: type, latitude: latitude, longitude: longitude, radius: radius}};
     //socket.emit("broadcastData", circleJson);
-    
+
 	return circle;
 }
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
 function addInfoMarker(ID, type, latitude, longitude, title, descr){
-	
+
 	//Check to see if the ID has been used before, remove previous item if it has
 	for( var index in markerDict[type]){
 		currMarker = markerDict[type][index];
-		
+
 		if (currMarker.id == ID){
-			
+
 			removeMarker(ID, type);
 		}
 	}
-	
+
 	if (descr !=  null) {
 		var infoWindow = new google.maps.InfoWindow({
 			content: descr
 		});
 	}
-  
-  
+
+
     var icon_url;
     switch(type) {
       case 'gas':
@@ -147,9 +147,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
       case 'earthquake':
           icon_url = 'media/earthquake.svg'
           break;
-      case 'collapse':
-          icon_url = 'media/settings.svg'
-          break;
+			case 'fire_station':
+		      icon_url = 'media/fs.svg'
+		      break;
       case 'water':
           icon_url = 'media/drop.svg'
           break;
@@ -161,11 +161,11 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
           break;
     }
 
-  
+
 	var marker = new google.maps.Marker({
 		id: ID,
 		title: title,
-		position: {lat: latitude, lng: longitude}, 
+		position: {lat: latitude, lng: longitude},
 		icon: {
             scaledSize: new google.maps.Size(24, 24),
             origin: new google.maps.Point(0,0),
@@ -176,18 +176,18 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	marker.addListener('click', function() {
 		infoWindow.open(mMap, marker);
 	});
-	
+
     if(!(type in markerDict)){
         markerDict[type] = [];
         markerDict[type].push(marker);
     } else {
         markerDict[type].push(marker);
     }
-	
+
 	if(type != "sensor"){
 		addActivityItem(ID, type, latitude, longitude, title, descr);
 	}
-	
+
     if(clusterItems.includes(type)){
         addMarkerToCluster(marker, type);
     }
@@ -199,18 +199,18 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 }
 
 function removeMarker(ID, type){
-	
+
 	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
-	
+
 	//Removes marker from map
 	markerDict[type][index].setMap(null);
-	
+
 	//Removes marker from markerCluster
 	removeMarkerFromCluster(markerDict[type][index]);
-	
-	//Removes marker from markerDict 
+
+	//Removes marker from markerDict
 	markerDict[type].splice(index, 1);
-	
+
 	//Removes activity item
 	if(type != "sensor"){
 		deleteActivityItem(ID);
@@ -247,7 +247,7 @@ function interpolateColours(firstCol, secondCol, p){
                G: (firstCol.G * (1 - p) + secondCol.G * p),
                B: (firstCol.B * (1 - p) + secondCol.B * p)};
   return colour;
-  
+
 }
 
 function calcPolygonColour(severity){
@@ -261,7 +261,7 @@ function calcPolygonColour(severity){
     secondCol = {R:255, G:0, B:0};
     p = (severity - 5)/5;
   }
-  
+
   var colour = interpolateColours(firstCol, secondCol, p);
   return rgbToHex(Math.round(colour.R), Math.round(colour.G),
                   Math.round(colour.B));
@@ -269,14 +269,14 @@ function calcPolygonColour(severity){
 
 function addPolygon(ID, coords, descr){
     var type = 'polygon';
-    
+
 	//Check to see if the ID has been used before, remove previous item if it has
 	for( var index in markerDict[type]){
 		currPoly = markerDict[type][index];
-		
-		
+
+
 		if (currPoly.id == ID){
-			
+
 			currPoly.setMap(null);
 			var polyIndex = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
 			markerDict[type].splice(polyIndex, 1);
@@ -289,7 +289,7 @@ function addPolygon(ID, coords, descr){
 			content: descr.reportBy
 		});
 	}
-		
+
 	var polygon = new google.maps.Polygon({
 		id: ID,
 		paths: coords,
@@ -299,12 +299,12 @@ function addPolygon(ID, coords, descr){
         fillColor: calcPolygonColour(descr.areaInfo.severity),
         fillOpacity: 0.35
 	});
-	
+
 	polygon.addListener('click', function(event) {
 		infoWindow.setPosition(event.latLng);
 		infoWindow.open(mMap);
 	});
-	
+
 	polygon.setMap(mMap);
 
 	if(!(type in markerDict)){
@@ -317,7 +317,7 @@ function addPolygon(ID, coords, descr){
 
 function addTransparentPolygon(ID, lineColour, coords){
 	var type = 'transparentPolygon';
-	
+
 	var polygon = new google.maps.Polygon({
 		id: ID,
 		paths: coords,
@@ -327,7 +327,7 @@ function addTransparentPolygon(ID, lineColour, coords){
         fillColor: '#000000',
         fillOpacity: 0.0
 	});
-	
+
 	polygon.setMap(mMap);
 
 	if(!(type in markerDict)){
@@ -339,7 +339,7 @@ function addTransparentPolygon(ID, lineColour, coords){
 }
 
 function hideLayer(type){
-	
+
 	//Hides markers
     for( var index in markerDict[type]){
 		markerDict[type][index].setVisible(false);
@@ -348,9 +348,9 @@ function hideLayer(type){
         }
 		layerVisibility[type] = false;
 	}
-	
+
 	var activityItems = $("#home").children("."+ (type.toString()) );
-	
+
 	//Hides activity items
 	//Uses Array.from(), not sure if that's an issue.
 	for( var index in Array.from(activityItems)){
@@ -368,9 +368,9 @@ function showLayer(type){
         }
 		layerVisibility[type] = true;
 	}
-	
+
 	var activityItems = $("#home").children("."+ (type.toString()) );
-	
+
 	//Shows activity items
 	//Uses Array.from(), not sure if that's an issue.
 	for( var index in Array.from(activityItems)){
@@ -401,7 +401,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	for (var i =0;i<childArray.length;i++) {
 		document.getElementById('home').appendChild(childArray[i]);
 	}
-	
+
 	//Create the revert button for each activity item
 	var revertDiv = document.createElement('button');
 	revertDiv.id = ID + "_btn";
@@ -410,7 +410,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	revertDiv.innerHTML = "Revert";
 	revertDiv.style = "float: right; padding: 0px 3px;";
 	document.getElementById(ID).appendChild(revertDiv);
-	
+
 }
 
 function revertActivityItem() {
@@ -424,16 +424,16 @@ function revertActivityItem() {
 
 function revertMarker(ID, type) {
 	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
-	
+
 	//Removes marker from map
 	markerDict[type][index].setMap(null);
-	
+
 	//Removes marker from markerCluster
 	markerCluster.removeMarker(markerDict[type][index]);
-	
-	//Removes marker from markerDict    
+
+	//Removes marker from markerDict
 	markerDict[type].splice(index, 1);
-	
+
 }
 
 function deleteActivityItem(ID) {
@@ -446,31 +446,31 @@ function loadStyles() {
 }
 
 function addGasLine(ID, coords, interval){
-	
+
 	var type = "pipe"
-	
+
 	var gas = createGasLine(ID, coords, interval);
 	showLine(gas.line, mMap);
-	
+
 	if(!(type in markerDict)){
         markerDict[type] = [];
         markerDict[type].push(gas.line);
     } else {
         markerDict[type].push(gas.line);
     }
-	
+
 	type = "sensor";
-	
+
 	for( var index in gas.sensors.sensors){
 		var sensor = gas.sensors.sensors[index];
-				
+
 		var status;
 		if(sensor.on){
 			status = "Status: On";
 		} else {
 			status = "Status: Off";
 		}
-		
+
 		var sensorID = ID.concat(sensor.id);
 		addInfoMarker(sensorID, type, sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
 	}
@@ -478,10 +478,10 @@ function addGasLine(ID, coords, interval){
 
 function colourGasLine(ID, colour){
 	var gasLine = markerDict["gas"]
-	
+
 	for( var index in markerDict["gas"]){
 		currLine = markerDict["gas"][index];
-		
+
 		if (currLine.id == ID){
 			changeLineColour(currLine, colour);
 		}

@@ -1,12 +1,12 @@
 var socket = io(); //load client & connect to the host
-		
+
 // Server notification:
 socket.on('notification', function (data) {
 
 	console.log('Received notification');
 	console.log(data);
 	console.log(data.length);
-	
+
 	if(data.length == undefined)
 	{
 		parseJsonRpc(data);
@@ -33,22 +33,21 @@ function parseJsonRpc(data)
 			console.log("addCircle");
 			addCircle(data.params.ID, data.params.type, data.params.lat, data.params.lng, data.params.radius);
 			break;
-			
+
 		case "addPolygon":
 			console.log("addPolygon");
-			
-			// Remove after setting desc properly:
-			if(data.params.desc == undefined)
-			{
-				data.params.desc = {areaInfo:{severity : 10}};
-			}
 			addPolygon(data.params.ID, data.params.coords, data.params.desc);
 			break;
-		
+
+		case "addTransparentPolygon":
+			console.log("addPolygon");
+			addTransparentPolygon(data.params.ID, data.params.colour, data.params.coords);
+			break;
+
 		case "addGasLine":
 			console.log("addGasLine");
 			addGasLine(data.params.ID, data.params.coords, data.params.interval);
 			break;
 
-	} 
+	}
 }

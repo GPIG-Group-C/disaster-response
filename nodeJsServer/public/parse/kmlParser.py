@@ -1,6 +1,7 @@
 import re
 import uuid
 import sys
+import json
 
 placeMark = re.compile("<Placemark>(.*?)</Placemark>", re.DOTALL)
 coordinatesTags = re.compile("<coordinates>(.*?)</coordinates>",re.DOTALL)
@@ -9,16 +10,16 @@ nameTags = re.compile("<name>(.*?)</name>")
 typeTags = re.compile("<styleUrl>#icon-(.*?)-nodesc</styleUrl>")
 
 # Icon types, the keys are from the extracted kml file
-TYPES = {"1571-E65100" : "fire", 
+TYPES = {"1571-E65100" : "fire",
 		"XXXX" : "water",
 		"1653-0F9D58" : "gas",
-		"1499-000000" : "gas valve",
+		"1499-000000" : "sensor",
 		"XXXX" : "electricity",
 		"1884-FF5252" : "blocked",
 		"1598-000000" : "collapse",
 		"1558-E65100" : "medic",
 		"1563-A52714" : "earthqauake",
-		"1790-A52714" : "fire station"}
+		"1790-A52714" : "fire_station"}
 
 def parseKml(kmlFilePath):
 	""" Parse a kml file into json
@@ -29,35 +30,34 @@ def parseKml(kmlFilePath):
 	Returns
 	-------
 	jsonArray  : list
-		List of map elements as JSON strings	
+		List of map elements as JSON strings
 	"""
 	with open(kmlFilePath, 'r') as kmlFile:
-		kmlString = kmlFile.read()		
-	
+		kmlString = kmlFile.read()
+
 	kmlObj = placeMark.findall(kmlString)
-	
+
 	jsonArray = []
 	for item in kmlObj:
 		if "#poly" in item:
 			#addPolygon(String ID, JSONArray coords, desc)
 			jsonString = parsePolygon(item)
-			jsonArray.append(jsonString)
+			jsonArray.append(json.loads(jsonString))
 		elif "#icon" in item:
 			#addMarker(string ID, string type, double lat, double lng, string title, JSONObject desc)
 			jsonString = parseIcon(item)
-			jsonArray.append(jsonString)
+			jsonArray.append(json.loads(jsonString))
 		elif "#line" in item:
 			#gasLine(JSONArray coords)
 			jsonString = parseLine(item)
-			jsonArray.append(jsonString)
-	
-	print(jsonArray)
+			jsonArray.append(json.loads(jsonString))
+
 	return jsonArray
-	
+
 def parsePolygon(kmlString):
 	'''
 	Convert a polygon from kml to json
-	
+
 	Parameters
 	----------
 	kmlString : string
@@ -68,18 +68,18 @@ def parsePolygon(kmlString):
 		A polygon in json format
 		{"method": "addPolygon", "params":{"ID": "", "coords": , "desc": ""}}
 	'''
-	polygonTemplate = "{{\"method\": \"addPolygon\", \"params\":{{\"ID\": \"{}\", \"coords\": {}, \"desc\": \"{}\"}}}}"	
-	
+	polygonTemplate = "{{\"method\": \"addPolygon\", \"params\":{{\"ID\": \"{}\", \"coords\": {}, \"desc\": {}}}}}"
+
 	jsonCoordsArray = getJsonCoordsArray(kmlString)
-	desc = "null"
+	desc = json.dumps({"dateAdded" : 1, "areaInfo" : {"numPeople": 100, "type": "park", "year":1995, "address": "fake st", "severity":10}, "utilities" : { "gas": True, "water": True, "electricity": True, "sewage": True}})
 	jsonString = polygonTemplate.format(uuid.uuid4(),jsonCoordsArray,desc)
 
 	return jsonString
-	
+
 def parseIcon(kmlString):
 	'''
 	Convert a icon from kml to json
-	
+
 	Parameters
 	----------
 	kmlString : string
@@ -90,22 +90,22 @@ def parseIcon(kmlString):
 		A icon in json format
 		{"method": "addMarker", "params":{"ID":"", "type": "", "lat": , "lng": , "title": , "desc": ""}}
 	'''
-	IconTemplate = "{{\"method\": \"addMarker\", \"params\":{{\"ID\":\"{}\", \"type\": \"{}\", \"lat\" : {}, \"lng\" : {}, \"title\": \"{}\", \"desc\" :  \"{}\"}}}}"
-	
-	coords = getCoords(kmlString)	
-	lat = coords[0][0]
-	lng = coords[0][1]
+	IconTemplate = "{{\"method\": \"addMarker\", \"params\":{{\"ID\":\"{}\", \"type\": \"{}\", \"lat\" : {}, \"lng\" : {}, \"title\": \"{}\", \"desc\" : {}}}}}"
+
+	coords = getCoords(kmlString)
+	lat = coords[0][1]
+	lng = coords[0][0]
 	type = getType(kmlString)
 	title = nameTags.findall(kmlString)[0]
-	desc = "null"		
+	desc = json.dumps({"dateAdded" : 1, "incident" : { "status": 1, "reportBy": "Smart City", "info": "...", "peopleDanger": True, "medicNeeded": True}})
 	jsonString = IconTemplate.format(uuid.uuid4(),type, lat, lng, title, desc)
 
 	return jsonString
-	
+
 def parseLine(kmlString):
 	'''
 	Convert a line from kml to json
-	
+
 	Parameters
 	----------
 	kmlString : string
@@ -118,16 +118,16 @@ def parseLine(kmlString):
 	'''
 	LineTemplate = "{{\"method\": \"addGasLine\", \"params\":{{\"ID\":\"{}\", \"coords\": {}, \"interval\": {}}}}}"
 	jsonString = ""
-	
+
 	jsonCoordsArray = getJsonCoordsArray(kmlString)
-	interval = 1
+	interval = 50
 	jsonString = LineTemplate.format(uuid.uuid4(), jsonCoordsArray, interval)
 	return jsonString
-	
+
 def getCoords(kmlString):
-	""" 
+	"""
 	Parse coordinates from kml file into triples.
-	
+
 	Parameters
 	----------
 	kmlString : string
@@ -140,11 +140,11 @@ def getCoords(kmlString):
 	coords = coordinatesTags.findall(kmlString)
 	coords = coords[0].replace("\n",",").replace(" ","")
 	coords = coords.split(",")
-	coords = coords[1:-1]	
+	coords = coords[1:-1]
 	coordTriples = [coords[i:i+3] for i in range(0, len(coords),3)]
-	
+
 	return coordTriples
-	
+
 def getJsonCoordsArray(kmlString):
 	"""
 	Parse coordinates from kml file into JSON Coordinates Array.
@@ -157,17 +157,17 @@ def getJsonCoordsArray(kmlString):
 	jsonCoords : string
 		A string in JSON Array format
 	"""
-	jsonCoords = "["	
-	coords = getCoords(kmlString)	
+	jsonCoords = "["
+	coords = getCoords(kmlString)
 	for i, point in enumerate(coords):
 		if i != 0:
 			jsonCoords += ","
-	
-		jsonCoords += "{{\"lat\": {},\"lng\": {} }}".format(point[0],point[1])
-			
+
+		jsonCoords += "{{\"lat\": {},\"lng\": {} }}".format(point[1],point[0])
+
 	jsonCoords += "]"
 	return jsonCoords
-	
+
 def getType(kmlString):
 	"""
 	Get the type of an icon
@@ -180,12 +180,15 @@ def getType(kmlString):
 	type : string
 		A string representing the type of the icon
 	"""
-	style = typeTags.findall(kmlString)[0]	
+	style = typeTags.findall(kmlString)[0]
 	type = TYPES.get(style, 'undefined')
-	return type	
+	return type
 
 if __name__ == "__main__":
 	if len(sys.argv) != 2:
 		print("One File Path argument required\n passed ", len(sys.argv)-1)
 	else:
-		parseKml(sys.argv[1])
+		jsonOutput = parseKml(sys.argv[1])
+		with open("mapData.json", "w") as json_file:
+				json_file.write(json.dumps(jsonOutput, indent=4, sort_keys=True))
+		print("Output to mapData.json")
