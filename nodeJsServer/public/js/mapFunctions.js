@@ -76,14 +76,14 @@ function myMap()
 		var type = 'fire_station';
 		
 
-		//var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, null);
+		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, station.desc);
 		
-		//if(!(type in markerDict)){
-			//markerDict[type] = [];
-			//markerDict[type].push(marker);
-		//} else {
-			//markerDict[type].push(marker);
-		//}
+		if(!(type in markerDict)){
+			markerDict[type] = [];
+			markerDict[type].push(marker);
+		} else {
+			markerDict[type].push(marker);
+		}
 	}
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
@@ -299,7 +299,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
         markerDict[type].push(marker);
     }
 
-	if(type != "sensor"){
+	
+	if(!(type == "sensor" || type == "fire_station")){
 		addActivityItem(ID, type, latitude, longitude, title, descr);
 	}
 
