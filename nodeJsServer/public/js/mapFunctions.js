@@ -71,9 +71,30 @@ function myMap()
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
 
-	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", "Earthquake!");
-    addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", "Fire");
-    addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", "Earthquake!");
+	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
+																					incident:{
+																							status: 1, 
+																							reportBy: "", 
+																							info: "", 
+																							peopleDanger: 0, 
+																							medicNeeded:1
+																							}});
+    addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
+																					incident:{
+																							status: 1, 
+																							reportBy: "", 
+																							info: "", 
+																							peopleDanger: 0, 
+																							medicNeeded:1
+																							}});
+    addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
+																					incident:{
+																							status: 1, 
+																							reportBy: "", 
+																							info: "", 
+																							peopleDanger: 0, 
+																							medicNeeded:1
+																							}});
 
 
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
@@ -82,6 +103,83 @@ function myMap()
 
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
+
+
+
+function formatAreaDescr(type, descr){
+
+  var contentString = '<b>AREA INFO</b>'+
+  	"<img src='" + "'><br/><br/>" + // Add link to area image
+    "<b> Severity: </b> " + descr.areaInfo.severity + "<br/>" +
+    "<b> Num People: </b> " + descr.areaInfo.numPeople + "<br/>" +
+    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+    "<b> Area Type: </b> " + descr.areaInfo.type + "<br/>" +
+    "<b> Area Year: </b> " + descr.areaInfo.year + "<br/>" +
+    "<b> Updated: </b> " + descr.dateAdded  + "<br/>";
+
+    if (descr.utilities != null) {
+    //gasImg = descr.utilities.gas == 0 ?  : ;
+    //sewImg = descr.utilities.sewage == 0 ?  : ;
+    //watImg = descr.utilities.water == 0 ?  : ;
+    //elecImg = descr.utilities.electricity == 0 ?  : ;
+    var utilString = '<table style="width:100%">' +
+    '<tr>' +
+      '<th colspan="2">Utility Status:</th>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Gas: <img src="' +  + '"></td>' +
+      '<td>Sewage: <img src=' +  + '></td>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Water: <img src=' +  + '></td>' +
+      '<td>Electricity: <img src=' +  + '></td>' +
+    '</tr>' +
+    '</table>';
+
+    contentString = contentString + utilString;
+	}
+
+  return contentString;
+}
+
+function formatIncidentDescr(type, descr){
+
+  var contentString = '<b>INCIDENT INFO</b> <br/>'+
+  	"<strong> Type: </strong>" + type + '<br/>' +
+    "<b> Status: </b> " + descr.incident.status + "<br/>" +
+    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+    "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+    "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+    //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
+    //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
+    "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+
+    if (descr.utilities != null) {
+   // gasImg = descr.utilities.gas == 0 ?  : ;
+    //sewImg = descr.utilities.sewage == 0 ?  : ;
+    //watImg = descr.utilities.water == 0 ?  : ;
+    //elecImg = descr.utilities.electricity == 0 ?  : ;
+    var utilString = '<table style="width:100%">' +
+    '<tr>' +
+      '<th colspan="2">Utility Status:</th>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Gas: <img src="' +  + '"></td>' +
+      '<td>Sewage: <img src=' +  + '></td>' +
+    '</tr>' +
+    '<tr>' +
+      '<td>Water: <img src=' +  + '></td>' +
+      '<td>Electricity: <img src=' +  + '></td>' +
+    '</tr>' +
+    '</table>';
+
+    contentString = contentString + utilString;
+	}
+
+  return contentString;
+}
+
+
 function addCircle(ID, type, latitude, longitude, radius) {
 	var circle = new google.maps.Circle({
 		strokeColor: 'white',
@@ -121,8 +219,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	}
 
 	if (descr !=  null) {
+		var cont = formatIncidentDescr(type, descr);
 		var infoWindow = new google.maps.InfoWindow({
-			content: descr
+			content: cont
 		});
 	}
 
@@ -285,8 +384,9 @@ function addPolygon(ID, coords, descr){
 
 	// Needs updating
 	if (descr !=  null) {
+		var cont = formatAreaDescr(type, descr);
 		var infoWindow = new google.maps.InfoWindow({
-			content: descr.reportBy
+			content: cont
 		});
 	}
 
@@ -393,7 +493,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
     div.id = ID;
 	div.className = type;
 	div.style = "padding: 5px 1px; width: 240px;";
-    div.innerHTML = descr;
+    div.innerHTML = formatIncidentDescr(type, descr);
 
 	//insert new item into array of children and re-append
 	var childArray = Array.from(document.getElementById('home').children);
