@@ -107,17 +107,6 @@ function addCircle(ID, type, latitude, longitude, radius) {
 }
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var icons = {
-          parking: {
-            icon: iconBase + 'parking_lot_maps.png'
-          },
-          library: {
-            icon: iconBase + 'library_maps.png'
-          },
-          info: {
-            icon: iconBase + 'info-i_maps.png'
-          }
-        };
 
 function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	
@@ -148,6 +137,9 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
           break;
       case 'blocked':
           icon_url = 'media/blocked.svg'
+          break;
+	  case 'collapse':
+          icon_url = 'media/collapse.svg'
           break;
       case 'medic':
           icon_url = 'media/medic.svg'
