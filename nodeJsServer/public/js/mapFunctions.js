@@ -22,74 +22,49 @@ function myMap()
 			"featureType": "poi.attraction",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
+		},{
 			"featureType": "poi.business",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
+		},{
 			"featureType": "poi.government",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
+		},{
 			"featureType": "poi.park",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
+		},{
 			"featureType": "poi.place_of_worship",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
-			"featureType": "poi.school ",
-			"elementType": "labels",
-			"stylers": [{"visibility": "on"}]
-
-		},
-		{
-			"featureType": "poi.sports_complex ",
+		},{
+			"featureType": "poi.sports_complex",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
-			"featureType": "poi.medical ",
+		},{
+			"featureType": "poi.school",
+			"elementType": "labels.text",
+			"stylers": [{"visibility": "off"}]
+		},{
+			"featureType": "poi.medical",
 			"elementType": "labels",
 			"stylers": [{"visibility": "on"},
-			{"color": "FF0000"}]
-
-		},
-		{
+						{"color": "FF0000"}]
+		},{
 			"featureType": "transit",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		},
-		{
-			"featureType": "road",
+		},{
+			"featureType": "landscape",
 			"elementType": "labels",
-			"stylers": [{"visibility": "simplified"}]
-
-		},
-		{
+			"stylers": [{"visibility": "off"}]
+		},{
 			"featureType": "administrative.neighborhood",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
-
-		}
-		]
+		}]
 	};
-	
-	
-	
 	
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
