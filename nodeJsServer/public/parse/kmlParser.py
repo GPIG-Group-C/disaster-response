@@ -104,7 +104,7 @@ def parseIcon(kmlString):
 	lng = coords[0][0]
 	type = getType(kmlString)
 	title = nameTags.findall(kmlString)[0]
-	desc = json.dumps({"dateAdded" : 1, "incident" : { "status": 1, "reportBy": "Smart City", "info": "...", "peopleDanger": True, "medicNeeded": True}})
+	desc = json.dumps({"dateAdded" : 1, "incident" : { "status": 0, "reportBy": "Smart City", "info": "...", "peopleDanger": True, "medicNeeded": True}})
 	jsonString = IconTemplate.format(uuid.uuid4(),type, lat, lng, title, desc)
 
 	return jsonString

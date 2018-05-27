@@ -124,7 +124,7 @@
                     "medicNeeded": true,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 2
+                    "status": 0
                 }
             },
             "lat": 37.7547012,
@@ -144,7 +144,7 @@
                     "medicNeeded": true,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7616906,
@@ -164,7 +164,7 @@
                     "medicNeeded": false,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7595871,
@@ -184,7 +184,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.751851,
@@ -204,7 +204,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7682722,
@@ -224,7 +224,7 @@
                     "medicNeeded": true,
                     "peopleDanger": false,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7638619,
@@ -274,7 +274,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "First Responder",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7584674,
@@ -294,7 +294,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "First Responder",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7656261,
@@ -314,7 +314,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "First Responder",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.7554138,
@@ -334,7 +334,7 @@
                     "medicNeeded": false,
                     "peopleDanger": false,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 0
                 }
             },
             "lat": 37.753819,
