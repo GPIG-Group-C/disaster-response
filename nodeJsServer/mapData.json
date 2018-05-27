@@ -2,87 +2,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "b6259bb3-2179-41b8-a630-bb4bce5bcc1d",
-            "coords": [
-                {
-                    "lat": 37.7660966,
-                    "lng": -122.4646425
-                },
-                {
-                    "lat": 37.7536953,
-                    "lng": -122.4639122
-                },
-                {
-                    "lat": 37.7474014,
-                    "lng": -122.4590627
-                },
-                {
-                    "lat": 37.7459599,
-                    "lng": -122.4528404
-                },
-                {
-                    "lat": 37.7472328,
-                    "lng": -122.4455881
-                },
-                {
-                    "lat": 37.7469962,
-                    "lng": -122.4444959
-                },
-                {
-                    "lat": 37.7484546,
-                    "lng": -122.4238239
-                },
-                {
-                    "lat": 37.757887,
-                    "lng": -122.4068182
-                },
-                {
-                    "lat": 37.7658976,
-                    "lng": -122.4074363
-                },
-                {
-                    "lat": 37.7697098,
-                    "lng": -122.4278862
-                },
-                {
-                    "lat": 37.7713882,
-                    "lng": -122.4380359
-                },
-                {
-                    "lat": 37.771287,
-                    "lng": -122.4541292
-                },
-                {
-                    "lat": 37.7666565,
-                    "lng": -122.4535066
-                },
-                {
-                    "lat": 37.7660966,
-                    "lng": -122.4646425
-                }
-            ],
-            "desc": {
-                "areaInfo": {
-                    "address": "fake st",
-                    "numPeople": 100,
-                    "severity": 10,
-                    "type": "park",
-                    "year": 1995
-                },
-                "dateAdded": 1,
-                "utilities": {
-                    "electricity": true,
-                    "gas": true,
-                    "sewage": true,
-                    "water": true
-                }
-            }
-        }
-    },
-    {
-        "method": "addPolygon",
-        "params": {
-            "ID": "ca274903-301d-43cd-8fa5-ac3a7ebd446b",
+            "ID": "ddb4d9e5-4e7c-47f5-bf87-86db63c4aef2",
             "coords": [
                 {
                     "lat": 37.7642354,
@@ -138,7 +58,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "37fb7108-3b58-4193-8f6f-17c374effa34",
+            "ID": "30ec8228-e905-421a-9442-be2a16a0bcdd",
             "coords": [
                 {
                     "lat": 37.7530046,
@@ -186,51 +106,41 @@
     {
         "method": "addMarker",
         "params": {
-            "ID": "1ce0e28b-d604-446e-91f3-b9af0aaab8b5",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
+            "ID": "d1d0bb8f-baa3-4c9d-bf2a-b3b3d679d652",
             "lat": 37.7367836,
             "lng": -122.4359322,
             "title": "EPICENTER",
-            "type": "earthqauake"
+            "type": "earthquake"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "b675e27e-d3b0-4d32-a3bf-f84e244a96c0",
+            "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
+                    "info": "Fire spreading from basement*",
                     "medicNeeded": true,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 1
+                    "status": 2
                 }
             },
             "lat": 37.7547012,
             "lng": -122.4320698,
-            "title": "Fire Marker",
+            "title": "Fire",
             "type": "fire"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "2ff9d331-cd1b-4b7a-a175-55a4e4a486cf",
+            "ID": "9d4377d1-2ed7-483a-8fb1-c822bdfe1c53",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
+                    "info": "Multiple fatalities",
                     "medicNeeded": true,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
@@ -239,19 +149,19 @@
             },
             "lat": 37.7616906,
             "lng": -122.4246883,
-            "title": "Collapsed Marker",
+            "title": "Collapsed Buidling",
             "type": "collapse"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "fe727b04-d944-45e3-aab1-93d08269d096",
+            "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
+                    "info": "Gas leak detected from valve",
+                    "medicNeeded": false,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
                     "status": 1
@@ -266,227 +176,177 @@
     {
         "method": "addMarker",
         "params": {
-            "ID": "f1372f5c-dfe1-4685-9142-f224e492eb75",
+            "ID": "e4d56d83-1893-4cde-88e6-a0ce37f2c94f",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
+                    "info": "N/A",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
                     "reportBy": "Smart City",
                     "status": 1
                 }
             },
+            "lat": 37.751851,
+            "lng": -122.4256325,
+            "title": "Electricity Fault",
+            "type": "electricity"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "5b7b21fb-f566-4d05-b78b-79bba76ed5f6",
+            "desc": {
+                "dateAdded": 1,
+                "incident": {
+                    "info": "N/A",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 1
+                }
+            },
+            "lat": 37.7682722,
+            "lng": -122.442627,
+            "title": "Electricity Fault",
+            "type": "electricity"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "fdde6623-e81c-4c4a-867f-d86c3ef76910",
+            "desc": {
+                "dateAdded": 1,
+                "incident": {
+                    "info": "Minor injuries",
+                    "medicNeeded": true,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 1
+                }
+            },
+            "lat": 37.7638619,
+            "lng": -122.4509525,
+            "title": "Collapsed Building",
+            "type": "collapse"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "16d92430-5d1a-4419-9fb7-333ade1748b3",
             "lat": 37.7560585,
             "lng": -122.4490643,
-            "title": "Medic",
+            "title": "Medic Camp 1",
             "type": "medic"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "f1d790d1-d4ee-4e56-b61f-daf644532526",
+            "ID": "a3e4ecb0-5c4b-46e1-bd73-5e3c7fac0a54",
+            "lat": 37.7658296,
+            "lng": -122.4531841,
+            "title": "Medic Camp 2",
+            "type": "medic"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "f588c798-f193-49f1-9d27-96344925a47d",
+            "lat": 37.7601978,
+            "lng": -122.419281,
+            "title": "Medic Camp 3",
+            "type": "medic"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "8999f57f-a989-4dc3-a325-e6df8e8d4d6d",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
+                    "info": "Road is completely blocked by fallen debris",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
                     "status": 1
                 }
             },
-            "lat": 37.7610799,
-            "lng": -122.4305677,
-            "title": "Blocked road marker added in demo",
+            "lat": 37.7584674,
+            "lng": -122.4261045,
+            "title": "Blocked road",
             "type": "blocked"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "29ba9eb5-bf88-4a35-b91a-26d4ca3b3d5f",
+            "ID": "a5fb28f6-4173-413e-8ea8-27cb3cba7a49",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
+                    "info": "Fallen tree blocking road",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
                     "status": 1
                 }
             },
-            "lat": 37.767048,
-            "lng": -122.430779,
-            "title": "San Francisco Fire Department Station 6",
-            "type": "fire_station"
+            "lat": 37.7656261,
+            "lng": -122.4264908,
+            "title": "Blocked Road",
+            "type": "blocked"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "7f2ad6a8-d905-469c-a6a9-206225636811",
+            "ID": "62062311-4d1a-40d4-b7a6-9c4655aabe26",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
+                    "info": "Abandoned vehicle",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
                     "status": 1
                 }
             },
-            "lat": 37.7934026,
-            "lng": -122.4163795,
-            "title": "San Francisco Fire Department Station 41",
-            "type": "fire_station"
+            "lat": 37.7554138,
+            "lng": -122.441597,
+            "title": "Blocked road",
+            "type": "blocked"
         }
     },
     {
         "method": "addMarker",
         "params": {
-            "ID": "f7cdd5c2-8714-44f2-a1b3-4c2a1f08b331",
+            "ID": "062d51fc-85e1-41f3-8ab3-382e27d610e8",
             "desc": {
                 "dateAdded": 1,
                 "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
+                    "info": "Burst pipes",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
                     "reportBy": "Smart City",
                     "status": 1
                 }
             },
-            "lat": 37.7754718,
-            "lng": -122.4403296,
-            "title": "San Francisco Fire Department Station 21",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "2a548986-99ee-4aec-adb4-1b2a275c5094",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7896652,
-            "lng": -122.4299581,
-            "title": "San Francisco Fire Department Station 38",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "49321317-72d5-431f-ba8f-e36c6e59f4e4",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7790053,
-            "lng": -122.4859487,
-            "title": "San Francisco Fire Department Station 14",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "db292b82-c2c7-4fbd-8a09-22678183ef75",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7364417,
-            "lng": -122.4212155,
-            "title": "San Francisco Fire Department Station 32",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "12a52ee8-8959-4a96-a1b0-c8d0e84cf683",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7794237,
-            "lng": -122.4041047,
-            "title": "San Francisco Fire Department Station 1",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "66576352-c2da-498a-b302-8f8be5d23a1d",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7639783,
-            "lng": -122.4736805,
-            "title": "San Francisco Fire Department Station 22",
-            "type": "fire_station"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "8dbd13fd-90ad-4e18-9e81-bff0963c2a0c",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.8025465,
-            "lng": -122.4094261,
-            "title": "San Francisco Fire Department Station 28",
-            "type": "fire_station"
+            "lat": 37.753819,
+            "lng": -122.4576473,
+            "title": "Water Leak",
+            "type": "water"
         }
     },
     {
         "method": "addPolygon",
         "params": {
-            "ID": "0878e311-dc46-4f2b-9f3b-f9c85f644880",
+            "ID": "b73d2be3-2234-4207-9632-012f0fc1cf28",
             "coords": [
                 {
                     "lat": 37.7566183,
@@ -525,7 +385,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 9,
                     "type": "park",
                     "year": 1995
                 },
@@ -542,7 +402,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "de5615bb-aec0-49bb-a403-6203e98420f0",
+            "ID": "5ea92f00-8406-4e57-a060-aa89688d7201",
             "coords": [
                 {
                     "lat": 37.7568388,
@@ -609,7 +469,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 7,
                     "type": "park",
                     "year": 1995
                 },
@@ -626,7 +486,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "3f4d4509-8233-4066-918f-91e0c1b9c027",
+            "ID": "8d3ca720-5585-44b4-b739-88eac28ac005",
             "coords": [
                 {
                     "lat": 37.7590951,
@@ -653,7 +513,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 6,
                     "type": "park",
                     "year": 1995
                 },
@@ -670,7 +530,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "1856cf18-810c-4f43-81ca-ff8aec54dd4f",
+            "ID": "0994cf18-47ce-45cb-8b54-f29d0b862112",
             "coords": [
                 {
                     "lat": 37.7564656,
@@ -697,7 +557,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 4,
                     "type": "park",
                     "year": 1995
                 },
@@ -714,55 +574,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "7ad514c5-4ce9-4611-b49f-420615154800",
-            "coords": [
-                {
-                    "lat": 37.7648119,
-                    "lng": -122.4433994
-                },
-                {
-                    "lat": 37.7648119,
-                    "lng": -122.4473476
-                },
-                {
-                    "lat": 37.7620299,
-                    "lng": -122.4465752
-                },
-                {
-                    "lat": 37.7620977,
-                    "lng": -122.4458027
-                },
-                {
-                    "lat": 37.7631155,
-                    "lng": -122.4444294
-                },
-                {
-                    "lat": 37.7648119,
-                    "lng": -122.4433994
-                }
-            ],
-            "desc": {
-                "areaInfo": {
-                    "address": "fake st",
-                    "numPeople": 100,
-                    "severity": 10,
-                    "type": "park",
-                    "year": 1995
-                },
-                "dateAdded": 1,
-                "utilities": {
-                    "electricity": true,
-                    "gas": true,
-                    "sewage": true,
-                    "water": true
-                }
-            }
-        }
-    },
-    {
-        "method": "addPolygon",
-        "params": {
-            "ID": "52152798-b412-4a18-8d63-7be6bb5a0297",
+            "ID": "2511e56f-d90c-43bd-8217-0d5d41e216e5",
             "coords": [
                 {
                     "lat": 37.7620977,
@@ -789,7 +601,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 5,
                     "type": "park",
                     "year": 1995
                 },
@@ -806,7 +618,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "89cd8338-941f-4a68-bf8f-2f19c0d6c686",
+            "ID": "05d37b9f-e914-469b-8f57-764e74051775",
             "coords": [
                 {
                     "lat": 37.7638619,
@@ -833,7 +645,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 9,
                     "type": "park",
                     "year": 1995
                 },
@@ -850,7 +662,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "775f7995-187c-435c-896c-975bfc044d33",
+            "ID": "1999a192-8d7a-4e4c-a3f7-a7f68504e71c",
             "coords": [
                 {
                     "lat": 37.7642012,
@@ -885,7 +697,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 3,
                     "type": "park",
                     "year": 1995
                 },
@@ -902,7 +714,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "ec096911-23cb-4d14-84e0-1aca5d5c714a",
+            "ID": "ca05b0dd-f237-41f2-a769-3a141996e14f",
             "coords": [
                 {
                     "lat": 37.7614192,
@@ -933,7 +745,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 1,
                     "type": "park",
                     "year": 1995
                 },
@@ -950,7 +762,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "78787256-9f80-4c3a-af71-d6f60aae38ee",
+            "ID": "15eae7f4-f695-4e52-b7a2-db878657b365",
             "coords": [
                 {
                     "lat": 37.764269,
@@ -973,7 +785,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 4,
                     "type": "park",
                     "year": 1995
                 },
@@ -990,7 +802,7 @@
     {
         "method": "addPolygon",
         "params": {
-            "ID": "ad889fc1-9a0f-433d-8808-41d92d9755c8",
+            "ID": "5d40184f-87b0-47b4-a44a-ee30b9c5f38a",
             "coords": [
                 {
                     "lat": 37.7699006,
@@ -1013,7 +825,7 @@
                 "areaInfo": {
                     "address": "fake st",
                     "numPeople": 100,
-                    "severity": 10,
+                    "severity": 8,
                     "type": "park",
                     "year": 1995
                 },
@@ -1028,209 +840,734 @@
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "3ae121e2-aa21-4b32-984c-1fba01e73932",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "9189f38f-1bc7-4ed8-aa0b-1a5c8c52e993",
+            "coords": [
+                {
+                    "lat": 37.7634548,
+                    "lng": -122.4173069
+                },
+                {
+                    "lat": 37.7618263,
+                    "lng": -122.4172211
+                },
+                {
+                    "lat": 37.761962,
+                    "lng": -122.4150753
+                },
+                {
+                    "lat": 37.7636584,
+                    "lng": -122.4153328
+                },
+                {
+                    "lat": 37.7634548,
+                    "lng": -122.4173069
                 }
-            },
-            "lat": 37.7559652,
-            "lng": -122.4367904,
-            "title": "Valve - off due to fire",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 6,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "387a0419-f694-4d4d-9ec4-bf101113541f",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "0c9e6d0e-91f7-4b43-835d-ba5dbce4f44a",
+            "coords": [
+                {
+                    "lat": 37.7512233,
+                    "lng": -122.4341297
+                },
+                {
+                    "lat": 37.7504598,
+                    "lng": -122.4342585
+                },
+                {
+                    "lat": 37.7505955,
+                    "lng": -122.4317694
+                },
+                {
+                    "lat": 37.751376,
+                    "lng": -122.4318123
+                },
+                {
+                    "lat": 37.7512233,
+                    "lng": -122.4341297
                 }
-            },
-            "lat": 37.7516644,
-            "lng": -122.4274886,
-            "title": "Valve 2 - off due to fire",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 1,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "6a6a93a4-b173-4806-8340-1068af5d9bf9",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "8e183b5f-3ed8-4fbb-9e4a-b25dfdd6cef8",
+            "coords": [
+                {
+                    "lat": 37.756296,
+                    "lng": -122.4409103
+                },
+                {
+                    "lat": 37.7562281,
+                    "lng": -122.4414253
+                },
+                {
+                    "lat": 37.7541584,
+                    "lng": -122.4424124
+                },
+                {
+                    "lat": 37.7541584,
+                    "lng": -122.4418545
+                },
+                {
+                    "lat": 37.756296,
+                    "lng": -122.4409103
                 }
-            },
-            "lat": 37.7566353,
-            "lng": -122.4447727,
-            "title": "Valve 3 - off due to gas leak",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 8,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "d0767208-9dc6-4dd1-9e1c-38aaae0f1372",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "da5cdcbb-dfb5-4e76-b1f3-6348ca6207ff",
+            "coords": [
+                {
+                    "lat": 37.7586371,
+                    "lng": -122.4171352
+                },
+                {
+                    "lat": 37.7566692,
+                    "lng": -122.4207401
+                },
+                {
+                    "lat": 37.755787,
+                    "lng": -122.4171352
+                },
+                {
+                    "lat": 37.7586371,
+                    "lng": -122.4171352
                 }
-            },
-            "lat": 37.7608085,
-            "lng": -122.4430561,
-            "title": "Valve 4 - off due to gas leak",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 4,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "8e40f9a9-42ea-497d-8942-56f77246318d",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "ada4411d-18f6-496d-96bb-a475d6444fc6",
+            "coords": [
+                {
+                    "lat": 37.7685436,
+                    "lng": -122.4391937
+                },
+                {
+                    "lat": 37.766576,
+                    "lng": -122.4397945
+                },
+                {
+                    "lat": 37.7673223,
+                    "lng": -122.4373055
+                },
+                {
+                    "lat": 37.7692221,
+                    "lng": -122.4373055
+                },
+                {
+                    "lat": 37.7685436,
+                    "lng": -122.4391937
                 }
-            },
-            "lat": 37.7509009,
-            "lng": -122.4406958,
-            "title": "Valve 5",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 6,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "77c05355-cba0-4330-951b-bda0708d5a18",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "6feb1d3c-7859-4cca-863e-a1c4d786107a",
+            "coords": [
+                {
+                    "lat": 37.7595532,
+                    "lng": -122.4447083
+                },
+                {
+                    "lat": 37.7589085,
+                    "lng": -122.4421978
+                },
+                {
+                    "lat": 37.7598246,
+                    "lng": -122.4392366
+                },
+                {
+                    "lat": 37.7604353,
+                    "lng": -122.4434423
+                },
+                {
+                    "lat": 37.7595532,
+                    "lng": -122.4447083
                 }
-            },
-            "lat": 37.771936,
-            "lng": -122.4457169,
-            "title": "Valve 6",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 6,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "c1cca153-d73b-4596-a15c-866e3f064c56",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "4177d0e6-7adc-4f65-8ab0-a56a89ae8c97",
+            "coords": [
+                {
+                    "lat": 37.7620299,
+                    "lng": -122.4597073
+                },
+                {
+                    "lat": 37.7578907,
+                    "lng": -122.4620247
+                },
+                {
+                    "lat": 37.7583657,
+                    "lng": -122.4549007
+                },
+                {
+                    "lat": 37.7611478,
+                    "lng": -122.4572182
+                },
+                {
+                    "lat": 37.7620299,
+                    "lng": -122.4597073
                 }
-            },
-            "lat": 37.7637262,
-            "lng": -122.4572182,
-            "title": "Valve 7",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 1,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addPolygon",
         "params": {
-            "ID": "878f193c-61c6-46dd-b541-e9416a56e531",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "c2d081d3-e02b-44fd-b4b1-26a0706e9633",
+            "coords": [
+                {
+                    "lat": 37.7648119,
+                    "lng": -122.4433994
+                },
+                {
+                    "lat": 37.7648119,
+                    "lng": -122.4473476
+                },
+                {
+                    "lat": 37.7620299,
+                    "lng": -122.4465752
+                },
+                {
+                    "lat": 37.7620977,
+                    "lng": -122.4458027
+                },
+                {
+                    "lat": 37.7631155,
+                    "lng": -122.4444294
+                },
+                {
+                    "lat": 37.7648119,
+                    "lng": -122.4433994
                 }
-            },
-            "lat": 37.769697,
-            "lng": -122.4263191,
-            "title": "Valve 8",
-            "type": "sensor"
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "fake st",
+                    "numPeople": 100,
+                    "severity": 2,
+                    "type": "park",
+                    "year": 1995
+                },
+                "dateAdded": 1,
+                "utilities": {
+                    "electricity": true,
+                    "gas": true,
+                    "sewage": true,
+                    "water": true
+                }
+            }
         }
     },
     {
-        "method": "addMarker",
+        "method": "addTransparentPolygon",
         "params": {
-            "ID": "75985394-81f1-4946-bc6f-63af87624fb0",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "0acb3152-9247-4bb4-bb2e-c20cfcb44555",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.7661644,
+                    "lng": -122.4646854
+                },
+                {
+                    "lat": 37.7537631,
+                    "lng": -122.4639551
+                },
+                {
+                    "lat": 37.7474692,
+                    "lng": -122.4591056
+                },
+                {
+                    "lat": 37.7460277,
+                    "lng": -122.4528833
+                },
+                {
+                    "lat": 37.7473006,
+                    "lng": -122.445631
+                },
+                {
+                    "lat": 37.747064,
+                    "lng": -122.4445388
+                },
+                {
+                    "lat": 37.7485224,
+                    "lng": -122.4238668
+                },
+                {
+                    "lat": 37.7579548,
+                    "lng": -122.4068611
+                },
+                {
+                    "lat": 37.7659654,
+                    "lng": -122.4074792
+                },
+                {
+                    "lat": 37.7697776,
+                    "lng": -122.4279291
+                },
+                {
+                    "lat": 37.771456,
+                    "lng": -122.4380788
+                },
+                {
+                    "lat": 37.7713548,
+                    "lng": -122.4541721
+                },
+                {
+                    "lat": 37.7667243,
+                    "lng": -122.4535495
+                },
+                {
+                    "lat": 37.7661644,
+                    "lng": -122.4646854
                 }
-            },
-            "lat": 37.7765154,
-            "lng": -122.4176931,
-            "title": "Valve 9",
-            "type": "sensor"
+            ]
         }
     },
     {
-        "method": "addMarker",
+        "method": "addTransparentPolygon",
         "params": {
-            "ID": "2784ba2f-b472-4198-a0cf-88997deedd23",
-            "desc": {
-                "dateAdded": 1,
-                "incident": {
-                    "info": "...",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
+            "ID": "6c3ece14-eb92-4fa6-b359-ee8e18779864",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.7471989,
+                    "lng": -122.4453735
+                },
+                {
+                    "lat": 37.7396346,
+                    "lng": -122.4621964
+                },
+                {
+                    "lat": 37.7230033,
+                    "lng": -122.4447728
+                },
+                {
+                    "lat": 37.7236143,
+                    "lng": -122.4357605
+                },
+                {
+                    "lat": 37.7326431,
+                    "lng": -122.4058056
+                },
+                {
+                    "lat": 37.7492196,
+                    "lng": -122.4050076
+                },
+                {
+                    "lat": 37.7484207,
+                    "lng": -122.4236093
+                },
+                {
+                    "lat": 37.7469623,
+                    "lng": -122.4442813
+                },
+                {
+                    "lat": 37.7471989,
+                    "lng": -122.4453735
                 }
-            },
-            "lat": 37.7798734,
-            "lng": -122.4071789,
-            "title": "Valve 10",
-            "type": "sensor"
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "abd4e02f-d3b4-4502-b7b4-284a6cf94875",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.7660966,
+                    "lng": -122.4646425
+                },
+                {
+                    "lat": 37.7663724,
+                    "lng": -122.4827958
+                },
+                {
+                    "lat": 37.753683,
+                    "lng": -122.508633
+                },
+                {
+                    "lat": 37.7476769,
+                    "lng": -122.5082455
+                },
+                {
+                    "lat": 37.7412636,
+                    "lng": -122.5090599
+                },
+                {
+                    "lat": 37.7396346,
+                    "lng": -122.4621964
+                },
+                {
+                    "lat": 37.7472328,
+                    "lng": -122.4455881
+                },
+                {
+                    "lat": 37.7459599,
+                    "lng": -122.4528404
+                },
+                {
+                    "lat": 37.7474014,
+                    "lng": -122.4590627
+                },
+                {
+                    "lat": 37.7536953,
+                    "lng": -122.4639122
+                },
+                {
+                    "lat": 37.7660966,
+                    "lng": -122.4646425
+                }
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "2eb3382c-b290-4b24-9921-65ad06787c2a",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.771287,
+                    "lng": -122.4541292
+                },
+                {
+                    "lat": 37.788624,
+                    "lng": -122.4922371
+                },
+                {
+                    "lat": 37.7876744,
+                    "lng": -122.4977303
+                },
+                {
+                    "lat": 37.7880814,
+                    "lng": -122.5061417
+                },
+                {
+                    "lat": 37.7833331,
+                    "lng": -122.5126648
+                },
+                {
+                    "lat": 37.7781775,
+                    "lng": -122.5138664
+                },
+                {
+                    "lat": 37.753683,
+                    "lng": -122.508633
+                },
+                {
+                    "lat": 37.7663724,
+                    "lng": -122.4827958
+                },
+                {
+                    "lat": 37.7660966,
+                    "lng": -122.4646425
+                },
+                {
+                    "lat": 37.7666565,
+                    "lng": -122.4535066
+                },
+                {
+                    "lat": 37.771287,
+                    "lng": -122.4541292
+                }
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "81ef46bb-448d-4319-a5a2-46c2b0ed6f21",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.771287,
+                    "lng": -122.4541292
+                },
+                {
+                    "lat": 37.7713882,
+                    "lng": -122.4380359
+                },
+                {
+                    "lat": 37.7658976,
+                    "lng": -122.4074363
+                },
+                {
+                    "lat": 37.757887,
+                    "lng": -122.4068182
+                },
+                {
+                    "lat": 37.7484546,
+                    "lng": -122.4238239
+                },
+                {
+                    "lat": 37.7492196,
+                    "lng": -122.4050076
+                },
+                {
+                    "lat": 37.7724787,
+                    "lng": -122.3870087
+                },
+                {
+                    "lat": 37.7841471,
+                    "lng": -122.4379921
+                },
+                {
+                    "lat": 37.771287,
+                    "lng": -122.4541292
+                }
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "10854934-7053-4301-b2d0-f4c40f9e7346",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.7841471,
+                    "lng": -122.4379921
+                },
+                {
+                    "lat": 37.7963562,
+                    "lng": -122.4369621
+                },
+                {
+                    "lat": 37.8099196,
+                    "lng": -122.4774742
+                },
+                {
+                    "lat": 37.789845,
+                    "lng": -122.4839973
+                },
+                {
+                    "lat": 37.788624,
+                    "lng": -122.4922371
+                },
+                {
+                    "lat": 37.771287,
+                    "lng": -122.4541292
+                },
+                {
+                    "lat": 37.7841471,
+                    "lng": -122.4379921
+                }
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "21107bd7-adc1-481b-b73b-0f5b8bcea82e",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.7789915,
+                    "lng": -122.4167061
+                },
+                {
+                    "lat": 37.7928294,
+                    "lng": -122.4124146
+                },
+                {
+                    "lat": 37.8072071,
+                    "lng": -122.4261475
+                },
+                {
+                    "lat": 37.8047658,
+                    "lng": -122.4625397
+                },
+                {
+                    "lat": 37.7963562,
+                    "lng": -122.4369621
+                },
+                {
+                    "lat": 37.7841471,
+                    "lng": -122.4379921
+                },
+                {
+                    "lat": 37.7789915,
+                    "lng": -122.4167061
+                }
+            ]
+        }
+    },
+    {
+        "method": "addTransparentPolygon",
+        "params": {
+            "ID": "6787ef82-a6fc-4c18-8d29-a46d2641be09",
+            "colour": "#FF0000",
+            "coords": [
+                {
+                    "lat": 37.8072071,
+                    "lng": -122.4261475
+                },
+                {
+                    "lat": 37.7928294,
+                    "lng": -122.4124146
+                },
+                {
+                    "lat": 37.7789915,
+                    "lng": -122.4167061
+                },
+                {
+                    "lat": 37.7724787,
+                    "lng": -122.3870087
+                },
+                {
+                    "lat": 37.7891667,
+                    "lng": -122.388382
+                },
+                {
+                    "lat": 37.8082921,
+                    "lng": -122.4079514
+                },
+                {
+                    "lat": 37.8072071,
+                    "lng": -122.4261475
+                }
+            ]
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "e13cdfcb-0cc8-414a-88a1-a0b0934b62d2",
+            "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
+            "colour": "#FF0000",
             "coords": [
                 {
                     "lat": 37.7559736,
@@ -1261,13 +1598,14 @@
                     "lng": -122.4274886
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "5ed89b9f-724b-4aac-8745-e54a6ad0da38",
+            "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
+            "colour": "#FF0000",
             "coords": [
                 {
                     "lat": 37.7566353,
@@ -1290,13 +1628,14 @@
                     "lng": -122.4430561
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "1898dee8-8633-4df2-9632-092d88640cc9",
+            "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
+            "colour": "#FF0000",
             "coords": [
                 {
                     "lat": 37.7765154,
@@ -1311,13 +1650,14 @@
                     "lng": -122.4071789
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "a8a0f933-e487-489b-9617-b6612ee7214e",
+            "ID": "3fe53324-c798-4e5e-a1f2-4929ecf53285",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7524788,
@@ -1376,13 +1716,14 @@
                     "lng": -122.4258041
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "1d86a032-b5a9-4223-9933-c5cf6523edfb",
+            "ID": "5be43013-c18b-4fb8-87d0-fd56ac41090e",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7524788,
@@ -1513,13 +1854,14 @@
                     "lng": -122.3969865
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "ac633be4-c458-4e01-b306-de93c3d84b33",
+            "ID": "4fe4dacf-cdf6-41bd-a6b8-0a095ccfa961",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7509009,
@@ -1554,13 +1896,14 @@
                     "lng": -122.4445152
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "2bf2be8c-e6f4-4e46-81b1-ba240fb556b6",
+            "ID": "e8a77f8f-0347-4c3c-9870-54666f2e5870",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7599942,
@@ -1619,13 +1962,14 @@
                     "lng": -122.4706078
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "802f9a2e-1440-4504-9836-1e5c59fc76d7",
+            "ID": "eb4c0fb2-a086-45e7-80a5-693d21af00b3",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7566353,
@@ -1664,13 +2008,14 @@
                     "lng": -122.4570465
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "c55f83ae-ae1b-4f77-9aa8-3905ef06f27f",
+            "ID": "f00b0eac-1c30-4732-b344-487baf52b7bd",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7608085,
@@ -1721,13 +2066,14 @@
                     "lng": -122.4188089
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "f23a3144-9d69-4612-b06f-bc1d8bd110b6",
+            "ID": "f6e49cf7-a6af-426a-a0ee-4aa7a16e1e65",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7559736,
@@ -1754,13 +2100,14 @@
                     "lng": -122.4073076
                 }
             ],
-            "interval": 50
+            "interval": 75
         }
     },
     {
         "method": "addGasLine",
         "params": {
-            "ID": "8b426a13-f10e-4174-8f89-3579ec456014",
+            "ID": "93688596-1437-45ad-9233-eeb4059b4413",
+            "colour": "#009900",
             "coords": [
                 {
                     "lat": 37.7798734,
@@ -1783,111 +2130,7 @@
                     "lng": -122.4082088
                 }
             ],
-            "interval": 50
-        }
-    },
-    {
-        "method": "addPolygon",
-        "params": {
-            "ID": "806cf5c1-aa47-4fa3-9b2e-3584c18e5a0b",
-            "coords": [
-                {
-                    "lat": 37.7471989,
-                    "lng": -122.4453735
-                },
-                {
-                    "lat": 37.7396346,
-                    "lng": -122.4621964
-                },
-                {
-                    "lat": 37.7230033,
-                    "lng": -122.4447728
-                },
-                {
-                    "lat": 37.7236143,
-                    "lng": -122.4357605
-                },
-                {
-                    "lat": 37.7326431,
-                    "lng": -122.4058056
-                },
-                {
-                    "lat": 37.7492196,
-                    "lng": -122.4050076
-                },
-                {
-                    "lat": 37.7484207,
-                    "lng": -122.4236093
-                },
-                {
-                    "lat": 37.7469623,
-                    "lng": -122.4442813
-                },
-                {
-                    "lat": 37.7471989,
-                    "lng": -122.4453735
-                }
-            ],
-            "desc": {
-                "areaInfo": {
-                    "address": "fake st",
-                    "numPeople": 100,
-                    "severity": 10,
-                    "type": "park",
-                    "year": 1995
-                },
-                "dateAdded": 1,
-                "utilities": {
-                    "electricity": true,
-                    "gas": true,
-                    "sewage": true,
-                    "water": true
-                }
-            }
-        }
-    },
-    {
-        "method": "addPolygon",
-        "params": {
-            "ID": "08a5a9cb-21cf-4ce2-9bdb-21ce1d85cec1",
-            "coords": [
-                {
-                    "lat": 37.7634548,
-                    "lng": -122.4173069
-                },
-                {
-                    "lat": 37.7618263,
-                    "lng": -122.4172211
-                },
-                {
-                    "lat": 37.761962,
-                    "lng": -122.4150753
-                },
-                {
-                    "lat": 37.7636584,
-                    "lng": -122.4153328
-                },
-                {
-                    "lat": 37.7634548,
-                    "lng": -122.4173069
-                }
-            ],
-            "desc": {
-                "areaInfo": {
-                    "address": "fake st",
-                    "numPeople": 100,
-                    "severity": 10,
-                    "type": "park",
-                    "year": 1995
-                },
-                "dateAdded": 1,
-                "utilities": {
-                    "electricity": true,
-                    "gas": true,
-                    "sewage": true,
-                    "water": true
-                }
-            }
+            "interval": 75
         }
     }
 ]

@@ -46,7 +46,7 @@ function parseJsonRpc(data)
 
 		case "addGasLine":
 			console.log("addGasLine");
-			addGasLine(data.params.ID, data.params.coords, data.params.interval);
+			addGasLine(data.params.ID, data.params.coords, data.params.interval, data.params.colour);
 			break;
 
 	}

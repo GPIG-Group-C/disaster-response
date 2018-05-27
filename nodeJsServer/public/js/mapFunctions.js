@@ -74,10 +74,10 @@ function myMap()
 	for( var index in fireStations){
 		var station = fireStations[index];
 		var type = 'fire_station';
-		
+
 
 		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, station.desc);
-		
+
 		if(!(type in markerDict)){
 			markerDict[type] = [];
 			markerDict[type].push(marker);
@@ -88,26 +88,26 @@ function myMap()
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
     addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
 
@@ -160,15 +160,22 @@ function formatAreaDescr(type, descr){
 
 function formatIncidentDescr(type, descr){
 
-  var contentString = '<b>INCIDENT INFO</b> <br/>'+
-  	"<strong> Type: </strong>" + type + '<br/>' +
-    "<b> Status: </b> " + descr.incident.status + "<br/>" +
-    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
-    "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-    "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
-    //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
-    //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
-    "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+		if(descr == undefined)
+			return '<b>N/A</b>'
+
+		var contentString = "";
+		if(descr.incident != undefined)
+		{
+			var contentString = '<b>INCIDENT INFO</b> <br/>'+
+				"<strong> Type: </strong>" + type + '<br/>' +
+				"<b> Status: </b> " + descr.incident.status + "<br/>" +
+				//"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+				"<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+				"<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+				//"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
+				//"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
+				"<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+		}
 
     if (descr.utilities != null) {
    // gasImg = descr.utilities.gas == 0 ?  : ;
@@ -299,7 +306,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
         markerDict[type].push(marker);
     }
 
-	
+
 	if(!(type == "sensor" || type == "fire_station")){
 		addActivityItem(ID, type, latitude, longitude, title, descr);
 	}
@@ -562,11 +569,10 @@ function loadStyles() {
 	return JSON.parse(styles);
 }
 
-function addGasLine(ID, coords, interval){
+function addGasLine(ID, coords, interval, colour){
 
 	var type = "pipe"
-
-	var gas = createGasLine(ID, coords, interval);
+	var gas = createGasLine(ID, coords, interval, colour);
 	showLine(gas.line, mMap);
 
 	if(!(type in markerDict)){

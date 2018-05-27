@@ -11,14 +11,14 @@ typeTags = re.compile("<styleUrl>#icon-(.*?)-nodesc</styleUrl>")
 
 # Icon types, the keys are from the extracted kml file
 TYPES = {"1571-E65100" : "fire",
-		"XXXX" : "water",
+		"1703-0288D1" : "water",
 		"1653-0F9D58" : "gas",
 		"1499-000000" : "sensor",
-		"XXXX" : "electricity",
+		"1660-FFEA00" : "electricity",
 		"1884-FF5252" : "blocked",
 		"1598-000000" : "collapse",
-		"1558-E65100" : "medic",
-		"1563-A52714" : "earthqauake",
+		"1558-F9A825" : "medic",
+		"1563-A52714" : "earthquake",
 		"1790-A52714" : "fire_station"}
 
 def parseKml(kmlFilePath):
@@ -69,12 +69,17 @@ def parsePolygon(kmlString):
 		{"method": "addPolygon", "params":{"ID": "", "coords": , "desc": ""}}
 	'''
 	polygonTemplate = "{{\"method\": \"addPolygon\", \"params\":{{\"ID\": \"{}\", \"coords\": {}, \"desc\": {}}}}}"
-
+	tPolygonTemplate = "{{\"method\": \"addTransparentPolygon\", \"params\":{{\"ID\": \"{}\", \"coords\": {}, \"colour\": \"{}\"}}}}"
 	jsonCoordsArray = getJsonCoordsArray(kmlString)
-	desc = json.dumps({"dateAdded" : 1, "areaInfo" : {"numPeople": 100, "type": "park", "year":1995, "address": "fake st", "severity":10}, "utilities" : { "gas": True, "water": True, "electricity": True, "sewage": True}})
-	jsonString = polygonTemplate.format(uuid.uuid4(),jsonCoordsArray,desc)
 
-	return jsonString
+	# Use name tag to parse polygon severity
+	name = nameTags.findall(kmlString)[0]
+	if "Alpha" not in name:
+		sev = int(name)
+		desc = json.dumps({"dateAdded" : 1, "areaInfo" : {"numPeople": 100, "type": "park", "year":1995, "address": "fake st", "severity": sev}, "utilities" : { "gas": True, "water": True, "electricity": True, "sewage": True}})
+		return polygonTemplate.format(uuid.uuid4(), jsonCoordsArray, desc)
+	else:
+		return tPolygonTemplate.format(uuid.uuid4(), jsonCoordsArray, "#FF0000")
 
 def parseIcon(kmlString):
 	'''
@@ -114,14 +119,20 @@ def parseLine(kmlString):
 	-------
 	jsonString : string
 		A line in json format
-		{"method": "addGasLine", "params":{"ID": "", "coords": , "interval": }}
+		{"method": "addGasLine", "params":{"ID": "", "coords": , "interval": , "colour": }}
 	'''
-	LineTemplate = "{{\"method\": \"addGasLine\", \"params\":{{\"ID\":\"{}\", \"coords\": {}, \"interval\": {}}}}}"
-	jsonString = ""
+	LineTemplate = "{{\"method\": \"addGasLine\", \"params\":{{\"ID\":\"{}\", \"coords\": {}, \"interval\": {}, \"colour\":\"{}\"}}}}"
 
 	jsonCoordsArray = getJsonCoordsArray(kmlString)
-	interval = 50
-	jsonString = LineTemplate.format(uuid.uuid4(), jsonCoordsArray, interval)
+	interval = 75
+	name = nameTags.findall(kmlString)[0]
+	print(name, int(name))
+	if int(name) == 0:
+		colour = "#FF0000"
+	else:
+		colour = "#009900"
+
+	jsonString = LineTemplate.format(uuid.uuid4(), jsonCoordsArray, interval, colour)
 	return jsonString
 
 def getCoords(kmlString):
