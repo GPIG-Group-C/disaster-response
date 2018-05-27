@@ -33,9 +33,10 @@ def parseKml(kmlFilePath):
 		List of map elements as JSON strings
 	"""
 	with open(kmlFilePath, 'r') as kmlFile:
-		kmlString = kmlFile.read()
+		global kml
+		kml = kmlFile.read()
 
-	kmlObj = placeMark.findall(kmlString)
+	kmlObj = placeMark.findall(kml)
 
 	jsonArray = []
 	for item in kmlObj:
@@ -79,6 +80,7 @@ def parsePolygon(kmlString):
 		desc = json.dumps({"dateAdded" : 1, "areaInfo" : {"numPeople": 100, "type": "park", "year":1995, "address": "fake st", "severity": sev}, "utilities" : { "gas": True, "water": True, "electricity": True, "sewage": True}})
 		return polygonTemplate.format(uuid.uuid4(), jsonCoordsArray, desc)
 	else:
+		ID = styleTags.findall(kmlString)[0]
 		return tPolygonTemplate.format(uuid.uuid4(), jsonCoordsArray, "#FF0000")
 
 def parseIcon(kmlString):

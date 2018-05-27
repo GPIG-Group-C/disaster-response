@@ -209,6 +209,7 @@ function addCircle(ID, type, latitude, longitude, radius) {
 		strokeWeight: .5,
 		fillColor: 'red',
 		fillOpacity: .2,
+		clickable: false,
 		map: mMap,
 		center: {lat: latitude, lng: longitude},
 		radius: radius * 1000
@@ -449,7 +450,8 @@ function addTransparentPolygon(ID, lineColour, coords){
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#000000',
-        fillOpacity: 0.0
+        fillOpacity: 0.0,
+				clickable: false
 	});
 
 	polygon.setMap(mMap);
