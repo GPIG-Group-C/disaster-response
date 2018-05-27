@@ -562,13 +562,21 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 }
 
 function revertActivityItem() {
-    console.log(this);
 	var parent = this.parentNode.parentNode;
 	var elem = document.getElementById(parent.id).childNodes[0];
 	elem.innerHTML = "Reverted-" + elem.innerHTML;
 	elem.style.color = "#A9A9A9";
 	revertMarker(parent.id, parent.className.split(' ')[1]);
 	document.getElementById(this.id).remove();
+    
+    // Close item in accordion
+    parent.className = parent.className.split(' ')[0];
+    var children = parent.childNodes;
+    console.log(children);
+    var i;
+    for(i = 0; i < children.length; i++){
+      children[i].className = children[i].className.split(' ')[0];
+    }
 }
 
 function revertMarker(ID, type) {
