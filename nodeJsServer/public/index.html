@@ -127,13 +127,6 @@
 				
 				<div class="sidebar-pane" id="settings">
 					<h1 class="sidebar-header">Layers<br /><span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-					<script>
-					function sendMarker()
-					{
-						socket.emit("broadcastData", {"method":"addMarker", "params":{"ID":"1", "type": 'gas', "lat" : 37.75536, "lng" : -122.40516, "title": "hello", "desc" : null}});
-					}
-					</script>
-					<input id="demo" type="checkbox" onclick="sendMarker()">Add marker to Other cities</input><br />
 					<input id="hideFire" type="checkbox" onclick="toggleLayer('fire')">Hide Fire markers</input><br />
 					<input id="hideBlocked" type="checkbox" onclick="toggleLayer('blocked')">Hide Blocked Road markers</input><br />
 					<input id="hideMedic" type="checkbox" onclick="toggleLayer('medic')">Hide Medic markers</input><br />
@@ -151,7 +144,6 @@
 		
 		<div id="googleMap" class="sidebar-map" style="width:100%; height:calc(100% - 30px); position:absolute"></div>
 		
-	    
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05wstmVCb0P9I-G_SUAjsHkLkvjBnfBQ&callback=myMap"></script>
 		<script src="js/jquery-sidebar.js"></script>

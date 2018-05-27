@@ -251,6 +251,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 
 
     var icon_url;
+	var icon_size = new google.maps.Size(24, 24);
     switch(type) {
       case 'gas':
           icon_url = 'media/gas.svg'
@@ -272,6 +273,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
           break;
 	  case 'fire_station':
 		  icon_url = 'media/fs.svg'
+		  icon_size = new google.maps.Size(15, 15);
 		  break;
       case 'water':
           icon_url = 'media/drop.svg'
@@ -290,7 +292,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 		title: title,
 		position: {lat: latitude, lng: longitude},
 		icon: {
-            scaledSize: new google.maps.Size(24, 24),
+            scaledSize: icon_size,
             origin: new google.maps.Point(0,0),
             url: icon_url
         },
@@ -451,7 +453,7 @@ function addTransparentPolygon(ID, lineColour, coords){
         strokeWeight: 2,
         fillColor: '#000000',
         fillOpacity: 0.0,
-				clickable: false
+		clickable: false
 	});
 
 	polygon.setMap(mMap);
