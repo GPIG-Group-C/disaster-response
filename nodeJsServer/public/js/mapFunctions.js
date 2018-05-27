@@ -556,7 +556,6 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	revertDiv.onclick = revertActivityItem;
 	revertDiv.innerHTML = "Revert";
 	revertDiv.style = "float: right; padding: 0px 3px;";
-	console.log(document.getElementById(ID).childNodes)
 	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
 
 }
@@ -572,7 +571,6 @@ function revertActivityItem() {
     // Close item in accordion
     parent.className = parent.className.split(' ')[0];
     var children = parent.childNodes;
-    console.log(children);
     var i;
     for(i = 0; i < children.length; i++){
       children[i].className = children[i].className.split(' ')[0];
