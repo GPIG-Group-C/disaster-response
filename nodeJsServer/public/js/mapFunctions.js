@@ -538,7 +538,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	//Create the main div and Text for item in activity log
     var div = document.createElement('div');
     div.id = ID;
-	div.className = 'inner__item';
+	div.className = 'inner__item' + ' ' + type;
 	//div.style = "padding: 5px 1px; width: 240px;";
     div.innerHTML = formatIncidentDescrSide(type, title, descr);
 
@@ -562,11 +562,12 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 }
 
 function revertActivityItem() {
-	var parent = this.parentNode;
-	var elem = document.getElementById(parent.id);
+    console.log(this);
+	var parent = this.parentNode.parentNode;
+	var elem = document.getElementById(parent.id).childNodes[0];
 	elem.innerHTML = "Reverted-" + elem.innerHTML;
 	elem.style.color = "#A9A9A9";
-	revertMarker(parent.id, parent.className);
+	revertMarker(parent.id, parent.className.split(' ')[1]);
 	document.getElementById(this.id).remove();
 }
 
