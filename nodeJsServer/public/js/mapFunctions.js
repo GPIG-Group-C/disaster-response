@@ -296,7 +296,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
             origin: new google.maps.Point(0,0),
             url: icon_url
         },
-        map: mMap
+        map: mMap,
+		description: descr
 	});
 	marker.addListener('click', function() {
 		infoWindow.open(mMap, marker);
@@ -424,7 +425,8 @@ function addPolygon(ID, coords, descr){
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: calcPolygonColour(descr.areaInfo.severity),
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+		description: descr
 	});
 
 	polygon.addListener('click', function(event) {
