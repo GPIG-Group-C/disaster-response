@@ -53,6 +53,15 @@ function changeLineColour(line, colour){
 	line.setOptions({strokeColor: colour});
 }
 
+function uniqueOnly(coord, index, self){
+	/**
+	* Check if coordinate objects are equal {lat: , lng:}
+	*/
+	return index === self.findIndex((t) => (
+			t.lat === coord.lat && t.lng === coord.lng
+			))
+}
+
 function createGasLine(ID, coords, interval, colour){
 	/**
 	* Create a gas line consisting of a SensorNet and Polyline.
@@ -60,9 +69,10 @@ function createGasLine(ID, coords, interval, colour){
 	* @param {number} interval The distance between sensors in meters.
 	* @param {string} colour colour of lines.
 	* @return {Object} {sensors : <SensorNet>, line : <Polyline>}
-	*/
-	var gasSensors = new SensorNet(coords, interval);
-	var gasLine = createLine(ID, coords, colour);
+	*/	
+	var uniqueCoords = coords.filter(uniqueOnly); //Remove duplicate coordinates	
+	var gasSensors = new SensorNet(uniqueCoords, interval);
+	var gasLine = createLine(ID, uniqueCoords, colour);
 
 	return {sensors : gasSensors, line : gasLine};
 }

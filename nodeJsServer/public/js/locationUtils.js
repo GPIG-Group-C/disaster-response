@@ -92,14 +92,12 @@ var LOCUTILS = (function (){
 		var dist = (d / interval) - ((d / interval) % 1).toFixed(6);
 		var counter = interval;
 		var coords = [];
-		coords.push({lat: lat1, lng: lng1});
 		var loopArray = Array.from({length: dist.toFixed(0)}, (x,i) => i);
 		for (distance in loopArray){
 			var coord = my.getDestinationLatLong(lat1,lng1,azimuth,counter);
 			counter = counter + interval;
 			coords.push(coord);
 		}
-		coords.push({lat: lat2, lng: lng2});
 		
 		return coords;
 	};
