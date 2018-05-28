@@ -206,13 +206,16 @@ function formatIncidentDescr(type, descr){
 
 function formatIncidentDescrSide(type, title, descr){
 
-  var h = '<div class="inner__title">'+title+'</div>';
+	var h = '<div class="inner__title">'+title+'</div>';
   
-  var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
+	var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
   	"<strong> Type: </strong>" + type + '<br/>' +
-    "<b> Status: </b> " + descr.incident.status + "<br/>" +
-    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
-    "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+    "<b> Status: </b> " + descr.incident.status + "<br/>";
+	
+	if(descr.areaInfo != undefined)
+		contentString += "<b> Address: </b> " + descr.areaInfo.address + "<br/>";
+	
+	contentString += "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
     "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
@@ -564,29 +567,32 @@ function toggleLayer(type){
 }
 
 function addActivityItem(ID, type, latitude, longitude, title, descr) {
-	//Create the main div and Text for item in activity log
-    var div = document.createElement('div');
-    div.id = ID;
-	div.className = 'inner__item' + ' ' + type;
-	//div.style = "padding: 5px 1px; width: 240px;";
-    div.innerHTML = formatIncidentDescrSide(type, title, descr);
+	
+	if(descr != undefined)
+	{
+		//Create the main div and Text for item in activity log
+		var div = document.createElement('div');
+		div.id = ID;
+		div.className = 'inner__item' + ' ' + type;
+		//div.style = "padding: 5px 1px; width: 240px;";
+		div.innerHTML = formatIncidentDescrSide(type, title, descr);
 
-	//insert new item into array of children and re-append
-	var childArray = Array.from(document.getElementById('js-sidebar-2').children);
-	childArray.splice(1,0,div);
-	for (var i =0;i<childArray.length;i++) {
-		document.getElementById('js-sidebar-2').appendChild(childArray[i]);
+		//insert new item into array of children and re-append
+		var childArray = Array.from(document.getElementById('js-sidebar-2').children);
+		childArray.splice(1,0,div);
+		for (var i =0;i<childArray.length;i++) {
+			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
+		}
+
+		//Create the revert button for each activity item
+		var revertDiv = document.createElement('button');
+		revertDiv.id = ID + "_btn";
+		revertDiv.type = "button"
+		revertDiv.onclick = revertActivityItem;
+		revertDiv.innerHTML = "Revert";
+		revertDiv.style = "float: right; padding: 0px 3px;";
+		document.getElementById(ID).childNodes[1].appendChild(revertDiv);
 	}
-
-	//Create the revert button for each activity item
-	var revertDiv = document.createElement('button');
-	revertDiv.id = ID + "_btn";
-	revertDiv.type = "button"
-	revertDiv.onclick = revertActivityItem;
-	revertDiv.innerHTML = "Revert";
-	revertDiv.style = "float: right; padding: 0px 3px;";
-	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
-
 }
 
 function revertActivityItem() {
