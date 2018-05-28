@@ -28,7 +28,7 @@ function createLine(ID, lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, 
 }
 
 function HideLine(line){
-	/** 
+	/**
 	* Hide a line on the map.
 	* @param {Polyline} line	A Polyline object
 	*/
@@ -53,15 +53,16 @@ function changeLineColour(line, colour){
 	line.setOptions({strokeColor: colour});
 }
 
-function createGasLine(ID, coords, interval){
+function createGasLine(ID, coords, interval, colour){
 	/**
 	* Create a gas line consisting of a SensorNet and Polyline.
 	* @param {Array<Object>} coords The coordinates of the line [{lat:<number>,lng:<number>},...]
 	* @param {number} interval The distance between sensors in meters.
+	* @param {string} colour colour of lines.
 	* @return {Object} {sensors : <SensorNet>, line : <Polyline>}
 	*/
 	var gasSensors = new SensorNet(coords, interval);
-	var gasLine = createLine(ID, coords);
-	
+	var gasLine = createLine(ID, coords, colour);
+
 	return {sensors : gasSensors, line : gasLine};
 }

@@ -7,7 +7,7 @@ var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true,
     'earthquake': true, 'collapse': true, 'water': true,
     'electricity': true, 'sensor': true, 'circle': true,
-	'pipe': true, 'polygon':true
+	'pipe': true, 'polygon':true, 'fire_station': true
 };
 
 var clusterItems = ['gas', 'fire', 'blocked', 'medic', 'earthquake',
@@ -70,31 +70,47 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
+	//Adds the firestation markers
+	for( var index in fireStations){
+		var station = fireStations[index];
+		var type = 'fire_station';
+
+
+		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, station.desc);
+
+		if(!(type in markerDict)){
+			markerDict[type] = [];
+			markerDict[type].push(marker);
+		} else {
+			markerDict[type].push(marker);
+		}
+	}
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
     addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1, 
-																							reportBy: "", 
-																							info: "", 
-																							peopleDanger: 0, 
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
+
 
 
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
@@ -143,16 +159,23 @@ function formatAreaDescr(type, descr){
 }
 
 function formatIncidentDescr(type, descr){
-  
-  var contentString = '<b>INCIDENT INFO</b> <br/>'+ 
-  	"<strong> Type: </strong>" + type + '<br/>' +
-    "<b> Status: </b> " + descr.incident.status + "<br/>" +
-    "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
-    "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-    "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
-    //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
-    //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
-    "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+
+      if(descr == undefined)
+          return '<b>N/A</b>'
+
+      var contentString = "";
+      if(descr.incident != undefined)
+      {
+          var contentString = '<b>INCIDENT INFO</b> <br/>'+
+              "<strong> Type: </strong>" + type + '<br/>' +
+              "<b> Status: </b> " + descr.incident.status + "<br/>" +
+              //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+              "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+              "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+              //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
+              //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
+              "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+      }
 
     if (descr.utilities != null) {
    // gasImg = descr.utilities.gas == 0 ?  : ;
@@ -233,6 +256,7 @@ function addCircle(ID, type, latitude, longitude, radius) {
 		strokeWeight: .5,
 		fillColor: 'red',
 		fillOpacity: .2,
+		clickable: false,
 		map: mMap,
 		center: {lat: latitude, lng: longitude},
 		radius: radius * 1000
@@ -274,6 +298,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 
 
     var icon_url;
+	var icon_size = new google.maps.Size(24, 24);
     switch(type) {
       case 'gas':
           icon_url = 'media/gas.svg'
@@ -293,9 +318,10 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
       case 'earthquake':
           icon_url = 'media/earthquake.svg'
           break;
-			case 'fire_station':
-		      icon_url = 'media/fs.svg'
-		      break;
+	  case 'fire_station':
+		  icon_url = 'media/fs.svg'
+		  icon_size = new google.maps.Size(15, 15);
+		  break;
       case 'water':
           icon_url = 'media/drop.svg'
           break;
@@ -313,11 +339,12 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 		title: title,
 		position: {lat: latitude, lng: longitude},
 		icon: {
-            scaledSize: new google.maps.Size(24, 24),
+            scaledSize: icon_size,
             origin: new google.maps.Point(0,0),
             url: icon_url
         },
-        map: mMap
+        map: mMap,
+		description: descr
 	});
 	marker.addListener('click', function() {
 		infoWindow.open(mMap, marker);
@@ -330,7 +357,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
         markerDict[type].push(marker);
     }
 
-	if(type != "sensor"){
+
+	if(!(type == "sensor" || type == "fire_station")){
 		addActivityItem(ID, type, latitude, longitude, title, descr);
 	}
 
@@ -444,7 +472,8 @@ function addPolygon(ID, coords, descr){
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: calcPolygonColour(descr.areaInfo.severity),
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+		description: descr
 	});
 
 	polygon.addListener('click', function(event) {
@@ -472,7 +501,8 @@ function addTransparentPolygon(ID, lineColour, coords){
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#000000',
-        fillOpacity: 0.0
+        fillOpacity: 0.0,
+		clickable: false
 	});
 
 	polygon.setMap(mMap);
@@ -600,11 +630,10 @@ function loadStyles() {
 	return JSON.parse(styles);
 }
 
-function addGasLine(ID, coords, interval){
+function addGasLine(ID, coords, interval, colour){
 
 	var type = "pipe"
-
-	var gas = createGasLine(ID, coords, interval);
+	var gas = createGasLine(ID, coords, interval, colour);
 	showLine(gas.line, mMap);
 
 	if(!(type in markerDict)){
