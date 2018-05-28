@@ -574,6 +574,26 @@ function toggleLayer(type){
 	}
 }
 
+
+function highlightMarker(){
+	
+	var ID = this.id;
+	var type = this.className.split(" ")[1];
+
+	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+	
+	markerDict[type][index].setAnimation(google.maps.Animation.BOUNCE);
+}
+
+function stopHighlight(){
+	var ID = this.id;
+	var type = this.className.split(" ")[1];
+
+	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+	
+	markerDict[type][index].setAnimation(null);
+}
+
 function addActivityItem(ID, type, latitude, longitude, title, descr) {
 	
 	if(descr != undefined)
@@ -584,7 +604,9 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 		div.className = 'inner__item' + ' ' + type;
 		//div.style = "padding: 5px 1px; width: 240px;";
 		div.innerHTML = formatIncidentDescrSide(type, title, descr);
-
+		div.onmouseover = highlightMarker;
+		div.onmouseout = stopHighlight;
+		
 		//insert new item into array of children and re-append
 		var childArray = Array.from(document.getElementById('js-sidebar-2').children);
 		childArray.splice(1,0,div);
