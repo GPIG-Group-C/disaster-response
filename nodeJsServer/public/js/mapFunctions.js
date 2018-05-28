@@ -101,6 +101,22 @@ function myMap()
 																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
+	addInfoMarker("gas", 'gas', 37.7549, -122.4194, "Gas", {areaInfo: { address: ""},
+																					incident:{
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
+																							medicNeeded:1
+																							}});
+	addInfoMarker("gas1", 'gas', 37.7549, -122.4194, "Electricity", {areaInfo: { address: ""},
+																					incident:{
+																							status: 1,
+																							reportBy: "",
+																							info: "",
+																							peopleDanger: 0,
+																							medicNeeded:1
+																							}});
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
 																							status: 1,
@@ -584,32 +600,35 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 		}
 
-		//Create the revert button for each activity item
-		var revertDiv = document.createElement('button');
-		revertDiv.id = ID + "_btn";
-		revertDiv.type = "button"
-		revertDiv.onclick = revertActivityItem;
-		revertDiv.innerHTML = "Revert";
-		revertDiv.style = "float: right; padding: 0px 3px;";
-		document.getElementById(ID).childNodes[1].appendChild(revertDiv);
+		if ( type == "gas" || type == "electricity" || type == "water" ){
+			//Create the revert button for each activity item
+			var revertDiv = document.createElement('button');
+			revertDiv.id = ID + "_btn";
+			revertDiv.type = "button"
+			revertDiv.onclick = revertActivityItem;
+			revertDiv.innerHTML = "Revert response";
+			revertDiv.style = "float: right; padding: 0px 3px;";
+			document.getElementById(ID).childNodes[1].appendChild(revertDiv);
+		}
 	}
 }
 
 function revertActivityItem() {
 	var parent = this.parentNode.parentNode;
 	var elem = document.getElementById(parent.id).childNodes[0];
-	elem.innerHTML = "Reverted-" + elem.innerHTML;
+	elem.innerHTML = "Reverted response-" + elem.innerHTML;
 	elem.style.color = "#A9A9A9";
 	revertMarker(parent.id, parent.className.split(' ')[1]);
 	document.getElementById(this.id).remove();
-    
-    // Close item in accordion
+	
+	// Close item in accordion
     parent.className = parent.className.split(' ')[0];
     var children = parent.childNodes;
     var i;
     for(i = 0; i < children.length; i++){
       children[i].className = children[i].className.split(' ')[0];
     }
+	
 }
 
 function revertMarker(ID, type) {
