@@ -73,17 +73,16 @@ function myMap()
 	//Adds the firestation markers
 	for( var index in fireStations){
 		var station = fireStations[index];
-		var type = 'fire_station';
-
-
-		var marker = addInfoMarker(station.ID, type, station.lat, station.lng, station.title, station.desc);
-
-		if(!(type in markerDict)){
-			markerDict[type] = [];
-			markerDict[type].push(marker);
-		} else {
-			markerDict[type].push(marker);
+		
+		if(station.method == "addMarker")
+		{
+			addInfoMarker(station.params.ID, station.params.type, station.params.lat, station.params.lng, station.params.title, station.params.desc);
 		}
+		else if(station.method == "addTransparentPolygon")
+		{
+			addTransparentPolygon(station.params.ID, station.params.colour, station.params.coords)
+		}
+		
 	}
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
