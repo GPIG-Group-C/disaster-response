@@ -579,19 +579,23 @@ function highlightMarker(){
 	
 	var ID = this.id;
 	var type = this.className.split(" ")[1];
-
-	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
-	
-	markerDict[type][index].setAnimation(google.maps.Animation.BOUNCE);
+		
+	try {
+		var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+		markerDict[type][index].setAnimation(google.maps.Animation.BOUNCE);
+	}
+	catch(err){}
 }
 
 function stopHighlight(){
 	var ID = this.id;
 	var type = this.className.split(" ")[1];
 
-	var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
-	
-	markerDict[type][index].setAnimation(null);
+	try {
+		var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
+		markerDict[type][index].setAnimation(null);
+	}
+	catch(err){}
 }
 
 function addActivityItem(ID, type, latitude, longitude, title, descr) {
