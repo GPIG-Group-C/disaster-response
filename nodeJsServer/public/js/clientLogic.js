@@ -55,6 +55,9 @@ function parseJsonRpc(data)
 
 function calcSeverity(marker, lat, lng)
 {
+	if(marker.description == undefined)
+		return;
+	
 	var mLatLng = new google.maps.LatLng(lat, lng);
 	var mPoly = undefined;
 	var newSev = 1;
@@ -82,7 +85,7 @@ function calcSeverity(marker, lat, lng)
 			else if(medicNeeded)
 				newSev = 6;
 			else
-				newSev = 4;
+				newSev = 3;
 			
 			break;
 		}

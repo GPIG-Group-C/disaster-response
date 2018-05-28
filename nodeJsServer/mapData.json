@@ -45,7 +45,7 @@
                     "type": "Residential",
                     "year": 1776
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -93,7 +93,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -109,7 +109,7 @@
             "ID": "d1d0bb8f-baa3-4c9d-bf2a-b3b3d679d652",
             "lat": 37.7367836,
             "lng": -122.4359322,
-            "title": "EPICENTER",
+            "title": "Earthquake Epicenter",
             "type": "earthquake"
         }
     },
@@ -118,13 +118,13 @@
         "params": {
             "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Fire spreading from first floor upwards. Residents trapped on upper floors",
                     "medicNeeded": true,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 0
+                    "status": 2
                 }
             },
             "lat": 37.7547012,
@@ -138,7 +138,7 @@
         "params": {
             "ID": "9d4377d1-2ed7-483a-8fb1-c822bdfe1c53",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Multiple fatalities",
                     "medicNeeded": true,
@@ -158,13 +158,13 @@
         "params": {
             "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Gas leak detected from valve",
                     "medicNeeded": false,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
-                    "status": 0
+                    "status": 1
                 }
             },
             "lat": 37.7595871,
@@ -178,7 +178,7 @@
         "params": {
             "ID": "e4d56d83-1893-4cde-88e6-a0ce37f2c94f",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "N/A",
                     "medicNeeded": false,
@@ -198,7 +198,7 @@
         "params": {
             "ID": "5b7b21fb-f566-4d05-b78b-79bba76ed5f6",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "N/A",
                     "medicNeeded": false,
@@ -218,7 +218,7 @@
         "params": {
             "ID": "fdde6623-e81c-4c4a-867f-d86c3ef76910",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Minor injuries",
                     "medicNeeded": true,
@@ -268,7 +268,7 @@
         "params": {
             "ID": "8999f57f-a989-4dc3-a325-e6df8e8d4d6d",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Road is completely blocked by fallen debris",
                     "medicNeeded": false,
@@ -277,8 +277,8 @@
                     "status": 0
                 }
             },
-            "lat": 37.7584674,
-            "lng": -122.4261045,
+            "lat": 37.7585056,
+            "lng": -122.4259033,
             "title": "Blocked road",
             "type": "blocked"
         }
@@ -288,7 +288,7 @@
         "params": {
             "ID": "a5fb28f6-4173-413e-8ea8-27cb3cba7a49",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Fallen tree blocking road",
                     "medicNeeded": false,
@@ -308,7 +308,7 @@
         "params": {
             "ID": "62062311-4d1a-40d4-b7a6-9c4655aabe26",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Abandoned vehicle",
                     "medicNeeded": false,
@@ -317,8 +317,8 @@
                     "status": 0
                 }
             },
-            "lat": 37.7554138,
-            "lng": -122.441597,
+            "lat": 37.7553809,
+            "lng": -122.4414991,
             "title": "Blocked road",
             "type": "blocked"
         }
@@ -328,7 +328,7 @@
         "params": {
             "ID": "062d51fc-85e1-41f3-8ab3-382e27d610e8",
             "desc": {
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "incident": {
                     "info": "Burst pipes",
                     "medicNeeded": false,
@@ -389,7 +389,7 @@
                     "type": "Attenna Tower",
                     "year": 1973
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -473,7 +473,7 @@
                     "type": "Park",
                     "year": 1936
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -517,7 +517,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -561,7 +561,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -605,7 +605,7 @@
                     "type": "park",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -649,7 +649,7 @@
                     "type": "park",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -701,7 +701,7 @@
                     "type": "park",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -749,7 +749,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -789,7 +789,7 @@
                     "type": "Residential",
                     "year": 1978
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -829,7 +829,7 @@
                     "type": "park",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -873,7 +873,7 @@
                     "type": "park",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -917,7 +917,7 @@
                     "type": "Residential",
                     "year": 1990
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -961,7 +961,7 @@
                     "type": "Residential",
                     "year": 1939
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -1001,7 +1001,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -1045,7 +1045,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -1089,7 +1089,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -1133,7 +1133,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
@@ -1181,7 +1181,7 @@
                     "type": "Residential",
                     "year": 1995
                 },
-                "dateAdded": 1,
+                "dateAdded": 1527506462506,
                 "utilities": {
                     "electricity": true,
                     "gas": true,
