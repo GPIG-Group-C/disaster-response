@@ -101,15 +101,7 @@ function myMap()
 																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
-	addInfoMarker("gas", 'gas', 37.7549, -122.4194, "Gas", {areaInfo: { address: ""},
-																					incident:{
-																							status: 1,
-																							reportBy: "",
-																							info: "",
-																							peopleDanger: 0,
-																							medicNeeded:1
-																							}});
-	addInfoMarker("gas1", 'gas', 37.7549, -122.4194, "Electricity", {areaInfo: { address: ""},
+	addInfoMarker("gas", 'gas', 37.7449, -122.4194, "Gas", {areaInfo: { address: ""},
 																					incident:{
 																							status: 1,
 																							reportBy: "",

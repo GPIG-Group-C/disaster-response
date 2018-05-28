@@ -2,14 +2,14 @@ $.fn.accordion = function(options) {
   var settings = $.extend({
     autoCollapse: false
   }, options );
-  
+
   var
     $accordion   = $(this),
     blockName    = $accordion.attr('data-block'),
     $items       = $('.' + blockName + '__item', $accordion);
-  
+
   $accordion.delegate('.' + blockName + '__title', 'click', triggerAccordion);
-  
+
   function triggerAccordion(){
     var
       $that         = $(this),
@@ -18,7 +18,7 @@ $.fn.accordion = function(options) {
       isOpen        = $that.hasClass('js-accordion--open'),
       autoCollapse  = true,
       contentHeight = $content.prop('scrollHeight');
-    
+
     if(isOpen){
       $that.removeClass('js-accordion--open');
       $parent.removeClass('js-accordion--open');
@@ -32,10 +32,8 @@ $.fn.accordion = function(options) {
       }
       $that.addClass('js-accordion--open');
       $parent.addClass('js-accordion--open');
-      $content.addClass('js-accordion--open').css('height', contentHeight).one('webkitTransitionEnd', event, function(){
-        if(event.propertyName === 'height'){
+      $content.addClass('js-accordion--open').css('height', contentHeight).one('webkitTransitionEnd', function(){
           $(this).css('height', '');
-        }
       });
     }
   }
