@@ -68,7 +68,7 @@ function myMap()
 	};
 
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
+	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m', gridSize: 15});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
 	//Adds the initial marker data:
@@ -476,10 +476,10 @@ function addPolygon(ID, coords, descr){
 		id: ID,
 		paths: coords,
 		strokeColor: '#000000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
+        strokeOpacity: 0,
+        strokeWeight: 0,
         fillColor: calcPolygonColour(descr.areaInfo.severity),
-        fillOpacity: 0.35,
+        fillOpacity: 0.4,
 		description: descr
 	});
 
