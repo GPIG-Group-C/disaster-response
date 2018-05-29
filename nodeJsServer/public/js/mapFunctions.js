@@ -563,11 +563,21 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 	revertDiv.type = "button"
 	revertDiv.addEventListener('click', function(){
 		
-		// Remove revert button
-		document.getElementById(ID).childNodes[1].removeChild(revertDiv);
-		
 		// Add "reverted" to title
 		div.children[0].innerHTML = "Reverted: " + div.children[0].innerHTML;
+		
+		// Close item in accordion
+		var parent = this.parentNode.parentNode;
+		
+		parent.className = parent.className.split(' ')[0];
+		var children = parent.childNodes;
+		var i;
+		for(i = 0; i < children.length; i++){
+		  children[i].className = children[i].className.split(' ')[0];
+		}
+		
+		// Remove revert button
+		document.getElementById(ID).childNodes[1].removeChild(revertDiv);
 		
 		for(var i = 0; i < revertAction.length; i++)
 		{
