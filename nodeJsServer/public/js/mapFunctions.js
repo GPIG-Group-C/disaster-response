@@ -70,19 +70,10 @@ function myMap()
 	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
-	//Adds the firestation markers
-	for( var index in fireStations){
-		var station = fireStations[index];
-		
-		if(station.method == "addMarker")
-		{
-			addInfoMarker(station.params.ID, station.params.type, station.params.lat, station.params.lng, station.params.title, station.params.desc);
-		}
-		else if(station.method == "addTransparentPolygon")
-		{
-			addTransparentPolygon(station.params.ID, station.params.colour, station.params.coords)
-		}
-		
+	//Adds the initial marker data:
+	for(var i = 0; i < initialMapData.length; i++)
+	{
+		parseJsonRpc(initialMapData[i]);
 	}
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
@@ -93,7 +84,7 @@ function myMap()
 																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
-    addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
+  addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
 																					incident:{
 																							status: 1,
 																							reportBy: "",
@@ -202,8 +193,8 @@ function formatIncidentDescr(type, descr){
       '<td>Electricity: <img src=' +  + '></td>' +
     '</tr>' +
     '</table>';
-      
-    
+
+
 
     contentString = contentString + utilString;
 	}
@@ -215,14 +206,14 @@ function formatIncidentDescr(type, descr){
 function formatIncidentDescrSide(type, title, descr){
 
 	var h = '<div class="inner__title">'+title+'</div>';
-  
+
 	var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
   	"<strong> Type: </strong>" + type + '<br/>' +
     "<b> Status: </b> " + descr.incident.status + "<br/>";
-	
+
 	if(descr.areaInfo != undefined)
 		contentString += "<b> Address: </b> " + descr.areaInfo.address + "<br/>";
-	
+
 	contentString += "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
     "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
@@ -247,7 +238,7 @@ function formatIncidentDescrSide(type, title, descr){
       '<td>Electricity: <img src=' +  + '></td>' +
     '</tr>' +
     '</table>';
-      
+
     var f = '</div>';
 
     contentString = h + contentString + utilString + f;
@@ -576,10 +567,10 @@ function toggleLayer(type){
 
 
 function highlightMarker(){
-	
+
 	var ID = this.id;
 	var type = this.className.split(" ")[1];
-		
+
 	try {
 		var index = markerDict[type].map(function(e) { return e.id; }).indexOf(ID);
 		markerDict[type][index].setAnimation(google.maps.Animation.BOUNCE);
@@ -599,7 +590,7 @@ function stopHighlight(){
 }
 
 function addActivityItem(ID, type, latitude, longitude, title, descr) {
-	
+
 	if(descr != undefined)
 	{
 		//Create the main div and Text for item in activity log
@@ -610,7 +601,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 		div.innerHTML = formatIncidentDescrSide(type, title, descr);
 		div.onmouseover = highlightMarker;
 		div.onmouseout = stopHighlight;
-		
+
 		//insert new item into array of children and re-append
 		var childArray = Array.from(document.getElementById('js-sidebar-2').children);
 		childArray.splice(1,0,div);
@@ -638,7 +629,7 @@ function revertActivityItem() {
 	elem.style.color = "#A9A9A9";
 	revertMarker(parent.id, parent.className.split(' ')[1]);
 	document.getElementById(this.id).remove();
-	
+
 	// Close item in accordion
     parent.className = parent.className.split(' ')[0];
     var children = parent.childNodes;
@@ -646,7 +637,7 @@ function revertActivityItem() {
     for(i = 0; i < children.length; i++){
       children[i].className = children[i].className.split(' ')[0];
     }
-	
+
 }
 
 function revertMarker(ID, type) {
@@ -677,9 +668,9 @@ function addGasLine(ID, coords, interval, colour){
 	var type = "pipe"
 	var gas = createGasLine(ID, coords, interval, colour);
 	showLine(gas.line, mMap);
-
 	if(!(type in markerDict)){
         markerDict[type] = [];
+				gas.line.setMap(null);
         markerDict[type].push(gas.line);
     } else {
         markerDict[type].push(gas.line);
