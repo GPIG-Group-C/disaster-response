@@ -470,8 +470,8 @@ function addPolygon(ID, coords, descr){
 		id: ID,
 		paths: coords,
 		strokeColor: '#000000',
-        strokeOpacity: 0.5,
-        strokeWeight: 2,
+        strokeOpacity: 0,
+        strokeWeight: 0,
         fillColor: calcPolygonColour(descr.areaInfo.severity),
         fillOpacity: 0.22,
 		description: descr
