@@ -79,16 +79,16 @@ function myMap()
 
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1,
+																							status: 0,
 																							reportBy: "",
 																							info: "",
 																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
-	/*
+	
   addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1,
+																							status: 0,
 																							reportBy: "",
 																							info: "",
 																							peopleDanger: 0,
@@ -96,7 +96,7 @@ function myMap()
 																							}});
 	addInfoMarker("gas", 'gas', 37.7449, -122.4194, "Gas", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1,
+																							status: 0,
 																							reportBy: "",
 																							info: "",
 																							peopleDanger: 0,
@@ -104,7 +104,7 @@ function myMap()
 																							}});
     addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
-																							status: 1,
+																							status: 0,
 																							reportBy: "",
 																							info: "",
 																							peopleDanger: 0,
@@ -114,11 +114,48 @@ function myMap()
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
                                                                                                                                      severity:5
                                                                                                                                    }});
-																																																																	 */
+	
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
 
-
+var incidentInfo = {
+	"fire": {
+		0: "Fire Extinguished",
+		1: "Fire Contained",
+		2: "Fire Escalating"
+	},
+	
+	"gas": {
+		0: "Gas Contained",
+		1: "Gas Leaking"
+	},
+	
+	"water": {
+		0: "Water Contained",
+		1: "Water Leaking"
+	},
+	
+	"electricity": {
+		0: "N/A"
+	},
+	
+	"blocked": {
+		0: "Road Cleared",
+		1: "Road Blocked"
+	},
+	
+	"collapse": {
+		0: "N/A"
+	},
+	
+	"earthquake": {
+		0: "N/A"
+	},
+	
+	"sensor": {
+		0: "N/A"
+	}
+}
 
 function formatAreaDescr(type, descr){
 	
@@ -170,7 +207,7 @@ function formatIncidentDescr(type, descr){
       {
           var contentString = '<b>INCIDENT INFO</b> <br/>'+
               "<strong> Type: </strong>" + type + '<br/>' +
-              "<b> Status: </b> " + descr.incident.info + "<br/>" +
+              "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>" +
               //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
               "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
               "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
@@ -213,7 +250,7 @@ function formatIncidentDescrSide(type, title, descr){
 
 	var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
   	"<strong> Type: </strong>" + type + '<br/>' +
-    "<b> Status: </b> " + descr.incident.info + "<br/>";
+    "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>";
 
 	if(descr.areaInfo != undefined)
 		contentString += "<b> Address: </b> " + descr.areaInfo.address + "<br/>";
