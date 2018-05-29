@@ -84,6 +84,7 @@ function myMap()
 																							peopleDanger: 0,
 																							medicNeeded:1
 																							}});
+	/*
   addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
 																					incident:{
 																							status: 1,
@@ -109,12 +110,10 @@ function myMap()
 																							medicNeeded:1
 																							}});
 
-
-
 	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
-                                                                                                                                      severity:5
-                                                                                                                                     }})
-
+                                                                                                                                     severity:5
+                                                                                                                                   }});
+																																																																	 */
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
 }
 
@@ -517,7 +516,7 @@ function addTransparentPolygon(ID, lineColour, coords){
 }
 
 // TODO needs updating with UI
-function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action)
+function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
 		alert("New action: " + actionTitle);
 		for(var i = 0; i < action.length; i++)
@@ -685,7 +684,6 @@ function addGasLine(ID, coords, interval, colour){
 	showLine(gas.line, mMap);
 	if(!(type in markerDict)){
         markerDict[type] = [];
-				gas.line.setMap(null);
         markerDict[type].push(gas.line);
     } else {
         markerDict[type].push(gas.line);
@@ -708,14 +706,15 @@ function addGasLine(ID, coords, interval, colour){
 	}
 }
 
-function colourGasLine(ID, colour){
-	var gasLine = markerDict["gas"]
-
-	for( var index in markerDict["gas"]){
-		currLine = markerDict["gas"][index];
-
-		if (currLine.id == ID){
-			changeLineColour(currLine, colour);
+function colourGasLine(ID, colour)
+{
+		var gasLine = markerDict["pipe"]
+		for( var index in gasLine)
+		{
+			currLine = gasLine[index];
+			if (currLine.id == ID)
+			{
+				changeLineColour(currLine, colour);
+			}
 		}
-	}
 }

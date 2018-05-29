@@ -1201,93 +1201,48 @@
             "action" :
             [
                 {
-                    "method": "addGasLine",
+                    "method": "colourGasLine",
                     "params": {
                         "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
-                        "colour": "#FF0000",
-                        "coords": [
-                            {
-                                "lat": 37.7559736,
-                                "lng": -122.4367476
-                            },
-                            {
-                                "lat": 37.7560245,
-                                "lng": -122.4356639
-                            },
-                            {
-                                "lat": 37.7552865,
-                                "lng": -122.4344301
-                            },
-                            {
-                                "lat": 37.7554138,
-                                "lng": -122.4322951
-                            },
-                            {
-                                "lat": 37.7538699,
-                                "lng": -122.4321342
-                            },
-                            {
-                                "lat": 37.7539548,
-                                "lng": -122.4298918
-                            },
-                            {
-                                "lat": 37.7516644,
-                                "lng": -122.4274886
-                            }
-                        ],
-                        "interval": 75
+                        "colour": "#FF0000"
                     }
                 },
                 {
-                    "method": "addGasLine",
+                    "method": "colourGasLine",
                     "params": {
                         "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-                        "colour": "#FF0000",
-                        "coords": [
-                            {
-                                "lat": 37.7566353,
-                                "lng": -122.4447727
-                            },
-                            {
-                                "lat": 37.7595871,
-                                "lng": -122.4468756
-                            },
-                            {
-                                "lat": 37.7616567,
-                                "lng": -122.446704
-                            },
-                            {
-                                "lat": 37.7639637,
-                                "lng": -122.4441505
-                            },
-                            {
-                                "lat": 37.7608085,
-                                "lng": -122.4430561
-                            }
-                        ],
-                        "interval": 75
+                        "colour": "#FF0000"
                     }
                 },
                 {
-                    "method": "addGasLine",
+                    "method": "colourGasLine",
                     "params": {
                         "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
-                        "colour": "#FF0000",
-                        "coords": [
-                            {
-                                "lat": 37.7765154,
-                                "lng": -122.4176931
-                            },
-                            {
-                                "lat": 37.7750568,
-                                "lng": -122.4061489
-                            },
-                            {
-                                "lat": 37.7798734,
-                                "lng": -122.4071789
-                            }
-                        ],
-                        "interval": 75
+                        "colour": "#FF0000"
+                    }
+                }
+            ],
+            "revertAction":
+            [
+                {
+                    "method": "colourGasLine",
+                    "params": {
+                        "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
+                        "colour": "#009900"
+                    }
+                },
+                {
+                    "method": "colourGasLine",
+                    "params": {
+                        "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
+                        "colour": "#009900"
+                    }
+                },
+                {
+                    "method": "colourGasLine",
+                    "params": {
+                        "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
+                        "colour": "#009900"
                     }
                 }
             ]
