@@ -518,7 +518,8 @@ function addTransparentPolygon(ID, lineColour, coords){
 // TODO needs updating with UI
 function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
-	addActionItem(ID, actionTitle, actionJustification);
+	console.log(revertAction)
+	addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction);
 	alert("New action: " + actionTitle);
 	for(var i = 0; i < action.length; i++)
 	{
@@ -531,7 +532,7 @@ function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, act
 	}
 }
 
-function addActionItem(ID, actionTitle, actionJustification, dateAdded) {
+function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction) {
 
 
 	//Create the main div and Text for item in activity log
@@ -551,16 +552,24 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded) {
 	}
 
 	
-	//if ( type == "gas" || type == "electricity" || type == "water" ){
-		//Create the revert button for each activity item
-		//var revertDiv = document.createElement('button');
-		//revertDiv.id = ID + "_btn";
-		//revertDiv.type = "button"
-		//revertDiv.onclick = revertActivityItem;
-		//revertDiv.innerHTML = "Revert response";
-		//revertDiv.style = "float: right; padding: 0px 3px;";
-		//document.getElementById(ID).childNodes[1].appendChild(revertDiv);
-	//}
+	//Create the revert button for each activity item
+	var revertDiv = document.createElement('button');
+	revertDiv.id = ID + "_btn";
+	revertDiv.type = "button"
+	revertDiv.addEventListener('click', function(){
+		for(var i = 0; i < revertAction.length; i++)
+		{
+			smartCityAction = revertAction[i];
+			ID = smartCityAction.ID;
+			// Save the state of the map object here such that it can be reverted
+			// Alternatively we can hard code this as well in the JSON object
+
+			parseJsonRpc(smartCityAction);
+		}
+	});
+	revertDiv.innerHTML = "Revert response";
+	revertDiv.style = "float: right; padding: 0px 3px;";
+	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
 	
 }
 
@@ -670,18 +679,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 		for (var i =0;i<childArray.length;i++) {
 			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 		}
-
 		
-		//if ( type == "gas" || type == "electricity" || type == "water" ){
-			//Create the revert button for each activity item
-			//var revertDiv = document.createElement('button');
-			//revertDiv.id = ID + "_btn";
-			//revertDiv.type = "button"
-			//revertDiv.onclick = revertActivityItem;
-			//revertDiv.innerHTML = "Revert response";
-			//revertDiv.style = "float: right; padding: 0px 3px;";
-			//document.getElementById(ID).childNodes[1].appendChild(revertDiv);
-		//}
 	}
 }
 
