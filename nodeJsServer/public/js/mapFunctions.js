@@ -2,6 +2,7 @@ var mMap;
 var markerDict = {};
 var markerCluster;
 var sensorCluster;
+var actionCount = 0;
 
 var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true,
@@ -515,7 +516,6 @@ function addTransparentPolygon(ID, lineColour, coords){
     }
 }
 
-// TODO needs updating with UI
 function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
 	console.log(actionTitle);
@@ -529,6 +529,10 @@ function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, act
 
 function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction) {
 
+	if( (document.getElementsByClassName('badge')[0].parentNode.parentNode).className != "active" ){
+		actionCount += 1;
+		document.getElementsByClassName('badge')[0].innerHTML = actionCount;
+	}
 
 	//Create the main div and Text for item in activity log
 	var div = document.createElement('div');

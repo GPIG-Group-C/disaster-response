@@ -42,6 +42,13 @@ $.fn.sidebar = function(options) {
     $sidebar.open = function(id, $tab) {
         if (typeof $tab === 'undefined')
             $tab = $tabs.find('li > a[href="#' + id + '"]').parent();
+		
+		// if the pane is the action pane then remove the badge
+		if (id == "actions"){
+			document.getElementsByClassName('badge')[0].innerHTML = "";
+		}
+		
+		actionCount = 0;
 
         // hide old active contents
         $container.children('.sidebar-pane.active').removeClass('active');
