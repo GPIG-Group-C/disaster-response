@@ -427,11 +427,11 @@ function interpolateColours(firstCol, secondCol, p){
 function calcPolygonColour(severity){
   var firstCol, secondCol, p;
   if(severity < 5){
-    firstCol = {R:0, G:255, B:0};
-    secondCol = {R:255, G:255, B:0};
+    firstCol = {R:255, G:255, B:0};
+    secondCol = {R:255, G:153, B:0};
     p = severity/5;
   } else {
-    firstCol = {R:255, G:255, B:0};
+    firstCol = {R:255, G:153, B:0};
     secondCol = {R:255, G:0, B:0};
     p = (severity - 5)/5;
   }
