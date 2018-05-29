@@ -538,7 +538,7 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded) {
 	//Create the main div and Text for item in activity log
 	var div = document.createElement('div');
 	div.id = ID;
-	//div.className = 'inner__item' + ' ' + type;
+	div.className = 'inner__item';
 	//div.style = "padding: 5px 1px; width: 240px;";
 	div.innerHTML = formatActionDescrSide(actionTitle, actionJustification, dateAdded);
 	//div.onmouseover = highlightMarker;

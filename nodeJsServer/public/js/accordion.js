@@ -40,7 +40,6 @@ $.fn.accordion = function(options) {
 };
 
 $(document).ready(function(){
-  $('#js-sidebar-1').accordion();
   $('#js-sidebar-2').accordion();
-  $('#js-barebones').accordion();
+  $('#js-sidebar-3').accordion();
 });
