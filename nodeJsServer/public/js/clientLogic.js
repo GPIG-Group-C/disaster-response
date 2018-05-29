@@ -50,10 +50,16 @@ function parseJsonRpc(data)
 			addGasLine(data.params.ID, data.params.coords, data.params.interval, data.params.colour);
 			break;
 
+		case "colourGasLine":
+			console.log("colourGasLine");
+			colourGasLine(data.params.ID, data.params.colour);
+			break;
+
 		case "smartCityAction":
 			console.log("smartCityAction");
-			addSmartCityAction(data.params.ID, data.params.actionTitle, data.params.actionJustification, data.params.dateAdded, data.params.action);
+			addSmartCityAction(data.params.ID, data.params.actionTitle, data.params.actionJustification, data.params.dateAdded, data.params.action, data.params.revertAction);
 			break;
+
 	}
 }
 
