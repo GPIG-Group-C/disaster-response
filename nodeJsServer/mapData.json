@@ -116,26 +116,6 @@
     {
         "method": "addMarker",
         "params": {
-            "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Fire spreading from first floor upwards. Residents trapped on upper floors",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 2
-                }
-            },
-            "lat": 37.7547012,
-            "lng": -122.4320698,
-            "title": "Fire",
-            "type": "fire"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
             "ID": "9d4377d1-2ed7-483a-8fb1-c822bdfe1c53",
             "desc": {
                 "dateAdded": 1527506462506,
@@ -151,26 +131,6 @@
             "lng": -122.4246883,
             "title": "Collapsed Buidling",
             "type": "collapse"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Gas leak detected from valve",
-                    "medicNeeded": false,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 1
-                }
-            },
-            "lat": 37.7595871,
-            "lng": -122.4468756,
-            "title": "Gas Leak",
-            "type": "gas"
         }
     },
     {
@@ -1196,15 +1156,97 @@
         "params": {
             "ID": "1",
             "dateAdded": 1527506462506,
-            "actionTitle" : "Turned off gas valve",
-            "actionJustification": "Gas leak detected",
+            "actionTitle" : "Turned off gas in area (37.7547, -122.4321)",
+            "actionJustification": "Fire detected in nearby building",
             "action" :
             [
+                {
+                    "method": "addMarker",
+                    "params": {
+                        "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
+                        "desc": {
+                            "dateAdded": 1527506462506,
+                            "incident": {
+                                "info": "Fire contained on first floor. Residents trapped on roof.",
+                                "medicNeeded": true,
+                                "peopleDanger": false,
+                                "reportBy": "Smart City",
+                                "status": 1
+                            }
+                        },
+                        "lat": 37.7547012,
+                        "lng": -122.4320698,
+                        "title": "Fire",
+                        "type": "fire"
+                    }
+                },
                 {
                     "method": "colourGasLine",
                     "params": {
                         "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
                         "colour": "#FF0000"
+                    }
+                }
+            ],
+            "revertAction":
+            [
+                {
+                    "method": "addMarker",
+                    "params": {
+                        "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
+                        "desc": {
+                            "dateAdded": 1527506462506,
+                            "incident": {
+                                "info": "Fire spreading from first floor upwards. Residents trapped on upper floors",
+                                "medicNeeded": true,
+                                "peopleDanger": true,
+                                "reportBy": "Smart City",
+                                "status": 2
+                            }
+                        },
+                        "lat": 37.7547012,
+                        "lng": -122.4320698,
+                        "title": "Fire",
+                        "type": "fire"
+                    }
+                },
+                {
+                    "method": "colourGasLine",
+                    "params": {
+                        "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
+                        "colour": "#009900"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "method": "smartCityAction",
+        "params": {
+            "ID": "2",
+            "dateAdded": 1527506462506,
+            "actionTitle" : "Turned off gas in area (37.7596, -122.4469)",
+            "actionJustification": "Leak detected",
+            "action" :
+            [
+                {
+                    "method": "addMarker",
+                    "params": {
+                        "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
+                        "desc": {
+                            "dateAdded": 1527506462506,
+                            "incident": {
+                                "info": "Gas leak detected from valve",
+                                "medicNeeded": false,
+                                "peopleDanger": false,
+                                "reportBy": "Smart City",
+                                "status": 0
+                            }
+                        },
+                        "lat": 37.7595871,
+                        "lng": -122.4468756,
+                        "title": "Gas Leak",
+                        "type": "gas"
                     }
                 },
                 {
@@ -1213,7 +1255,49 @@
                         "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
                         "colour": "#FF0000"
                     }
+                }
+            ],
+            "revertAction":
+            [
+                {
+                    "method": "addMarker",
+                    "params": {
+                        "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
+                        "desc": {
+                            "dateAdded": 1527506462506,
+                            "incident": {
+                                "info": "Gas leak detected from valve",
+                                "medicNeeded": false,
+                                "peopleDanger": true,
+                                "reportBy": "Smart City",
+                                "status": 1
+                            }
+                        },
+                        "lat": 37.7595871,
+                        "lng": -122.4468756,
+                        "title": "Gas Leak",
+                        "type": "gas"
+                    }
                 },
+                {
+                    "method": "colourGasLine",
+                    "params": {
+                        "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
+                        "colour": "#009900"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "method": "smartCityAction",
+        "params": {
+            "ID": "3",
+            "dateAdded": 1527506462506,
+            "actionTitle" : "Turned off gas in area (37.7765, -122.4177)",
+            "actionJustification": "N/A",
+            "action" :
+            [
                 {
                     "method": "colourGasLine",
                     "params": {
@@ -1224,20 +1308,6 @@
             ],
             "revertAction":
             [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
-                        "colour": "#009900"
-                    }
-                },
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-                        "colour": "#009900"
-                    }
-                },
                 {
                     "method": "colourGasLine",
                     "params": {

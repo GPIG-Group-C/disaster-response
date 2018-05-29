@@ -518,16 +518,11 @@ function addTransparentPolygon(ID, lineColour, coords){
 // TODO needs updating with UI
 function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
-	console.log(revertAction)
+	console.log(actionTitle);
 	addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction);
-	alert("New action: " + actionTitle);
 	for(var i = 0; i < action.length; i++)
 	{
 			smartCityAction = action[i];
-			ID = smartCityAction.ID;
-			// Save the state of the map object here such that it can be reverted
-			// Alternatively we can hard code this as well in the JSON object
-
 			parseJsonRpc(smartCityAction);
 	}
 }
@@ -551,7 +546,7 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 		document.getElementById('js-sidebar-3').appendChild(childArray[i]);
 	}
 
-	
+
 	//Create the revert button for each activity item
 	var revertDiv = document.createElement('button');
 	revertDiv.id = ID + "_btn";
@@ -560,17 +555,15 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 		for(var i = 0; i < revertAction.length; i++)
 		{
 			smartCityAction = revertAction[i];
-			ID = smartCityAction.ID;
-			// Save the state of the map object here such that it can be reverted
-			// Alternatively we can hard code this as well in the JSON object
-
 			parseJsonRpc(smartCityAction);
+			// Submit reversal action to app:
+			socket.emit("broadcastData", smartCityAction);
 		}
 	});
 	revertDiv.innerHTML = "Revert response";
 	revertDiv.style = "float: right; padding: 0px 3px;";
 	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
-	
+
 }
 
 function formatActionDescrSide(actionTitle, actionJustification, dateAdded){
@@ -679,7 +672,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 		for (var i =0;i<childArray.length;i++) {
 			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 		}
-		
+
 	}
 }
 
