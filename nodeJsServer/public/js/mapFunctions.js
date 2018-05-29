@@ -556,10 +556,18 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 	revertDiv.id = ID + "_btn";
 	revertDiv.type = "button"
 	revertDiv.addEventListener('click', function(){
+		
+		// Remove revert button
+		document.getElementById(ID).childNodes[1].removeChild(revertDiv);
+		
+		// Add "reverted" to title
+		div.children[0].innerHTML = "Reverted: " + div.children[0].innerHTML;
+		
 		for(var i = 0; i < revertAction.length; i++)
 		{
 			smartCityAction = revertAction[i];
-			parseJsonRpc(smartCityAction);
+			parseJsonRpc(smartCityAction);	
+			
 			// Submit reversal action to app:
 			socket.emit("broadcastData", smartCityAction);
 		}
