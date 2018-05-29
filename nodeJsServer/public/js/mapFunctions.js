@@ -519,16 +519,64 @@ function addTransparentPolygon(ID, lineColour, coords){
 // TODO needs updating with UI
 function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action)
 {
-		alert("New action: " + actionTitle);
-		for(var i = 0; i < action.length; i++)
-		{
-				smartCityAction = action[i];
-				ID = smartCityAction.ID;
-				// Save the state of the map object here such that it can be reverted
-				// Alternatively we can hard code this as well in the JSON object
+	addActionItem(ID, actionTitle, actionJustification);
+	alert("New action: " + actionTitle);
+	for(var i = 0; i < action.length; i++)
+	{
+			smartCityAction = action[i];
+			ID = smartCityAction.ID;
+			// Save the state of the map object here such that it can be reverted
+			// Alternatively we can hard code this as well in the JSON object
 
-				parseJsonRpc(smartCityAction);
-		}
+			parseJsonRpc(smartCityAction);
+	}
+}
+
+function addActionItem(ID, actionTitle, actionJustification, dateAdded) {
+
+
+	//Create the main div and Text for item in activity log
+	var div = document.createElement('div');
+	div.id = ID;
+	//div.className = 'inner__item' + ' ' + type;
+	//div.style = "padding: 5px 1px; width: 240px;";
+	div.innerHTML = formatActionDescrSide(actionTitle, actionJustification, dateAdded);
+	//div.onmouseover = highlightMarker;
+	//div.onmouseout = stopHighlight;
+
+	//insert new item into array of children and re-append
+	var childArray = Array.from(document.getElementById('js-sidebar-3').children);
+	childArray.splice(1,0,div);
+	for (var i =0;i<childArray.length;i++) {
+		document.getElementById('js-sidebar-3').appendChild(childArray[i]);
+	}
+
+	
+	//if ( type == "gas" || type == "electricity" || type == "water" ){
+		//Create the revert button for each activity item
+		//var revertDiv = document.createElement('button');
+		//revertDiv.id = ID + "_btn";
+		//revertDiv.type = "button"
+		//revertDiv.onclick = revertActivityItem;
+		//revertDiv.innerHTML = "Revert response";
+		//revertDiv.style = "float: right; padding: 0px 3px;";
+		//document.getElementById(ID).childNodes[1].appendChild(revertDiv);
+	//}
+	
+}
+
+function formatActionDescrSide(actionTitle, actionJustification, dateAdded){
+
+	var h = '<div class="inner__title">'+actionTitle+'</div>';
+
+	var contentString = '<div class="inner__content">' + '<b>ACTION INFO</b> <br/>' +
+  	"<strong> Justification: </strong>" + actionJustification + '<br/>'
+
+	var f = '</div>';
+
+    contentString = h + contentString + f;
+
+  return contentString;
 }
 
 function hideLayer(type){
@@ -624,16 +672,17 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 		}
 
-		if ( type == "gas" || type == "electricity" || type == "water" ){
+		
+		//if ( type == "gas" || type == "electricity" || type == "water" ){
 			//Create the revert button for each activity item
-			var revertDiv = document.createElement('button');
-			revertDiv.id = ID + "_btn";
-			revertDiv.type = "button"
-			revertDiv.onclick = revertActivityItem;
-			revertDiv.innerHTML = "Revert response";
-			revertDiv.style = "float: right; padding: 0px 3px;";
-			document.getElementById(ID).childNodes[1].appendChild(revertDiv);
-		}
+			//var revertDiv = document.createElement('button');
+			//revertDiv.id = ID + "_btn";
+			//revertDiv.type = "button"
+			//revertDiv.onclick = revertActivityItem;
+			//revertDiv.innerHTML = "Revert response";
+			//revertDiv.style = "float: right; padding: 0px 3px;";
+			//document.getElementById(ID).childNodes[1].appendChild(revertDiv);
+		//}
 	}
 }
 
