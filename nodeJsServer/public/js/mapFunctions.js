@@ -170,7 +170,7 @@ function formatIncidentDescr(type, descr){
       {
           var contentString = '<b>INCIDENT INFO</b> <br/>'+
               "<strong> Type: </strong>" + type + '<br/>' +
-              "<b> Status: </b> " + descr.incident.status + "<br/>" +
+              "<b> Status: </b> " + descr.incident.info + "<br/>" +
               //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
               "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
               "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
@@ -213,7 +213,7 @@ function formatIncidentDescrSide(type, title, descr){
 
 	var contentString = '<div class="inner__content">' + '<b>INCIDENT INFO</b> <br/>' +
   	"<strong> Type: </strong>" + type + '<br/>' +
-    "<b> Status: </b> " + descr.incident.status + "<br/>";
+    "<b> Status: </b> " + descr.incident.info + "<br/>";
 
 	if(descr.areaInfo != undefined)
 		contentString += "<b> Address: </b> " + descr.areaInfo.address + "<br/>";
