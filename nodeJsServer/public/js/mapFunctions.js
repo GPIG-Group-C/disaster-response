@@ -516,6 +516,21 @@ function addTransparentPolygon(ID, lineColour, coords){
     }
 }
 
+// TODO needs updating with UI
+function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action)
+{
+		alert("New action: " + actionTitle);
+		for(var i = 0; i < action.length; i++)
+		{
+				smartCityAction = action[i];
+				ID = smartCityAction.ID;
+				// Save the state of the map object here such that it can be reverted
+				// Alternatively we can hard code this as well in the JSON object
+
+				parseJsonRpc(smartCityAction);
+		}
+}
+
 function hideLayer(type){
 
 	//Hides markers

@@ -50,6 +50,10 @@ function parseJsonRpc(data)
 			addGasLine(data.params.ID, data.params.coords, data.params.interval, data.params.colour);
 			break;
 
+		case "smartCityAction":
+				console.log("smartCityAction");
+				addSmartCityAction(data.params.ID, data.params.actionTitle, data.params.actionJustification, data.params.dateAdded, data.params.action);
+				break;
 	}
 }
 
@@ -57,7 +61,7 @@ function calcSeverity(marker, lat, lng)
 {
 	if(marker.description == undefined)
 		return;
-	
+
 	var mLatLng = new google.maps.LatLng(lat, lng);
 	var mPoly = undefined;
 	var newSev = 1;
@@ -69,15 +73,15 @@ function calcSeverity(marker, lat, lng)
 		{
 			mPoly = currPoly;
 			console.log("Calculating new sev...");
-			
+
 			// "areaInfo":{"address":"Mission Dolores","numPeople":150,"severity":10,"type":"Residential","year":1776}
 			// "incident":{"info":"Multiple fatalities","medicNeeded":true,"peopleDanger":true,"reportBy":"Smart City","status":0}}
-			
+
 			sev = currPoly.description.areaInfo.severity;
 			medicNeeded = marker.description.incident.medicNeeded;
 			peopleDanger = marker.description.incident.peopleDanger;
 			numPeople = currPoly.description.areaInfo.numPeople;
-			
+
 			if(peopleDanger && medicNeeded)
 				newSev = 10;
 			else if(peopleDanger)
@@ -86,11 +90,11 @@ function calcSeverity(marker, lat, lng)
 				newSev = 6;
 			else
 				newSev = 3;
-			
+
 			break;
 		}
 	}
-	
+
 	if(mPoly != undefined)
 	{
 		var nDesc = mPoly.description;
