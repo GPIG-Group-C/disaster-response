@@ -68,7 +68,7 @@ function myMap()
 	};
 
 	mMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
+	markerCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m', gridSize: 15});
 	sensorCluster = new MarkerClusterer(mMap, [], {imagePath: 'media/m'});
 
 	//Adds the initial marker data:
