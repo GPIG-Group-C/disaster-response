@@ -121,6 +121,8 @@ function myMap()
 
 
 function formatAreaDescr(type, descr){
+	
+  var date = new Date(descr.dateAdded);
 
   var contentString = '<b>AREA INFO</b>'+
   	"<img src='" + "'><br/><br/>" + // Add link to area image
@@ -129,7 +131,7 @@ function formatAreaDescr(type, descr){
     "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
     "<b> Area Type: </b> " + descr.areaInfo.type + "<br/>" +
     "<b> Area Year: </b> " + descr.areaInfo.year + "<br/>" +
-    "<b> Updated: </b> " + descr.dateAdded  + "<br/>";
+    "<b> Updated: </b> " + date.toUTCString()  + "<br/>";
 
     if (descr.utilities != null) {
     //gasImg = descr.utilities.gas == 0 ?  : ;
@@ -160,7 +162,9 @@ function formatIncidentDescr(type, descr){
 
       if(descr == undefined)
           return '<b>N/A</b>'
-
+	  
+	  var date = new Date(descr.dateAdded); 
+	  
       var contentString = "";
       if(descr.incident != undefined)
       {
@@ -169,7 +173,7 @@ function formatIncidentDescr(type, descr){
               "<b> Status: </b> " + descr.incident.status + "<br/>" +
               //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
               "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-              "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+              "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
               //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
               //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
               "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
@@ -214,8 +218,10 @@ function formatIncidentDescrSide(type, title, descr){
 	if(descr.areaInfo != undefined)
 		contentString += "<b> Address: </b> " + descr.areaInfo.address + "<br/>";
 
+	var date = new Date(descr.dateAdded);
+	
 	contentString += "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-    "<b> Reported at: </b> " + descr.dateAdded + "<br/>" +
+    "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
     "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
@@ -582,7 +588,10 @@ function formatActionDescrSide(actionTitle, actionJustification, dateAdded){
 
 	var h = '<div class="inner__title">'+actionTitle+'</div>';
 
+	var date = new Date(dateAdded);
+	
 	var contentString = '<div class="inner__content">' + '<b>ACTION INFO</b> <br/>' +
+	"<strong> Time: </strong>" + date.toUTCString() + '<br/>' +
   	"<strong> Justification: </strong>" + actionJustification + '<br/>'
 
 	var f = '</div>';
