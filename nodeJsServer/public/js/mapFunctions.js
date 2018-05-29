@@ -560,6 +560,9 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 		// Remove revert button
 		document.getElementById(ID).childNodes[1].removeChild(revertDiv);
 		
+		// Add "reverted" to title
+		div.children[0].innerHTML = "Reverted: " + div.children[0].innerHTML;
+		
 		for(var i = 0; i < revertAction.length; i++)
 		{
 			smartCityAction = revertAction[i];
