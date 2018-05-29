@@ -479,7 +479,7 @@ function addPolygon(ID, coords, descr){
         strokeOpacity: 0,
         strokeWeight: 0,
         fillColor: calcPolygonColour(descr.areaInfo.severity),
-        fillOpacity: 0.4,
+        fillOpacity: 0.22,
 		description: descr
 	});
 
