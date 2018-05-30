@@ -1,4 +1,14 @@
 [
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "d1d0bb8f-baa3-4c9d-bf2a-b3b3d679d652",
+            "lat": 37.7367836,
+            "lng": -122.4359322,
+            "title": "Earthquake Epicenter",
+            "type": "earthquake"
+        }
+    },
     {
         "method": "addPolygon",
         "params": {
@@ -55,6 +65,46 @@
             }
         }
     },
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "e4d56d83-1893-4cde-88e6-a0ce37f2c94f",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "N/A",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 0
+                }
+            },
+            "lat": 37.751851,
+            "lng": -122.4256325,
+            "title": "Electricity Fault",
+            "type": "electricity"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "5b7b21fb-f566-4d05-b78b-79bba76ed5f6",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "N/A",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 0
+                }
+            },
+            "lat": 37.7682722,
+            "lng": -122.442627,
+            "title": "Electricity Fault",
+            "type": "electricity"
+        }
+    },
     {
         "method": "addPolygon",
         "params": {
@@ -101,206 +151,6 @@
                     "water": true
                 }
             }
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "d1d0bb8f-baa3-4c9d-bf2a-b3b3d679d652",
-            "lat": 37.7367836,
-            "lng": -122.4359322,
-            "title": "Earthquake Epicenter",
-            "type": "earthquake"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "9d4377d1-2ed7-483a-8fb1-c822bdfe1c53",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Multiple fatalities",
-                    "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 0
-                }
-            },
-            "lat": 37.7616906,
-            "lng": -122.4246883,
-            "title": "Collapsed Buidling",
-            "type": "collapse"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "e4d56d83-1893-4cde-88e6-a0ce37f2c94f",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "N/A",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "Smart City",
-                    "status": 0
-                }
-            },
-            "lat": 37.751851,
-            "lng": -122.4256325,
-            "title": "Electricity Fault",
-            "type": "electricity"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "5b7b21fb-f566-4d05-b78b-79bba76ed5f6",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "N/A",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "Smart City",
-                    "status": 0
-                }
-            },
-            "lat": 37.7682722,
-            "lng": -122.442627,
-            "title": "Electricity Fault",
-            "type": "electricity"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "fdde6623-e81c-4c4a-867f-d86c3ef76910",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Minor injuries",
-                    "medicNeeded": true,
-                    "peopleDanger": false,
-                    "reportBy": "Smart City",
-                    "status": 0
-                }
-            },
-            "lat": 37.7638619,
-            "lng": -122.4509525,
-            "title": "Collapsed Building",
-            "type": "collapse"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "16d92430-5d1a-4419-9fb7-333ade1748b3",
-            "lat": 37.7560585,
-            "lng": -122.4490643,
-            "title": "Medic Camp 1",
-            "type": "medic"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "a3e4ecb0-5c4b-46e1-bd73-5e3c7fac0a54",
-            "lat": 37.7658296,
-            "lng": -122.4531841,
-            "title": "Medic Camp 2",
-            "type": "medic"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "f588c798-f193-49f1-9d27-96344925a47d",
-            "lat": 37.7601978,
-            "lng": -122.419281,
-            "title": "Medic Camp 3",
-            "type": "medic"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "8999f57f-a989-4dc3-a325-e6df8e8d4d6d",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Road is completely blocked by fallen debris",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "First Responder",
-                    "status": 0
-                }
-            },
-            "lat": 37.7585056,
-            "lng": -122.4259033,
-            "title": "Blocked road",
-            "type": "blocked"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "a5fb28f6-4173-413e-8ea8-27cb3cba7a49",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Fallen tree blocking road",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "First Responder",
-                    "status": 0
-                }
-            },
-            "lat": 37.7656261,
-            "lng": -122.4264908,
-            "title": "Blocked Road",
-            "type": "blocked"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "62062311-4d1a-40d4-b7a6-9c4655aabe26",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Abandoned vehicle",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "First Responder",
-                    "status": 0
-                }
-            },
-            "lat": 37.7553809,
-            "lng": -122.4414991,
-            "title": "Blocked road",
-            "type": "blocked"
-        }
-    },
-    {
-        "method": "addMarker",
-        "params": {
-            "ID": "062d51fc-85e1-41f3-8ab3-382e27d610e8",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Burst pipes",
-                    "medicNeeded": false,
-                    "peopleDanger": false,
-                    "reportBy": "Smart City",
-                    "status": 0
-                }
-            },
-            "lat": 37.753819,
-            "lng": -122.4576473,
-            "title": "Water Leak",
-            "type": "water"
         }
     },
     {
@@ -441,6 +291,26 @@
                     "water": true
                 }
             }
+        }
+    },
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "062d51fc-85e1-41f3-8ab3-382e27d610e8",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Burst pipes",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 0
+                }
+            },
+            "lat": 37.753819,
+            "lng": -122.4576473,
+            "title": "Water Leak",
+            "type": "water"
         }
     },
     {
@@ -619,6 +489,26 @@
             }
         }
     },
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "62062311-4d1a-40d4-b7a6-9c4655aabe26",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Abandoned vehicle",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
+                    "status": 0
+                }
+            },
+            "lat": 37.7553809,
+            "lng": -122.4414991,
+            "title": "Blocked road",
+            "type": "blocked"
+        }
+    },
     {
         "method": "addPolygon",
         "params": {
@@ -671,6 +561,26 @@
             }
         }
     },
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "a5fb28f6-4173-413e-8ea8-27cb3cba7a49",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Fallen tree blocking road",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
+                    "status": 0
+                }
+            },
+            "lat": 37.7656261,
+            "lng": -122.4264908,
+            "title": "Blocked Road",
+            "type": "blocked"
+        }
+    }
     {
         "method": "addPolygon",
         "params": {
@@ -1015,6 +925,16 @@
             }
         }
     },
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "16d92430-5d1a-4419-9fb7-333ade1748b3",
+            "lat": 37.7560585,
+            "lng": -122.4490643,
+            "title": "Medic Camp 1",
+            "type": "medic"
+        }
+    },
     {
         "method": "addPolygon",
         "params": {
@@ -1151,151 +1071,84 @@
             }
         }
     },
-	{
+    {
         "method": "addMarker",
         "params": {
-            "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
+            "ID": "9d4377d1-2ed7-483a-8fb1-c822bdfe1c53",
             "desc": {
                 "dateAdded": 1527506462506,
                 "incident": {
-                    "info": "Fire spreading from first floor upwards. Residents trapped on upper floors",
+                    "info": "Multiple fatalities",
                     "medicNeeded": true,
-                    "peopleDanger": true,
-                    "reportBy": "Smart City",
-                    "status": 2
-                }
-            },
-            "lat": 37.7547012,
-            "lng": -122.4320698,
-            "title": "Fire",
-            "type": "fire"
-        }
-    },
-	{
-        "method": "addMarker",
-        "params": {
-            "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
-            "desc": {
-                "dateAdded": 1527506462506,
-                "incident": {
-                    "info": "Gas leak detected from valve",
-                    "medicNeeded": false,
                     "peopleDanger": true,
                     "reportBy": "Smart City",
                     "status": 0
                 }
             },
-            "lat": 37.7595871,
-            "lng": -122.4468756,
-            "title": "Gas Leak",
-            "type": "gas"
+            "lat": 37.7616906,
+            "lng": -122.4246883,
+            "title": "Collapsed Building",
+            "type": "collapse"
         }
     },
     {
-        "method": "smartCityAction",
+        "method": "addMarker",
         "params": {
-            "ID": "1",
-            "dateAdded": 1527506462506,
-            "actionTitle" : "Turned off gas in area (37.7547, -122.4321)",
-            "actionJustification": "Fire detected in nearby building",
-            "action" :
-            [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
-                        "colour": "#FF0000"
-                    }
+            "ID": "fdde6623-e81c-4c4a-867f-d86c3ef76910",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Minor injuries",
+                    "medicNeeded": true,
+                    "peopleDanger": false,
+                    "reportBy": "Smart City",
+                    "status": 0
                 }
-            ],
-            "revertAction":
-            [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
-                        "colour": "#009900"
-                    }
-                }
-            ]
+            },
+            "lat": 37.7638619,
+            "lng": -122.4509525,
+            "title": "Collapsed Building",
+            "type": "collapse"
         }
     },
     {
-        "method": "smartCityAction",
+        "method": "addMarker",
         "params": {
-            "ID": "2",
-            "dateAdded": 1527506462506,
-            "actionTitle" : "Turned off gas in area (37.7596, -122.4469)",
-            "actionJustification": "Leak detected",
-            "action" :
-            [
-                {
-                    "method": "addMarker",
-                    "params": {
-                        "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
-                        "desc": {
-                            "dateAdded": 1527506462506,
-                            "incident": {
-                                "info": "Gas leak detected from valve",
-                                "medicNeeded": false,
-                                "peopleDanger": false,
-                                "reportBy": "Smart City",
-                                "status": 0
-                            }
-                        },
-                        "lat": 37.7595871,
-                        "lng": -122.4468756,
-                        "title": "Gas Leak",
-                        "type": "gas"
-                    }
-                },
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-                        "colour": "#FF0000"
-                    }
-                }
-            ],
-            "revertAction":
-            [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-                        "colour": "#009900"
-                    }
-                }
-            ]
+            "ID": "a3e4ecb0-5c4b-46e1-bd73-5e3c7fac0a54",
+            "lat": 37.7658296,
+            "lng": -122.4531841,
+            "title": "Medic Camp 2",
+            "type": "medic"
         }
     },
     {
-        "method": "smartCityAction",
+        "method": "addMarker",
         "params": {
-            "ID": "3",
-            "dateAdded": 1527506462506,
-            "actionTitle" : "Turned off gas in area (37.7765, -122.4177)",
-            "actionJustification": "N/A",
-            "action" :
-            [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
-                        "colour": "#FF0000"
-                    }
+            "ID": "f588c798-f193-49f1-9d27-96344925a47d",
+            "lat": 37.7601978,
+            "lng": -122.419281,
+            "title": "Medic Camp 3",
+            "type": "medic"
+        }
+    },
+    {
+        "method": "addMarker",
+        "params": {
+            "ID": "8999f57f-a989-4dc3-a325-e6df8e8d4d6d",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Road is completely blocked by fallen debris",
+                    "medicNeeded": false,
+                    "peopleDanger": false,
+                    "reportBy": "First Responder",
+                    "status": 0
                 }
-            ],
-            "revertAction":
-            [
-                {
-                    "method": "colourGasLine",
-                    "params": {
-                        "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
-                        "colour": "#009900"
-                    }
-                }
-            ]
+            },
+            "lat": 37.7585056,
+            "lng": -122.4259033,
+            "title": "Blocked road",
+            "type": "blocked"
         }
     }
 ]

@@ -1,0 +1,71 @@
+[
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Gas leak detected from valve",
+                    "medicNeeded": false,
+                    "peopleDanger": true,
+                    "reportBy": "Smart City",
+                    "status": 0
+                }
+            },
+            "lat": 37.7595871,
+            "lng": -122.4468756,
+            "title": "Gas Leak",
+            "type": "gas"
+        }
+    },
+	{
+		"method": "smartCityAction",
+		"params":{
+			"ID": "2",
+			"dateAdded": 1527506462506,
+			"actionTitle" : "Turned off gas in area (37.7596, -122.4469)",
+			"actionJustification": "Leak detected",
+			"action" :
+			[
+				{
+					"method": "addMarker",
+					"params": {
+						"ID": "1d5483a0-0b51-44ce-a2bb-0cf1cef393d2",
+						"desc": {
+							"dateAdded": 1527506462506,
+							"incident": {
+								"info": "Gas leak detected from valve",
+								"medicNeeded": false,
+								"peopleDanger": false,
+								"reportBy": "Smart City",
+								"status": 0
+							}
+						},
+						"lat": 37.7595871,
+						"lng": -122.4468756,
+						"title": "Gas Leak",
+						"type": "gas"
+					}
+				},
+				{
+					"method": "colourGasLine",
+					"params": {
+						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
+						"colour": "#FF0000"
+					}
+				}
+			],
+			"revertAction":
+			[
+				{
+					"method": "colourGasLine",
+					"params": {
+						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
+						"colour": "#009900"
+					}
+				}
+			]
+		}
+	}
+]

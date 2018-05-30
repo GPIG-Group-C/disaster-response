@@ -1,0 +1,51 @@
+[
+	{
+        "method": "addMarker",
+        "params": {
+            "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
+            "desc": {
+                "dateAdded": 1527506462506,
+                "incident": {
+                    "info": "Fire spreading from first floor upwards. Residents trapped on upper floors",
+                    "medicNeeded": true,
+                    "peopleDanger": true,
+                    "reportBy": "Smart City",
+                    "status": 2
+                }
+            },
+            "lat": 37.7547012,
+            "lng": -122.4320698,
+            "title": "Fire",
+            "type": "fire"
+        }
+    },
+	{
+		"method": "smartCityAction",
+		"params": {
+			"ID": "1",
+			"dateAdded": 1527506462506,
+			"actionTitle" : "Turned off gas in area (37.7547, -122.4321)",
+			"actionJustification": "Fire detected in nearby building",
+			"action" :
+			[
+				{
+					"method": "colourGasLine",
+					"params": {
+						"ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
+						"colour": "#FF0000"
+					}
+				}
+			],
+			"revertAction":
+			[
+				{
+					"method": "colourGasLine",
+					"params": {
+						"ID": "bd983529-57b8-44f7-ad1e-c60413238acc",
+						"colour": "#009900"
+					}
+				}
+			]
+		}
+	}
+]

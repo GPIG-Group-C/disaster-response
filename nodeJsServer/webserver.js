@@ -2,7 +2,13 @@ var http = require('http').createServer(handler); //require http server, and cre
 var io = require('socket.io')(http) // require socket.io module and pass the http object (server)
 var fs = require('fs'); //require filesystem module
 var path = require('path'); // Get file extensions
+
 var json_data = JSON.parse(fs.readFileSync(__dirname + '/mapData.json', 'utf8'));
+var smart_1 = JSON.parse(fs.readFileSync(__dirname + '/smartAction_1.json', 'utf8'));
+var smart_2 = JSON.parse(fs.readFileSync(__dirname + '/smartAction_2.json', 'utf8'));
+var smart_3 = JSON.parse(fs.readFileSync(__dirname + '/smartAction_3.json', 'utf8'));
+
+console.log("JSON Length: " + json_data.length);
 
 http.listen(5000); //listen to port 5000
 
@@ -66,6 +72,8 @@ var connectCounter = 0;
 io.sockets.on('connect', function() { connectCounter++; console.log("Clients: " + connectCounter); });
 io.sockets.on('disconnect', function() { connectCounter--; console.log("Clients: " + connectCounter); });
 
+var jsonIndex = 0;
+
 // WebSocket broadcast data to all clients:
 io.sockets.on('connection', function (socket) {
 	
@@ -77,6 +85,29 @@ io.sockets.on('connection', function (socket) {
 			case "sendAll":
 				console.log("sendAll");
 				socket.broadcast.emit('notification', json_data);
+				socket.broadcast.emit('notification', smart_1);
+				socket.broadcast.emit('notification', smart_2);
+				socket.broadcast.emit('notification', smart_3);
+				break;
+			case "sendData":
+				console.log("sendData");
+				socket.broadcast.emit('notification', json_data.slice(data.start, data.end));
+				jsonIndex += 5;
+				break;
+			case "smartEvent":
+				console.log("smartEvent");
+				switch(data.eventNum)
+				{
+					case 1:
+						socket.broadcast.emit('notification', smart_1);
+						break;
+					case 2:
+						socket.broadcast.emit('notification', smart_2);
+						break;
+					case 3:
+						socket.broadcast.emit('notification', smart_3);
+						break;
+				}	
 				break;
 		}
 	});

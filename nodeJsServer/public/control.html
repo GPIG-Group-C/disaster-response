@@ -35,6 +35,51 @@
 			  document.getElementById("status").innerHTML = "Disconnected";
 			});
 			
+			function startEarthquake()
+			{
+				document.getElementById("startQuake").disabled = true;
+			
+				var textArea = document.getElementById("data");
+				textArea.innerHTML += "Starting earthquake...\n";
+				socket.emit("event", {"method":"sendData", "start": 0, "end": 4});
+			
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 5, "end": 10});
+				}, 2000);
+				
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 7, "end": 16});
+				}, 2500);
+				
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 17, "end": 20});
+				}, 4500);
+				
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 21, "end": 24});
+				}, 5400);
+				
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 25, "end": 28});
+				}, 6000);
+				
+				window.setTimeout(function(){
+					textArea.innerHTML += "Adding data...\n";
+					socket.emit("event", {"method":"sendData", "start": 29, "end": 32});
+					textArea.innerHTML += "Done...\n";
+				}, 6600);
+			}
+			
+			function smartEvent(eventNum)
+			{
+				socket.emit("event", {"method":"smartEvent", "eventNum": eventNum});
+			}
+						
 			function sendAllData()
 			{
 				socket.emit("event", {"method":"sendAll"});
@@ -49,7 +94,11 @@
 		
 		<p><b>Data sent log: </b></p>
 		<textarea id = "data" rows="4" cols="50" readonly></textarea><br><br>
+		<button type="button" onclick="sendAllData()" disabled>Send ALL data</button><br>
+		<button id = "startQuake" type="button" onclick="startEarthquake()">Start Earthquake and timers</button><br>
+		<button type="button" onclick="smartEvent(1)">Send fire event</button><br>
+		<button type="button" onclick="smartEvent(2)">Send gas event</button><br>
+		<button type="button" onclick="smartEvent(3)">Send reverted event</button><br>
 		
-		<button type="button" onclick="sendAllData()">Send all data</button>
 	</body>
 </html>
