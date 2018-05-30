@@ -1,5 +1,25 @@
 var socket = io(); //load client & connect to the host
 
+socket.on('connect',() => {
+  console.log("\t\n*** Connected to server ***\n");
+});
+
+socket.on('error', () => {
+  console.log("\t\n*** Socket.io error ***\n");
+});
+
+socket.on('reconnecting',() => {
+  console.log("\t\n*** Attempting reconnect ***\n");
+});
+
+socket.on('reconnect',() => {
+  console.log("\t\n*** Server reconnected ***\n");
+});
+
+socket.on('disconnect',() => {
+  console.log("\t\n*** Server disconnect ***\n");
+});
+
 // Server notification:
 socket.on('notification', function (data) {
 

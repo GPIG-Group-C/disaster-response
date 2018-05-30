@@ -62,6 +62,10 @@ function handler (request, response)
 	}
 }
 
+var connectCounter = 0;
+io.sockets.on('connect', function() { connectCounter++; console.log("Clients: " + connectCounter); });
+io.sockets.on('disconnect', function() { connectCounter--; console.log("Clients: " + connectCounter); });
+
 // WebSocket broadcast data to all clients:
 io.sockets.on('connection', function (socket) {
 	
@@ -82,4 +86,5 @@ io.sockets.on('connection', function (socket) {
 		console.log(data);
 		socket.broadcast.emit('notification', data); 
     });
+
 });

@@ -10,16 +10,46 @@
 		<!-- Socket.io required for websockets -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 		
-	</head>
-	
-	<body>
 		<script>
 			var socket = io();
+			
+			// Connection events:
+			socket.on('connect',() => {
+			  console.log("\t\n*** Connected to server ***\n");
+			  document.getElementById("status").innerHTML = "Connected";
+			});
+			socket.on('error', () => {
+			  console.log("\t\n*** Socket.io error ***\n");
+			  document.getElementById("status").innerHTML = "Error";
+			});
+			socket.on('reconnecting',() => {
+			  console.log("\t\n*** Attempting reconnect ***\n");
+			  document.getElementById("status").innerHTML = "Reconnecting";
+			});
+			socket.on('reconnect',() => {
+			  console.log("\t\n*** Server reconnected ***\n");
+			  document.getElementById("status").innerHTML = "Reconnected";
+			});
+			socket.on('disconnect',() => {
+			  console.log("\t\n*** Server disconnect ***\n");
+			  document.getElementById("status").innerHTML = "Disconnected";
+			});
+			
 			function sendAllData()
 			{
 				socket.emit("event", {"method":"sendAll"});
+				document.getElementById("data").innerHTML += "Sending all data\n";
 			}
 		</script>
+	</head>
+	
+	<body>
+		<p><b>Server connection status: </b></p>
+		<p id = "status">N/A</p><br>
+		
+		<p><b>Data sent log: </b></p>
+		<textarea id = "data" rows="4" cols="50" readonly></textarea><br><br>
+		
 		<button type="button" onclick="sendAllData()">Send all data</button>
 	</body>
 </html>
