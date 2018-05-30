@@ -77,6 +77,15 @@ function myMap()
 		parseJsonRpc(initialMapData[i]);
 	}
 	
+  addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},	
+																					incident:{	
+																							status: 0,	
+																							reportBy: "",	
+																							info: "",	
+																							peopleDanger: 0,	
+																							medicNeeded:1	
+																							}});
+  
 	//turns off sensors initially
 	toggleLayer('sensor');
 }
@@ -299,6 +308,7 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	}
 
 	if (descr !=  null) {
+        descr.dateAdded = new Date().getTime();
 		var cont = formatIncidentDescr(type, descr);
 		var infoWindow = new google.maps.InfoWindow({
 			content: cont
