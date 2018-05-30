@@ -1,5 +1,53 @@
 [
 	{
+        "method": "addPolygon",
+        "params": {
+            "ID": "30ec8228-e905-421a-9442-be2a16a0bcdd",
+            "coords": [
+                {
+                    "lat": 37.7530046,
+                    "lng": -122.4340011
+                },
+                {
+                    "lat": 37.7530555,
+                    "lng": -122.4319625
+                },
+                {
+                    "lat": 37.75331,
+                    "lng": -122.4297952
+                },
+                {
+                    "lat": 37.7566353,
+                    "lng": -122.4301385
+                },
+                {
+                    "lat": 37.7562621,
+                    "lng": -122.4343445
+                },
+                {
+                    "lat": 37.7530046,
+                    "lng": -122.4340011
+                }
+            ],
+            "desc": {
+                "areaInfo": {
+                    "address": "Noe st",
+                    "numPeople": 120,
+                    "severity": 6,
+                    "type": "Residential",
+                    "year": 1995
+                },
+                "dateAdded": 1527506462506,
+                "utilities": {
+                    "electricity": true,
+                    "gas": false,
+                    "sewage": true,
+                    "water": true
+                }
+            }
+        }
+    },
+	{
         "method": "addMarker",
         "params": {
             "ID": "c60eb8ba-4b49-4cd6-a5df-ba304a37587b",
