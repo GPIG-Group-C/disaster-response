@@ -139,7 +139,7 @@
                 "areaInfo": {
                     "address": "Noe st",
                     "numPeople": 120,
-                    "severity": 10,
+                    "severity": 8,
                     "type": "Residential",
                     "year": 1995
                 },
@@ -580,7 +580,7 @@
             "title": "Blocked Road",
             "type": "blocked"
         }
-    }
+    },
     {
         "method": "addPolygon",
         "params": {
