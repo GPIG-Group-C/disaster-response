@@ -176,26 +176,28 @@ function formatAreaDescr(type, descr){
     "<b> Area Year: </b> " + descr.areaInfo.year + "<br/>" +
     "<b> Updated: </b> " + date.toUTCString()  + "<br/>";
 
-    if (descr.utilities != null) {
-    //gasImg = descr.utilities.gas == 0 ?  : ;
-    //sewImg = descr.utilities.sewage == 0 ?  : ;
-    //watImg = descr.utilities.water == 0 ?  : ;
-    //elecImg = descr.utilities.electricity == 0 ?  : ;
-    var utilString = '<table style="width:100%">' +
-    '<tr>' +
-      '<th colspan="2">Utility Status:</th>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Gas: <img src="' +  + '"></td>' +
-      '<td>Sewage: <img src=' +  + '></td>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Water: <img src=' +  + '></td>' +
-      '<td>Electricity: <img src=' +  + '></td>' +
-    '</tr>' +
-    '</table>';
+    if (descr.utilities != null)
+	{
+		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		sewImg = descr.utilities.sewage == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		watImg = descr.utilities.water == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		elecImg = descr.utilities.electricity == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		
+		var utilString = '<table style="width:100%">' +
+		'<tr>' +
+		  '<th colspan="2"><b>Utility Status:</b></th>' +
+		'</tr>' +
+		'<tr>' +
+		  '<td>Gas: <img src="' + gasImg +'"></td>' +
+		  '<td>Sewage: <img src=' + sewImg + '></td>' +
+		'</tr>' +
+		'<tr>' +
+		  '<td>Water: <img src=' + watImg + '></td>' +
+		  '<td>Electricity: <img src=' + elecImg + '></td>' +
+		'</tr>' +
+		'</table>';
 
-    contentString = contentString + utilString;
+		contentString = contentString + utilString;
 	}
 
   return contentString;
