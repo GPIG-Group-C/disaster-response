@@ -76,7 +76,11 @@ function myMap()
 	{
 		parseJsonRpc(initialMapData[i]);
 	}
-
+	
+	//turns of sensors initially
+	
+	
+	
 	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
 																					incident:{
 																							status: 0,
@@ -116,6 +120,8 @@ function myMap()
                                                                                                                                    }});
 	
 	addCircle("circle", 10, 37.7749, -122.4194, 2);
+	
+	toggleLayer('sensor');
 }
 
 var incidentInfo = {
