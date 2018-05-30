@@ -77,50 +77,7 @@ function myMap()
 		parseJsonRpc(initialMapData[i]);
 	}
 	
-	//turns of sensors initially
-	
-	
-	
-	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},
-																					incident:{
-																							status: 0,
-																							reportBy: "",
-																							info: "",
-																							peopleDanger: 0,
-																							medicNeeded:1
-																							}});
-	
-  addInfoMarker("fire", 'fire', 37.7549, -122.4194, "Fire", {areaInfo: { address: ""},
-																					incident:{
-																							status: 0,
-																							reportBy: "",
-																							info: "",
-																							peopleDanger: 0,
-																							medicNeeded:1
-																							}});
-	addInfoMarker("gas", 'gas', 37.7449, -122.4194, "Gas", {areaInfo: { address: ""},
-																					incident:{
-																							status: 0,
-																							reportBy: "",
-																							info: "",
-																							peopleDanger: 0,
-																							medicNeeded:1
-																							}});
-    addInfoMarker("sensor", 'sensor', 37.7649, -122.4194, "Earthquake!", {areaInfo: { address: ""},
-																					incident:{
-																							status: 0,
-																							reportBy: "",
-																							info: "",
-																							peopleDanger: 0,
-																							medicNeeded:1
-																							}});
-
-	addPolygon("polygon", [{lat: 37.747363, lng:-122.459314}, {lat: 37.751939, lng:-122.457014}, {lat: 37.746835, lng:-122.453526}], {areaInfo:{
-                                                                                                                                     severity:5
-                                                                                                                                   }});
-	
-	addCircle("circle", 10, 37.7749, -122.4194, 2);
-	
+	//turns off sensors initially
 	toggleLayer('sensor');
 }
 
@@ -569,7 +526,6 @@ function addTransparentPolygon(ID, lineColour, coords){
 
 function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
-	console.log(actionTitle);
 	addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction);
 	for(var i = 0; i < action.length; i++)
 	{
