@@ -3,6 +3,7 @@ var markerDict = {};
 var markerCluster;
 var sensorCluster;
 var actionCount = 0;
+var timeOptions = { timeZoneName:'short' };
 
 var layerVisibility = {
 	'gas': true, 'fire': true, 'blocked': true, 'medic': true,
@@ -140,7 +141,7 @@ function formatAreaDescr(type, descr){
     "<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
     "<b> Area Type: </b> " + descr.areaInfo.type + "<br/>" +
     "<b> Area Year: </b> " + descr.areaInfo.year + "<br/>" +
-    "<b> Updated: </b> " + date.toUTCString()  + "<br/>";
+    "<b> Updated: </b> " + date.toLocaleString('en-GB', timeOptions)  + "<br/>";
 
     if (descr.utilities != null)
 	{
@@ -184,7 +185,7 @@ function formatIncidentDescr(type, descr){
               "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>" +
               //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
               "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-              "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
+              "<b> Reported at: </b> " + date.toLocaleString('en-GB', timeOptions) + "<br/>" +
               //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
               //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
               "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
@@ -232,7 +233,7 @@ function formatIncidentDescrSide(type, title, descr){
 	var date = new Date(descr.dateAdded);
 	
 	contentString += "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-    "<b> Reported at: </b> " + date.toUTCString() + "<br/>" +
+    "<b> Reported at: </b> " + date.toLocaleString('en-GB', timeOptions) + "<br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
     //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
     "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
@@ -612,7 +613,7 @@ function formatActionDescrSide(actionTitle, actionJustification, dateAdded){
 	var date = new Date(dateAdded);
 	
 	var contentString = '<div class="inner__content">' + '<b>ACTION INFO</b> <br/>' +
-	"<strong> Time: </strong>" + date.toUTCString() + '<br/>' +
+	"<strong> Time: </strong>" + date.toLocaleString('en-GB', timeOptions) + '<br/>' +
   	"<strong> Justification: </strong>" + actionJustification + '<br/>'
 
 	var f = '</div>';
