@@ -26,6 +26,8 @@
 			"dateAdded": 1527506462506,
 			"actionTitle" : "Turned off gas in area (37.7596, -122.4469)",
 			"actionJustification": "Leak detected",
+			"lat": 37.7595871,
+			"lng": -122.4468756,
 			"action" :
 			[
 				{

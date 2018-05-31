@@ -539,9 +539,9 @@ function addTransparentPolygon(ID, lineColour, coords){
     }
 }
 
-function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, action, revertAction)
+function addSmartCityAction(ID, lat, lng, actionTitle, actionJustification, dateAdded, action, revertAction)
 {
-	addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction);
+	addActionItem(ID, lat, lng, actionTitle, actionJustification, dateAdded, revertAction);
 	for(var i = 0; i < action.length; i++)
 	{
 			smartCityAction = action[i];
@@ -549,7 +549,7 @@ function addSmartCityAction(ID, actionTitle, actionJustification, dateAdded, act
 	}
 }
 
-function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAction) {
+function addActionItem(ID, latitude, longitude, actionTitle, actionJustification, dateAdded, revertAction) {
 
 	if( (document.getElementsByClassName('badge')[0].parentNode.parentNode).className != "active" ){
 		actionCount += 1;
@@ -562,7 +562,7 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 	div.className = 'inner__item';
 	//div.style = "padding: 5px 1px; width: 240px;";
 	div.innerHTML = formatActionDescrSide(actionTitle, actionJustification, dateAdded);
-	//div.onmouseover = highlightMarker;
+	//div.onmouseover = highlightMarker; // Use panTo function?
 	//div.onmouseout = stopHighlight;
 
 	//insert new item into array of children and re-append

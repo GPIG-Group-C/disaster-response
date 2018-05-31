@@ -77,7 +77,7 @@ function parseJsonRpc(data)
 
 		case "smartCityAction":
 			console.log("smartCityAction");
-			addSmartCityAction(data.params.ID, data.params.actionTitle, data.params.actionJustification, data.params.dateAdded, data.params.action, data.params.revertAction);
+			addSmartCityAction(data.params.ID, data.params.lat, data.params.lng, data.params.actionTitle, data.params.actionJustification, data.params.dateAdded, data.params.action, data.params.revertAction);
 			break;
 
 	}

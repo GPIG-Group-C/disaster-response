@@ -5,6 +5,8 @@
         "dateAdded": 1527506462506,
         "actionTitle" : "Turned off gas in area (37.7765, -122.4177)",
         "actionJustification": "N/A",
+		"lat": 37.7765154,
+        "lng": -122.4176931,
         "action" :
         [
             {

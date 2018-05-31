@@ -74,6 +74,8 @@
 			"dateAdded": 1527506462506,
 			"actionTitle" : "Turned off gas in area (37.7547, -122.4321)",
 			"actionJustification": "Fire detected in nearby building",
+			"lat": 37.7547012,
+			"lng": -122.4320698,
 			"action" :
 			[
 				{
