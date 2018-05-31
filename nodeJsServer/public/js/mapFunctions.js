@@ -90,7 +90,7 @@ function myMap()
 																							peopleDanger: 0,	
 																							medicNeeded:1	
 																							}});
-  
+  addActionItem("Gas", "Test", "things happened", "06/05/18", false);
 	//turns off sensors initially
 	toggleLayer('sensor');
 }
@@ -607,6 +607,17 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 	revertDiv.innerHTML = "Revert action";
 	revertDiv.style = "float: right; padding: 0px 3px;";
 	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
+	
+	var goToDiv = document.createElement('button');
+	goToDiv.id = ID + "_goto";
+	goToDiv.type = "button";
+	goToDiv.addEventListener('click', function(){
+		mMap.panTo({lat: latitude, lng: longitude});
+		mMap.setZoom(16);
+	});
+	goToDiv.innerHTML = "Go to";
+	goToDiv.style = "float: left; padding: 0px 3px;";
+	document.getElementById(ID).childNodes[1].appendChild(goToDiv);
 
 }
 
