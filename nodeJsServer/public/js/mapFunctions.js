@@ -21,6 +21,10 @@ function myMap()
 		center:new google.maps.LatLng(37.7749, -122.4194),
 		zoom:13,
 		styles: [{
+			"featureType": "poi",
+			"elementType": "geometry",
+			"stylers": [{"color": "#f5f5f5"}]
+		},{
 			"featureType": "poi.attraction",
 			"elementType": "labels",
 			"stylers": [{"visibility": "off"}]
