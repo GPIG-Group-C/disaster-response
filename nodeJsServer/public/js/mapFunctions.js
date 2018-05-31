@@ -196,27 +196,28 @@ function formatIncidentDescr(type, descr){
       }
 
     if (descr.utilities != null) {
-   // gasImg = descr.utilities.gas == 0 ?  : ;
-    //sewImg = descr.utilities.sewage == 0 ?  : ;
-    //watImg = descr.utilities.water == 0 ?  : ;
-    //elecImg = descr.utilities.electricity == 0 ?  : ;
-    var utilString = '<table style="width:100%">' +
-    '<tr>' +
-      '<th colspan="2">Utility Status:</th>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Gas: <img src="' +  + '"></td>' +
-      '<td>Sewage: <img src=' +  + '></td>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Water: <img src=' +  + '></td>' +
-      '<td>Electricity: <img src=' +  + '></td>' +
-    '</tr>' +
-    '</table>';
+		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		sewImg = descr.utilities.sewage == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		watImg = descr.utilities.water == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		elecImg = descr.utilities.electricity == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+	    
+	    var utilString = '<table style="width:100%">' +
+	    '<tr>' +
+	      '<th colspan="2">Utility Status:</th>' +
+	    '</tr>' +
+	    '<tr>' +
+	      '<td>Gas: <img src="' +  + '"></td>' +
+	      '<td>Sewage: <img src=' +  + '></td>' +
+	    '</tr>' +
+	    '<tr>' +
+	      '<td>Water: <img src=' +  + '></td>' +
+	      '<td>Electricity: <img src=' +  + '></td>' +
+	    '</tr>' +
+	    '</table>'; }
 
 
 
-    contentString = contentString + utilString;
+	    contentString = contentString + utilString;
 	}
 
   return contentString;
@@ -242,28 +243,31 @@ function formatIncidentDescrSide(type, title, descr){
     //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
     "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
 
+
+	var f = '</div>';
+
     if (descr.utilities != null) {
-   // gasImg = descr.utilities.gas == 0 ?  : ;
-    //sewImg = descr.utilities.sewage == 0 ?  : ;
-    //watImg = descr.utilities.water == 0 ?  : ;
-    //elecImg = descr.utilities.electricity == 0 ?  : ;
-    var utilString = '<table style="width:100%">' +
-    '<tr>' +
-      '<th colspan="2">Utility Status:</th>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Gas: <img src="' +  + '"></td>' +
-      '<td>Sewage: <img src=' +  + '></td>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>Water: <img src=' +  + '></td>' +
-      '<td>Electricity: <img src=' +  + '></td>' +
-    '</tr>' +
-    '</table>';
+    	gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		sewImg = descr.utilities.sewage == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		watImg = descr.utilities.water == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+		elecImg = descr.utilities.electricity == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
+	    
+	    var utilString = '<table style="width:100%">' +
+	    '<tr>' +
+	      '<th colspan="2">Utility Status:</th>' +
+	    '</tr>' +
+	    '<tr>' +
+	      '<td>Gas: <img src="' +  + '"></td>' +
+	      '<td>Sewage: <img src=' +  + '></td>' +
+	    '</tr>' +
+	    '<tr>' +
+	      '<td>Water: <img src=' +  + '></td>' +
+	      '<td>Electricity: <img src=' +  + '></td>' +
+	    '</tr>' +
+	    '</table>';
 
-    var f = '</div>';
+    	contentString = h + contentString + utilString + f;
 
-    contentString = h + contentString + utilString + f;
 	} else {
       contentString = h + contentString + f;
     }
