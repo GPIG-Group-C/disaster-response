@@ -604,7 +604,7 @@ function addActionItem(ID, actionTitle, actionJustification, dateAdded, revertAc
 			socket.emit("broadcastData", smartCityAction);
 		}
 	});
-	revertDiv.innerHTML = "Revert response";
+	revertDiv.innerHTML = "Revert action";
 	revertDiv.style = "float: right; padding: 0px 3px;";
 	document.getElementById(ID).childNodes[1].appendChild(revertDiv);
 
