@@ -176,50 +176,48 @@ function formatAreaDescr(type, descr){
 
 function formatIncidentDescr(type, descr){
 
-      if(descr == undefined)
-          return '<b>N/A</b>'
-	  
-	  var date = new Date(descr.dateAdded); 
-	  
-      var contentString = "";
-      if(descr.incident != undefined)
-      {
-          var contentString = '<b>INCIDENT INFO</b> <br/>'+
-              "<strong> Type: </strong>" + type + '<br/>' +
-              "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>" +
-              //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
-              "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
-              "<b> Reported at: </b> " + date.toLocaleString('en-GB', timeOptions) + "<br/>" +
-              //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
-              //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
-              "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
-      }
+    if(descr == undefined)
+        return '<b>N/A</b>';
+	
+	var date = new Date(descr.dateAdded); 
+	
+    var contentString = "";
+    if(descr.incident != undefined)
+    {
+        var contentString = '<b>INCIDENT INFO</b> <br/>'+
+            "<strong> Type: </strong>" + type + '<br/>' +
+            "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>" +
+            //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
+            "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
+            "<b> Reported at: </b> " + date.toLocaleString('en-GB', timeOptions) + "<br/>" +
+            //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
+            //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
+            "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+    }
 
-    if (descr.utilities != null) {
+	if (descr.utilities != null) {
 		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
 		sewImg = descr.utilities.sewage == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
 		watImg = descr.utilities.water == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
 		elecImg = descr.utilities.electricity == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
-	    
-	    var utilString = '<table style="width:100%">' +
-	    '<tr>' +
-	      '<th colspan="2">Utility Status:</th>' +
-	    '</tr>' +
-	    '<tr>' +
-	      '<td>Gas: <img src="' +  + '"></td>' +
-	      '<td>Sewage: <img src=' +  + '></td>' +
-	    '</tr>' +
-	    '<tr>' +
-	      '<td>Water: <img src=' +  + '></td>' +
-	      '<td>Electricity: <img src=' +  + '></td>' +
-	    '</tr>' +
-	    '</table>'; }
-
-
-
-	    contentString = contentString + utilString;
+		
+		var utilString = '<table style="width:100%">' +
+		'<tr>' +
+		  '<th colspan="2">Utility Status:</th>' +
+		'</tr>' +
+		'<tr>' +
+		  '<td>Gas: <img src="' + gasImg + '"></td>' +
+		  '<td>Sewage: <img src=' + sewImg + '></td>' +
+		'</tr>' +
+		'<tr>' +
+		  '<td>Water: <img src=' + watImg + '></td>' +
+		  '<td>Electricity: <img src=' + elecImg + '></td>' +
+		'</tr>' +
+		'</table>';
 	}
 
+	contentString = contentString + utilString;
+	
   return contentString;
 }
 
