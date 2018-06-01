@@ -52,7 +52,7 @@ function parseJsonRpc(data)
 
 		case "addCircle":
 			console.log("addCircle");
-			addCircle(data.params.ID, data.params.type, data.params.lat, data.params.lng, data.params.radius);
+			addCircle(data.params.ID, data.params.type, data.params.lat, data.params.lng, data.params.radius, data.params.dateAdded);
 			break;
 
 		case "addPolygon":

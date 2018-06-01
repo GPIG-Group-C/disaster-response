@@ -3,10 +3,23 @@
         "method": "addMarker",
         "params": {
             "ID": "d1d0bb8f-baa3-4c9d-bf2a-b3b3d679d652",
-            "lat": 37.7367836,
-            "lng": -122.4359322,
+            "lat": 37.627558,
+            "lng": -122.4491505,
             "title": "Earthquake Epicenter",
             "type": "earthquake"
+        }
+    },
+	{
+        "method": "addCircle",
+        "params": {
+            "ID": "randomCircleID",
+			"type": "earthquake",
+            "lat": 37.627558,
+            "lng": -122.4491505,
+			"radius": 2500,
+			"type": "earthquake",
+            "title": "Earthquake Epicenter",
+			"dateAdded": 1527506462506
         }
     },
     {
@@ -57,9 +70,9 @@
                 },
                 "dateAdded": 1527506462506,
                 "utilities": {
-                    "electricity": true,
+                    "electricity": false,
                     "gas": true,
-                    "sewage": true,
+                    "sewage": false,
                     "water": true
                 }
             }

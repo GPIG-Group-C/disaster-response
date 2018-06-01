@@ -82,7 +82,9 @@ function myMap()
 		parseJsonRpc(initialMapData[i]);
 	}
 	
-  addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},	
+	/*
+	// Test data...
+	addInfoMarker("earthquake", 'earthquake', 37.7749, -122.4194, "Earthquake!", {areaInfo: { address: ""},	
 																					incident:{	
 																							status: 0,	
 																							reportBy: "",	
@@ -90,7 +92,9 @@ function myMap()
 																							peopleDanger: 0,	
 																							medicNeeded:1	
 																							}});
-  addActionItem("Gas", "Test", "things happened", "06/05/18", false);
+	addActionItem("Gas", "Test", "things happened", "06/05/18", false);
+	*/
+	
 	//turns off sensors initially
 	toggleLayer('sensor');
 }
@@ -146,7 +150,7 @@ function formatAreaDescr(type, descr){
     "<b> Area Type: </b> " + descr.areaInfo.type + "<br/>" +
     "<b> Area Year: </b> " + descr.areaInfo.year + "<br/>" +
     "<b> Updated: </b> " + date.toLocaleString('en-GB', timeOptions)  + "<br/>";
-
+	
     if (descr.utilities != null)
 	{
 		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
@@ -184,18 +188,29 @@ function formatIncidentDescr(type, descr){
     var contentString = "";
     if(descr.incident != undefined)
     {
-        var contentString = '<b>INCIDENT INFO</b> <br/>'+
+        contentString += '<b>INCIDENT INFO</b> <br/>'+
             "<strong> Type: </strong>" + type + '<br/>' +
             "<b> Status: </b> " + incidentInfo[type][descr.incident.status] + "<br/>" +
             //"<b> Address: </b> " + descr.areaInfo.address + "<br/>" +
             "<b> Reported by: </b> " + descr.incident.reportBy + "<br/>" +
             "<b> Reported at: </b> " + date.toLocaleString('en-GB', timeOptions) + "<br/>" +
-            //"<b> Medic Needed: <img src='" + descr.utilities.medicNeeded == 0 ?  :  + "'> <br/>" +
-            //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
             "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
+			
+		var medicImg = descr.incident.medicNeeded == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";;
+		var damageImg = descr.incident.peopleDanger == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";;
+	
+		var medicDamageString = '<table style="width:100%">' +
+			'<tr>' +
+			  '<td>Medic Needed: <img src="' + medicImg +'"></td>' +
+			  '<td>Danger: <img src=' + damageImg + '></td>' +
+			'</tr>' +
+			'</table><br>';
+			
+		contentString += medicDamageString;
     }
 
-	if (descr.utilities != null) {
+	if (descr.utilities != null)
+	{
 		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
 		sewImg = descr.utilities.sewage == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
 		watImg = descr.utilities.water == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
@@ -214,11 +229,10 @@ function formatIncidentDescr(type, descr){
 		  '<td>Electricity: <img src=' + elecImg + '></td>' +
 		'</tr>' +
 		'</table>';
+		
+		contentString += utilString;
 	}
-
-	contentString = contentString + utilString;
-	
-  return contentString;
+	return contentString;
 }
 
 
@@ -241,6 +255,17 @@ function formatIncidentDescrSide(type, title, descr){
     //"<b> Medic Needed: <img src='" + descr.utilities.peopleDanger == 0 ?  :  + "'> <br/>" +
     "<b> Additional Info: </b>" + descr.incident.info + "<br/>";
 
+	var medicImg = descr.incident.medicNeeded == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";;
+	var damageImg = descr.incident.peopleDanger == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";;
+	
+	var medicDamageString = '<table style="width:100%">' +
+		'<tr>' +
+		  '<td>Medic Needed: <img src="' + medicImg +'"></td>' +
+		  '<td>Danger: <img src=' + damageImg + '></td>' +
+		'</tr>' +
+		'</table><br>';
+	
+	contentString += medicDamageString;
 
 	var f = '</div>';
 
@@ -284,7 +309,7 @@ function addCircle(ID, type, latitude, longitude, radius) {
 		clickable: false,
 		map: mMap,
 		center: {lat: latitude, lng: longitude},
-		radius: radius * 1000
+		radius: radius
 	});
 
     if(!('circle' in markerDict)){
@@ -373,7 +398,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 		description: descr
 	});
 	marker.addListener('click', function() {
-		infoWindow.open(mMap, marker);
+		if(infoWindow != undefined)
+			infoWindow.open(mMap, marker);
 	});
 
     if(!(type in markerDict)){
