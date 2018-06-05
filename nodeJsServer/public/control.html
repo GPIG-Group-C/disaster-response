@@ -77,6 +77,8 @@
 			
 			function smartEvent(eventNum)
 			{
+				var textArea = document.getElementById("data");
+				textArea.innerHTML += "Added smart event..\n";
 				socket.emit("event", {"method":"smartEvent", "eventNum": eventNum});
 			}
 						
@@ -93,11 +95,11 @@
 		<p id = "status">N/A</p><br>
 		
 		<p><b>Data sent log: </b></p>
-		<textarea id = "data" rows="4" cols="50" readonly></textarea><br><br>
+		<textarea id = "data" rows="4" cols="50" readonly></textarea><br>
 		<button type="button" onclick="sendAllData()" disabled>Send ALL data</button><br>
-		<button id = "startQuake" type="button" onclick="startEarthquake()">Start Earthquake and timers</button><br>
-		<button type="button" onclick="smartEvent(1)">Send fire event</button><br>
-		<button type="button" onclick="smartEvent(2)">Send gas event</button><br>
+		<button id = "startQuake" type="button" onclick="startEarthquake()">Start Earthquake and timers</button><br><br>
+		<button type="button" onclick="smartEvent(1)">Send fire event</button><br><br>
+		<button type="button" onclick="smartEvent(2)">Send gas event</button><br><br>
 		<button type="button" onclick="smartEvent(3)">Send reverted event</button><br>
 		
 	</body>

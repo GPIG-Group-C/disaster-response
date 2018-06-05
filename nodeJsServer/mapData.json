@@ -16,7 +16,7 @@
 			"type": "earthquake",
             "lat": 37.627558,
             "lng": -122.4491505,
-			"radius": 2500,
+			"radius": 3500,
 			"type": "earthquake",
             "title": "Earthquake Epicenter",
 			"dateAdded": 1527506462506

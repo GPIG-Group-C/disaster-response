@@ -19,7 +19,7 @@ function myMap()
 {
 	var mapProp= {
 		center:new google.maps.LatLng(37.7749, -122.4194),
-		zoom:13,
+		zoom:11,
 		styles: [{
 			"featureType": "poi",
 			"elementType": "geometry",
@@ -595,7 +595,7 @@ function addActionItem(ID, latitude, longitude, actionTitle, actionJustification
 
 	//insert new item into array of children and re-append
 	var childArray = Array.from(document.getElementById('js-sidebar-3').children);
-	childArray.splice(1,0,div);
+	childArray.splice(0,0,div);
 	for (var i =0;i<childArray.length;i++) {
 		document.getElementById('js-sidebar-3').appendChild(childArray[i]);
 	}
@@ -653,7 +653,8 @@ function formatActionDescrSide(actionTitle, actionJustification, dateAdded){
 
 	var h = '<div class="inner__title">'+actionTitle+'</div>';
 
-	var date = new Date(dateAdded);
+	//var date = new Date(dateAdded);
+	var date = new Date(); // Use local time
 	
 	var contentString = '<div class="inner__content">' + '<b>ACTION INFO</b> <br/>' +
 	"<strong> Time: </strong>" + date.toLocaleString('en-GB', timeOptions) + '<br/>' +
@@ -754,7 +755,7 @@ function addActivityItem(ID, type, latitude, longitude, title, descr) {
 
 		//insert new item into array of children and re-append
 		var childArray = Array.from(document.getElementById('js-sidebar-2').children);
-		childArray.splice(1,0,div);
+		childArray.splice(0,0,div);
 		for (var i =0;i<childArray.length;i++) {
 			document.getElementById('js-sidebar-2').appendChild(childArray[i]);
 		}
@@ -815,9 +816,10 @@ function addGasLine(ID, coords, interval, colour){
         markerDict[type].push(gas.line);
     }
 
+	// Create sensors
 	type = "sensor";
-
-	for( var index in gas.sensors.sensors){
+	for(var index in gas.sensors.sensors)
+	{
 		var sensor = gas.sensors.sensors[index];
 
 		var status;
