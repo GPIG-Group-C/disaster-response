@@ -208,7 +208,6 @@ function formatIncidentDescr(type, descr){
 			
 		contentString += medicDamageString;
     }
-
 	if (descr.utilities != null)
 	{
 		gasImg = descr.utilities.gas == 0 ? "../media/utilities_off.svg" : "../media/utilities_on.svg";
@@ -231,6 +230,16 @@ function formatIncidentDescr(type, descr){
 		'</table>';
 		
 		contentString += utilString;
+	}
+	if(descr.sensor != undefined)
+	{
+		var sensorData = descr.sensor.fakeData != undefined ? descr.sensor.fakeData : descr.sensor.data.next().value;
+		var sensorFaulty = descr.sensor.on == true ? "Off" : "Operational";
+		
+		contentString += '<b>SENSOR INFO</b> <br/>'+
+			"<b> ID: </b> " + descr.sensor.id  + "<br/>" +
+            "<b> Status: </b> " + sensorFaulty + "<br/>" +
+            "<b> Pressure: </b> " + sensorData + "<br/>";
 	}
 	return contentString;
 }
@@ -333,8 +342,8 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	for( var index in markerDict[type]){
 		currMarker = markerDict[type][index];
 
-		if (currMarker.id == ID){
-
+		if (currMarker.id == ID)
+		{
 			removeMarker(ID, type);
 		}
 	}
@@ -352,35 +361,39 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
 	var icon_size = new google.maps.Size(24, 24);
     switch(type) {
       case 'gas':
-          icon_url = 'media/gas.svg'
+          icon_url = 'media/gas.svg';
           break;
       case 'fire':
-          icon_url = 'media/flame.svg'
+          icon_url = 'media/flame.svg';
           break;
       case 'blocked':
-          icon_url = 'media/blocked.svg'
+          icon_url = 'media/blocked.svg';
           break;
 	  case 'collapse':
-          icon_url = 'media/collapse.svg'
+          icon_url = 'media/collapse.svg';
           break;
       case 'medic':
-          icon_url = 'media/medic.svg'
+          icon_url = 'media/medic.svg';
           break;
       case 'earthquake':
-          icon_url = 'media/earthquake.svg'
+          icon_url = 'media/earthquake.svg';
           break;
 	  case 'fire_station':
-		  icon_url = 'media/fs.svg'
+		  icon_url = 'media/fs.svg';
 		  icon_size = new google.maps.Size(15, 15);
 		  break;
       case 'water':
-          icon_url = 'media/drop.svg'
+          icon_url = 'media/drop.svg';
           break;
       case 'electricity':
-          icon_url = 'media/electricity.svg'
+          icon_url = 'media/electricity.svg';
           break;
       case 'sensor':
           icon_url = 'media/sensor.svg'
+		  if(descr.sensor.fault == true)
+		  {
+			  icon_url = 'media/sensor_fault.svg';
+		  }
           break;
     }
 
@@ -432,7 +445,7 @@ function removeMarker(ID, type){
 	markerDict[type][index].setMap(null);
 
 	//Removes marker from markerCluster
-	removeMarkerFromCluster(markerDict[type][index]);
+	removeMarkerFromCluster(markerDict[type][index], type);
 
 	//Removes marker from markerDict
 	markerDict[type].splice(index, 1);
@@ -820,29 +833,32 @@ function addGasLine(ID, coords, interval, colour){
 	type = "sensor";
 	for(var index in gas.sensors.sensors)
 	{
-		var sensor = gas.sensors.sensors[index];
-
-		var status;
-		if(sensor.on){
-			status = "Status: On";
-		} else {
-			status = "Status: Off";
-		}
-
-		var sensorID = ID.concat(sensor.id);
-		addInfoMarker(sensorID, type, sensor.latitude, sensor.longitude, "Sensor_".concat(sensorID), status, new Date().getTime());
+		var s = gas.sensors.sensors[index];
+		var sensorJSONObject = {sensor: s};
+		var sensorID = ID.concat(s.id);
+		addInfoMarker(sensorID, type, s.latitude, s.longitude, "Sensor_".concat(sensorID), sensorJSONObject, new Date().getTime());
 	}
 }
 
-function colourGasLine(ID, colour)
+function colourGasLine(ID, colour, isOn)
 {
-		var gasLine = markerDict["pipe"]
-		for( var index in gasLine)
+	var gasLine = markerDict["pipe"]
+	for( var index in gasLine)
+	{
+		currLine = gasLine[index];
+		if (currLine.id == ID)
 		{
-			currLine = gasLine[index];
-			if (currLine.id == ID)
+			changeLineColour(currLine, colour);
+			/*
+			// TODO: change sensor status based on isOn variable:
+			for(var s in currLine.sensors)
 			{
-				changeLineColour(currLine, colour);
+				s.on = isOn;
+				var sensorJSONObject = {sensor: s};
+				var sensorID = ID.concat(s.id);
+				addInfoMarker(sensorID, "sensor", s.latitude, s.longitude, "Sensor_".concat(sensorID), sensorJSONObject, new Date().getTime());
 			}
+			*/
 		}
+	}
 }

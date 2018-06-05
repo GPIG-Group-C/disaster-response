@@ -54,7 +54,25 @@
 					"method": "colourGasLine",
 					"params": {
 						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-						"colour": "#FF0000"
+						"colour": "#FF0000",
+						"isOn": false
+					}
+				},
+				{
+					"method": "addMarker",
+					"params": {
+						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa4",
+						"desc": {
+							"sensor": {
+								"id": 4,
+								"fault": true,
+								"fakeData": 0
+							}
+						},
+						"lat": 37.7595871,
+						"lng": -122.4468756,
+						"title": "Sensor_d6802de2-a3a1-4498-9da9-2c8c353980aa4",
+						"type": "sensor"
 					}
 				}
 			],
@@ -64,7 +82,25 @@
 					"method": "colourGasLine",
 					"params": {
 						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa",
-						"colour": "#009900"
+						"colour": "#009900",
+						"isOn": true
+					}
+				},
+				{
+					"method": "addMarker",
+					"params": {
+						"ID": "d6802de2-a3a1-4498-9da9-2c8c353980aa4",
+						"desc": {
+							"sensor": {
+								"id": 4,
+								"fault": false,
+								"fakeData": 16
+							}
+						},
+						"lat": 37.7595871,
+						"lng": -122.4468756,
+						"title": "Sensor_d6802de2-a3a1-4498-9da9-2c8c353980aa4",
+						"type": "sensor"
 					}
 				}
 			]

@@ -13,7 +13,8 @@
                 "method": "colourGasLine",
                 "params": {
                     "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
-                    "colour": "#FF0000"
+                    "colour": "#FF0000",
+					"isOn": false
                 }
             }
         ],
@@ -23,7 +24,8 @@
                 "method": "colourGasLine",
                 "params": {
                     "ID": "46239f32-3b58-4b1f-8d51-5d4f6df73707",
-                    "colour": "#009900"
+                    "colour": "#009900",
+					"isOn": true
                 }
             }
         ]

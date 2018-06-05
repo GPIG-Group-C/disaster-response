@@ -72,7 +72,7 @@ function parseJsonRpc(data)
 
 		case "colourGasLine":
 			console.log("colourGasLine");
-			colourGasLine(data.params.ID, data.params.colour);
+			colourGasLine(data.params.ID, data.params.colour, data.params.isOn);
 			break;
 
 		case "smartCityAction":

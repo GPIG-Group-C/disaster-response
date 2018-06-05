@@ -6,7 +6,7 @@
 * var polyline = gasLine.line;
 */
 
-function createLine(ID, lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, lineWeight=2){
+function createLine(ID, sensors, lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, lineWeight=2){
 	/**
 	* Create a polyline and return it.
 	* @param {Array<Object>} lineCoordinates 	Array of {lat : <number>, lng : <number>} points that define the line
@@ -21,7 +21,8 @@ function createLine(ID, lineCoordinates, lineColour='#FF0000', lineOpacity=1.0, 
 		geodesic: true,
 		strokeColor: lineColour,
 		strokeOpacity: lineOpacity,
-		strokeWeight: lineWeight
+		strokeWeight: lineWeight,
+		sensors: sensors
 	});
 
 	return line;
@@ -72,7 +73,7 @@ function createGasLine(ID, coords, interval, colour){
 	*/	
 	var uniqueCoords = coords.filter(uniqueOnly); //Remove duplicate coordinates	
 	var gasSensors = new SensorNet(uniqueCoords, interval);
-	var gasLine = createLine(ID, uniqueCoords, colour);
+	var gasLine = createLine(ID, gasSensors, uniqueCoords, colour);
 
 	return {sensors : gasSensors, line : gasLine};
 }

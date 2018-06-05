@@ -59,8 +59,6 @@ function handler (request, response)
 			requestBody += data;
 		});
 		request.on('end', function() {
-			var formData = JSON.parse(requestBody);
-			console.log(formData);
 			response.writeHead(200, {'Content-Type': 'text/html'});
 			response.write('<!doctype html><html><head><title>Response</title></head>');
 			response.end('<body>Data received</body></html>');
