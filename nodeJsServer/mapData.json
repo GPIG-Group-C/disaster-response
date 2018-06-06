@@ -1091,9 +1091,9 @@
             "desc": {
                 "dateAdded": 1527506462506,
                 "incident": {
-                    "info": "Multiple fatalities",
+                    "info": "Ceiling collapsed and building evacuted. Minor injuries",
                     "medicNeeded": true,
-                    "peopleDanger": true,
+                    "peopleDanger": false,
                     "reportBy": "Smart City",
                     "status": 0
                 }

@@ -432,8 +432,11 @@ function addInfoMarker(ID, type, latitude, longitude, title, descr){
     }
 
     markerJson = {method: "addMarker", params: {id: ID, type: type, latitude: latitude, longitude: longitude, title: title, descr: descr}};
-	// Do not emit from here
-    //socket.emit("broadcastData", markerJson);
+	
+	if(layerVisibility[type] == false)
+	{
+		hideLayer(type);
+	} 
 	return marker;
 }
 
