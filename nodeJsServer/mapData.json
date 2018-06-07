@@ -152,7 +152,7 @@
                 "areaInfo": {
                     "address": "Noe st",
                     "numPeople": 120,
-                    "severity": 7,
+                    "severity": 4,
                     "type": "Residential",
                     "year": 1995
                 },

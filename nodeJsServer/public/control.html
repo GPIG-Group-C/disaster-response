@@ -44,32 +44,32 @@
 				socket.emit("event", {"method":"sendData", "start": 0, "end": 4});
 			
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 1...\n";
 					socket.emit("event", {"method":"sendData", "start": 4, "end": 10});
 				}, 2000);
 				
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 2...\n";
 					socket.emit("event", {"method":"sendData", "start": 10, "end": 16});
 				}, 2500);
 				
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 3...\n";
 					socket.emit("event", {"method":"sendData", "start": 16, "end": 20});
 				}, 4500);
 				
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 4...\n";
 					socket.emit("event", {"method":"sendData", "start": 20, "end": 24});
 				}, 5400);
 				
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 5...\n";
 					socket.emit("event", {"method":"sendData", "start": 24, "end": 28});
 				}, 6000);
 				
 				window.setTimeout(function(){
-					textArea.innerHTML += "Adding data...\n";
+					textArea.innerHTML += "Adding data 6...\n";
 					socket.emit("event", {"method":"sendData", "start": 28, "end": 33});
 					textArea.innerHTML += "Done...\n";
 				}, 6600);
@@ -96,11 +96,11 @@
 		
 		<p><b>Data sent log: </b></p>
 		<textarea id = "data" rows="4" cols="50" readonly></textarea><br>
-		<button type="button" onclick="sendAllData()" disabled>Send ALL data</button><br>
-		<button id = "startQuake" type="button" onclick="startEarthquake()">Start Earthquake and timers</button><br><br>
-		<button type="button" onclick="smartEvent(1)">Send fire event</button><br><br>
-		<button type="button" onclick="smartEvent(2)">Send gas event</button><br><br>
-		<button type="button" onclick="smartEvent(3)">Send reverted event</button><br>
+		<!--<button type="button" onclick="sendAllData()" disabled>Send ALL data</button><br>-->
+		<button id = "startQuake" type="button" onclick="startEarthquake()">Start Earthquake and Timers</button><br><br>
+		<button type="button" onclick="smartEvent(2)">1) Send gas event</button><br><br>
+		<button type="button" onclick="smartEvent(3)">2) Send reverted gas event</button><br><br>
+		<button type="button" onclick="smartEvent(1)">3) Send fire event</button><br>
 		
 	</body>
 </html>
